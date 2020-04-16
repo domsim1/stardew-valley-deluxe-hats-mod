@@ -1,0 +1,10 @@
+{
+  "Name": "BetterHats",
+  "Author": "domsim1",
+  "Version": "1.0.0",
+  "Description": "Hats have effects!",
+  "UniqueID": "domsim1.BetterHats",
+  "EntryDll": "BetterHats.dll",
+  "MinimumApiVersion": "2.10.0",
+  "UpdateKeys": []
+}
