@@ -7,11 +7,13 @@ Deluxe Hats is a mod for Stardew Valley that brings unique mechanics to hats. Th
 Delux Hats is currently under development. All contributions would be much appreciated. You can contribute by:
 
 - Sharing an idea for a [hat](https://github.com/domsim1/stardew-valley-deluxe-hats-mod/issues/1).
-- Implementing a hat and creating a Pull Request.
+- Implement a hat or fix a bug.
 - Report an [issue](https://github.com/domsim1/stardew-valley-deluxe-hats-mod/issues).
 - Buy me a [coffee](https://www.buymeacoffee.com/domsim1) ☕.
 
-## How to Implement a Hat
+## How to Implement a Hat or fix a bug
+
+Create a fork of the repository, then create a branch based on `development` called `feature/<hat-name>` if its a hat effect or `bugfix/<issue-number>` if its a bug fix. If the branch you are developing on is behind `development`, please rebase, do **not** merge `development` into your branch.
 
 The project can be opened with Visual Studio, its built using [SMAPI](https://stardewvalleywiki.com/Modding:Modder_Guide/APIs). To implement a hat, find the file with the same name as the hat you would like to add an effect to in the `Hats` directory. The file will look like so:
 
