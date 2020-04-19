@@ -4,7 +4,7 @@ Deluxe Hats is a mod for Stardew Valley that brings unique mechanics to hats. Th
 
 ## How to Contribute
 
-Delux Hats is currently under development. All contributions would be much appreciated. You can contribute by:
+Deluxe Hats is currently under development. All contributions would be much appreciated. You can contribute by:
 
 - Sharing an idea for a [hat](https://github.com/domsim1/stardew-valley-deluxe-hats-mod/issues/1).
 - Implement a hat or fix a bug.
