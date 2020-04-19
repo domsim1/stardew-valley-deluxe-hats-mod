@@ -16,7 +16,7 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.isTimePaused)
+                if (Game1.player.hasMenuOpen || !Game1.player.canMove || !Game1.game1.IsActive)
                 {
                     return;
                 }
