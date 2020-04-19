@@ -57,7 +57,7 @@ public static void Activate()
 
 The `HatService.OnTick` will be set `null` automaticlly when the hat is taken off. This does **not** need to be done within the `Disable()` method.
 
-If the even you wish to use does not yet have a deletgate you can add it to the `HatService` class like so:
+If the event you wish to use does not yet have a delegate you can add it to the `HatService` class like so:
 
 ```C#
 // Declare the delegate
