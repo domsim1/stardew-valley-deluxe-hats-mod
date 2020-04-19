@@ -40,7 +40,7 @@ namespace BetterHats.Hats
 
 The `Activate()` method is called when the player puts on the hat, the `Disable()` method is called when the hat takes off the hat. Logic to apply effects should go within the `Active()` method and clean up should be done within the `Disable()` method. If no clean up is needed to leave the `Disable()` empty.
 
-To access SMAPI `Mod.Helper` from `HatService.Helper` and `Mod.Monitor` from `HatService.Monitor`.
+To access SMAPI `Mod.Helper` use `HatService.Helper` and `Mod.Monitor` use `HatService.Monitor`.
 
 Do **not** use events from SMAPI directly from the `HatSevice.Helper`. Instead, bind a lambda function the corresponding delegate variable. For example, if you wish to use `Helper.Events.GameLoop.UpdateTicked` assign a lambda function to `HatService.OnUpdateTicked` like so:
 
