@@ -54,7 +54,7 @@ namespace DeluxeHats.Hats
                     {
                         which = 6284,
                     };
-                    dwarfBuff.description = "Mad Dwarf King\n+4 Mining\n+2 Speed\n+1 attack";
+                    dwarfBuff.description = "Mad Dwarf King\n+4 Mining\n+2 Speed\n+1 Attack";
                     Game1.buffsDisplay.addOtherBuff(dwarfBuff);
                 }
                 dwarfBuff.millisecondsDuration = 7170;
@@ -69,12 +69,10 @@ namespace DeluxeHats.Hats
                 var museumItems = new HashSet<int>(mus.museumPieces.Values);
                 if (museumItems.Contains(96) && (museumItems.Contains(97) && museumItems.Contains(98)) && museumItems.Contains(99))
                 {
-                    HatService.Monitor.Log("Could understand!", StardewModdingAPI.LogLevel.Info);
                     Game1.player.canUnderstandDwarves = true;
                 }
                 else
                 {
-                    HatService.Monitor.Log("Could not understand!", StardewModdingAPI.LogLevel.Info);
                     Game1.player.canUnderstandDwarves = false;
                 }
             }
