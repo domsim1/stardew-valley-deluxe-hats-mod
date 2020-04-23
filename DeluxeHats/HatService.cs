@@ -6,15 +6,19 @@ using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Characters;
 using DeluxeHats.Hats;
+using Harmony;
 
 namespace DeluxeHats
 {
     public static class HatService
     {
         public static int BuffId = 6284;
+        public static string HarmonyId;
+
 
         public static IMonitor Monitor;
         public static IModHelper Helper;
+        public static HarmonyInstance Harmony;
 
         public delegate void OnUpdateTickedDelegate(UpdateTickedEventArgs e);
         public static OnUpdateTickedDelegate OnUpdateTicked;
@@ -31,6 +35,9 @@ namespace DeluxeHats
         public delegate void OnDayStartDelegate(DayStartedEventArgs e);
         public static OnDayStartDelegate OnDayStarted;
 
+        public delegate void OnDayEndingDelegate(DayEndingEventArgs e);
+        public static OnDayEndingDelegate OnDayEnding;
+
         private delegate void DisableHatDelegate();
         private static DisableHatDelegate DisableHat;
 
@@ -43,6 +50,8 @@ namespace DeluxeHats
             OnInventoryChanged = null;
             OnButtonPressed = null;
             OnDayStarted = null;
+            OnDayEnding = null;
+
         }
 
         public static void UpdateTicked(object sender, UpdateTickedEventArgs e)
@@ -72,6 +81,11 @@ namespace DeluxeHats
         {
             ApplyHatEffect();
             OnDayStarted?.Invoke(e);
+        }
+
+        public static void DayEnding(object sender, DayEndingEventArgs e)
+        {
+            OnDayEnding?.Invoke(e);
         }
 
         public static void HatChanged(Netcode.NetRef<StardewValley.Objects.Hat> field, StardewValley.Objects.Hat oldValue, StardewValley.Objects.Hat newValue)
