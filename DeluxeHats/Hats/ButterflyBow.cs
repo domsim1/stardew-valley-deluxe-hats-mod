@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
 
@@ -20,7 +21,9 @@ namespace DeluxeHats.Hats
                 var critters = HatService.Helper.Reflection.GetField<List<Critter>>(Game1.currentLocation, "critters").GetValue();
                 if (critters != null && (e.Ticks%30) == 0 && critters.Count < 340)
                 {
-                    critters.Add(new Butterfly(Game1.player.getTileLocation()));
+                    var randomX = Game1.player.getTileLocation().X + Game1.random.Next(3);
+                    var randomY = Game1.player.getTileLocation().Y + Game1.random.Next(3);
+                    critters.Add(new Butterfly(new Vector2(randomX, randomY)));
                 }
                 if (e.Ticks % 480 == 0)
                 {
