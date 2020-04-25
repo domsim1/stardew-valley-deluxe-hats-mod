@@ -7,12 +7,10 @@ namespace DeluxeHats.Hats
         public const string Name = "Bridal Veil";
         public static void Activate()
         {
-            throw new NotImplementedException();
         }
 
         public static void Disable()
         {
-            throw new NotImplementedException();
         }
     }
 }
