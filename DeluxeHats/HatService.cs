@@ -211,7 +211,7 @@ namespace DeluxeHats
                         break;
                     case HardHat.Name:
                         HardHat.Activate();
-                        DisableHat = BowlerHat.Disable;
+                        DisableHat = HardHat.Disable;
                         break;
                     case Souwester.Name:
                         Souwester.Activate();
