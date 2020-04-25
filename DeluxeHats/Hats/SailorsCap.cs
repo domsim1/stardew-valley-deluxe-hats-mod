@@ -15,10 +15,10 @@ namespace DeluxeHats.Hats
                 Buff tipsyBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == Buff.tipsy);
                 if (tipsyBuff != null)
                 {
-                    Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == 1234);
+                    Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
                     if (powerBuff == null)
                     {
-                        powerBuff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, attack: 10, minutesDuration: 1, source: "Deluxe Hats", displaySource: Name) { which = 1234 };
+                        powerBuff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, attack: 10, minutesDuration: 1, source: "Deluxe Hats", displaySource: Name) { which = HatService.BuffId };
                         Game1.buffsDisplay.addOtherBuff(powerBuff);
                         Game1.player.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
                         powerBuff.description = "Drunken Sailor\n+10 Attack";
@@ -34,7 +34,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == 1234);
+            Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
             if (powerBuff != null)
             {
                 powerBuff.millisecondsDuration = 0;
