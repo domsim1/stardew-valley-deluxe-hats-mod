@@ -31,7 +31,9 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            daredevil.checkAction(Game1.player, Game1.currentLocation);
+            if (daredevil != null) {
+                daredevil.checkAction(Game1.player, Game1.currentLocation);
+            }
             Game1.getFarm().characters.Remove(daredevil);
             daredevil = null;
         }
