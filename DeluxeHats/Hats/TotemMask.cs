@@ -18,7 +18,6 @@ namespace DeluxeHats.Hats
                 {
                     if (Game1.activeClickableMenu != null
                     || !Game1.displayFarmer
-                    || Game1.menuUp
                     || Game1.dialogueUp
                     || !Game1.player.canMove
                     || Game1.player.isRidingHorse()
@@ -26,8 +25,7 @@ namespace DeluxeHats.Hats
                     || Game1.isWarping
                     || Game1.eventUp
                     || Game1.fadeIn
-                    || Game1.player.isInBed
-                    || Game1.nameSelectUp
+                    || Game1.player.isInBed.Value
                     || Game1.isActionAtCurrentCursorTile
                     || Game1.fadeToBlack)
                     {

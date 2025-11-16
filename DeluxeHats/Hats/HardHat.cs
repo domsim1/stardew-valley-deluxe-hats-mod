@@ -12,15 +12,15 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                foreach (var character in Game1.currentLocation.getCharacters())
+                foreach (var character in Game1.currentLocation.characters)
                 {
                     if (character.IsMonster)
                     {
                         var monster = character as Monster;
-                        if (monster.isGlider.Value && !monster.datingFarmer)
+                        if (monster.isGlider.Value && (monster.datingFarmer == false))
                         {
                             monster.age.Set(monster.damageToFarmer.Value);
-                            monster.damageToFarmer.Set(Convert.ToInt32(monster.damageToFarmer * 0.85));
+                            monster.damageToFarmer.Set(Convert.ToInt32(monster.damageToFarmer.Value * 0.85));
                             monster.datingFarmer = true;
                         }
                     }
@@ -30,12 +30,12 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            foreach (var character in Game1.currentLocation.getCharacters())
+            foreach (var character in Game1.currentLocation.characters)
             {
                 if (character.IsMonster)
                 {
                     var monster = character as Monster;
-                    if (monster.isGlider.Value && monster.datingFarmer)
+                    if (monster.isGlider.Value && (monster.datingFarmer == false))
                     {
                         monster.damageToFarmer.Set(monster.age.Value);
                         monster.datingFarmer = false;

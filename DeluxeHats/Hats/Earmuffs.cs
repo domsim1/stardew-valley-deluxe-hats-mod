@@ -1,6 +1,7 @@
 ﻿using StardewValley;
 using System;
 using System.Linq;
+using StardewValley.Buffs;
 
 namespace DeluxeHats.Hats
 {
@@ -12,33 +13,25 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff earmuffBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
-                if (Game1.currentLocation.isOutdoors && Game1.currentSeason == "winter")
+                Buff earmuffBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                if (Game1.currentLocation.isOutdoors.Value && Game1.currentSeason == "winter")
                 {
                     if (earmuffBuff == null)
                     {
+                        var effects = new BuffEffects();
+                        effects.ForagingLevel.Set(2);
+                        effects.FarmingLevel.Set(1);
+                        effects.FishingLevel.Set(1);
                         earmuffBuff = new Buff(
-                            farming: 1,
-                            fishing: 1,
-                            mining: 0,
-                            digging: 0,
-                            luck: 0,
-                            foraging: 2,
-                            crafting: 0,
-                            maxStamina: 0,
-                            magneticRadius: 0,
-                            speed: 0,
-                            defense: 0,
-                            attack: 0,
-                            minutesDuration: 1,
+                            id: HatService.BuffId,
                             source: "Deluxe Hats",
-                            displaySource: Name)
-                        {
-                            which = HatService.BuffId,
-                        };
-                        Game1.buffsDisplay.addOtherBuff(earmuffBuff);
+                            displaySource: Name,
+                            displayName: "Season Protection",
+                            effects: effects
+                            );
                         earmuffBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
                         earmuffBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        Game1.player.applyBuff(earmuffBuff);
                     }
                 }
                 else
@@ -53,7 +46,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff earmuffBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff earmuffBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
             if (earmuffBuff != null)
             {
                 earmuffBuff.millisecondsDuration = 0;

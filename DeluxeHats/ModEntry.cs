@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -17,7 +17,7 @@ namespace DeluxeHats
         {
             HatService.Monitor = Monitor;
             HatService.Helper = helper;
-            HatService.Harmony = HarmonyInstance.Create(ModManifest.UniqueID);
+            HatService.Harmony = new Harmony(ModManifest.UniqueID);
             HatService.HarmonyId = ModManifest.UniqueID;
             helper.Events.GameLoop.SaveLoaded += SaveLoaded;
             helper.Events.GameLoop.DayStarted += HatService.DayStarted;

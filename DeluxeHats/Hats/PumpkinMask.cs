@@ -11,13 +11,13 @@ namespace DeluxeHats.Hats
         private static Horse daredevil;
         public static void Activate()
         {
-            if (!Game1.currentLocation.isOutdoors || Game1.eventUp)
+            if (!Game1.currentLocation.isOutdoors.Value || Game1.eventUp)
             {
                 return;
             }
             if (daredevil == null)
             {
-                daredevil = new Horse(new Guid(), Game1.player.getTileX(), Game1.player.getTileY())
+                daredevil = new Horse(new Guid(), (int)Game1.player.Tile.X, (int)Game1.player.Tile.Y)
                 {
                     currentLocation = Game1.currentLocation,
                 };

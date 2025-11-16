@@ -1,9 +1,10 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Monsters;
 using StardewValley.Projectiles;
 using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
@@ -34,18 +35,28 @@ namespace DeluxeHats.Hats
                     return true;
                 }
 
-                bool flag1 = (damager == null || !damager.isInvincible()) && (damager == null || !(damager is GreenSlime) && !(damager is BigSlime) || !Game1.player.isWearingRing(520));
-                bool flag3 = !Game1.player.temporarilyInvincible && !Game1.player.isEating && !Game1.fadeToBlack && !Game1.buffsDisplay.hasBuff(21);
+                bool flag1 = (damager == null || !damager.isInvincible()) && (damager == null || !(damager is GreenSlime) && !(damager is BigSlime) || !Game1.player.isWearingRing("522"));
+                bool flag3 = !Game1.player.temporarilyInvincible && !Game1.player.isEating && !Game1.fadeToBlack;
+
+                var immunity = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x =>
+                {
+                    var buffAttributes = HatService.Helper.Reflection.GetField<int[]>(x, "buffAttributes", false)?.GetValue();
+                    return x.source == "food" && buffAttributes != null && buffAttributes.Length > 3 && buffAttributes[3] != 0;
+                });
+                if (immunity != null)
+                {
+                    flag3 = false;
+                }
 
                 if (!(flag1 & flag3)) 
                 {
                     return true;
                 }
 
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, 10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, 10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, -10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, -10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
+                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, 10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep"));
+                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, 10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep"));
+                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, -10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep"));
+                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, -10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep"));
                 return true;
             }
             catch (Exception ex)

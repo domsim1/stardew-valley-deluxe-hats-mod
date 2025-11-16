@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using HarmonyLib;
 using StardewValley;
+using StardewValley.Buffs;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
@@ -11,14 +13,16 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.buffsDisplay.food == null)
+                // Replace Game1.buffsDisplay.food with a call to get the food buff
+                Buff foodBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.source == "food");
+                if (foodBuff == null)
                 {
                     return;
                 }
-                Buff chefBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+                Buff chefBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
                 if (Game1.player.isEating)
                 {
-                    if (chefBuff != null) 
+                    if (chefBuff != null)
                     {
                         chefBuff.millisecondsDuration = 0;
                     }
@@ -26,36 +30,41 @@ namespace DeluxeHats.Hats
                 }
                 if (chefBuff == null)
                 {
-                    var foodAttributes = HatService.Helper.Reflection.GetField<int[]>(Game1.buffsDisplay.food, "buffAttributes").GetValue();
+                    var foodAttributes = HatService.Helper.Reflection.GetField<int[]>(foodBuff, "buffAttributes").GetValue();
+                    var effects = new BuffEffects();
+                    effects.FarmingLevel.Set(foodAttributes[0]);
+                    effects.FishingLevel.Set(foodAttributes[1]);
+                    effects.MiningLevel.Set(foodAttributes[2]);
+                    // skipping digging/luck mapping not present in BuffEffects directly
+                    effects.LuckLevel.Set(foodAttributes[4]);
+                    effects.ForagingLevel.Set(foodAttributes[5]);
+                    effects.MaxStamina.Set(foodAttributes[7]);
+                    effects.MagneticRadius.Set(foodAttributes[8]);
+                    effects.Speed.Set(foodAttributes[9]);
+                    effects.Defense.Set(foodAttributes[10]);
+                    effects.Attack.Set(foodAttributes[11]);
+
                     chefBuff = new Buff(
-                        farming: foodAttributes[0],
-                        fishing: foodAttributes[1],
-                        mining: foodAttributes[2],
-                        digging: foodAttributes[3],
-                        luck: foodAttributes[4],
-                        foraging: foodAttributes[5],
-                        crafting: foodAttributes[6],
-                        maxStamina: foodAttributes[7],
-                        magneticRadius: foodAttributes[8],
-                        speed: foodAttributes[9],
-                        defense: foodAttributes[10],
-                        attack: foodAttributes[11],
-                        minutesDuration: 1,
+                        id: HatService.BuffId,
                         source: "Deluxe Hats",
-                        displaySource: Name)
-                    {
-                        which = 6284,
-                    };
-                    chefBuff.description = $"Head Chef\nx2 {Game1.buffsDisplay.food.displaySource}";
-                    Game1.buffsDisplay.addOtherBuff(chefBuff);
+                        displaySource: Name,
+                        displayName: "Head Chef",
+                        effects: effects
+                        );
+                    chefBuff.description = $"Head Chef\nx2 {foodBuff.displaySource}";
+                    chefBuff.millisecondsDuration = foodBuff.millisecondsDuration;
+                    Game1.player.applyBuff(chefBuff);
                 }
-                chefBuff.millisecondsDuration = Game1.buffsDisplay.food.millisecondsDuration;
+                else
+                {
+                    chefBuff.millisecondsDuration = foodBuff.millisecondsDuration;
+                }
             };
         }
 
         public static void Disable()
         {
-            Buff chefBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff chefBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
             if (chefBuff != null)
             {
                 chefBuff.millisecondsDuration = 0;

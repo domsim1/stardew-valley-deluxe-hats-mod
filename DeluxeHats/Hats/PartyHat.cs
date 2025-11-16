@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using StardewValley;
 using System;
 using System.Collections.Generic;
@@ -38,7 +38,6 @@ namespace DeluxeHats.Hats
                     {
                         if (codes[i].operand.ToString() == "8")
                         {
-                            codes[i].opcode = OpCodes.Ldc_I4;
                             codes[i].operand = 10f;
                             found = true;
                             break;

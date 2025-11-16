@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Buffs;
+using System.Collections.Generic;
 
 namespace DeluxeHats.Hats
 {
@@ -12,16 +14,25 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff tipsyBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == Buff.tipsy);
+                Buff tipsyBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.source == "drink");
                 if (tipsyBuff != null)
                 {
-                    Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+                    Buff powerBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
                     if (powerBuff == null)
                     {
-                        powerBuff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, attack: 10, minutesDuration: 1, source: "Deluxe Hats", displaySource: Name) { which = HatService.BuffId };
-                        Game1.buffsDisplay.addOtherBuff(powerBuff);
-                        Game1.player.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
+                        var effects = new BuffEffects();
+                        effects.Attack.Set(10);
+                        powerBuff = new Buff(
+                            id: HatService.BuffId,
+                            source: "Deluxe Hats",
+                            displaySource: Name,
+                            displayName: "Drunken Sailor",
+                            effects: effects
+                            );
                         powerBuff.description = "Drunken Sailor\n+10 Attack";
+                        var buffsList = (List<Buff>)HatService.Helper.Reflection.GetField<List<Buff>>(Game1.buffsDisplay, "buffs").GetValue();
+                        buffsList.Add(powerBuff);
+                        Game1.player.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
                     }
                     powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
                 }
@@ -34,7 +45,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff powerBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
             if (powerBuff != null)
             {
                 powerBuff.millisecondsDuration = 0;

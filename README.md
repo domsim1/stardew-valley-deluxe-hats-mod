@@ -2,11 +2,14 @@
 
 Deluxe Hats is a mod for Stardew Valley that brings unique mechanics to hats. The goal behind this mod is to give the player a better sense of achievement when they spend possibly hours to obtain a particular hat.  Without this mod, hats only serve a purpose as a cosmetic item. With this mod, hats will have unique effects that alter gameplay, making them a valuable asset to any player.
 
+## Hat Effects
+
+For a complete list of all available hats and their effects, please see **[Hats and Effects](HATS_AND_EFFECTS.md)** 
+
 ## How to Contribute
 
-Deluxe Hats is currently under development. All contributions would be much appreciated. You can contribute by:
+All contributions would be much appreciated. You can contribute by:
 
-- Sharing an idea for a [hat](https://github.com/domsim1/stardew-valley-deluxe-hats-mod/issues/1).
 - Implement a hat or fix a bug.
 - Report an [issue](https://github.com/domsim1/stardew-valley-deluxe-hats-mod/issues).
 - Buy me a [coffee](https://www.buymeacoffee.com/domsim1) ☕.
@@ -97,4 +100,4 @@ public override void Entry(IModHelper helper)
 
 ## Help
 
-If you know the basics C# and would like help implementing a hat feature, open an issue with the `help wanted` tag explaining what you are trying to accomplish and I (or maybe someone in the community) will be happy to help.
+If you know the basics of C# and would like help implementing a hat feature, open an issue with the `help wanted` tag explaining what you are trying to accomplish and I (or maybe someone in the community) will be happy to help.

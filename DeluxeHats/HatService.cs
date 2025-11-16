@@ -3,7 +3,7 @@ using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using DeluxeHats.Hats;
-using Harmony;
+using HarmonyLib;
 using System.Collections.Generic;
 using StardewValley.Objects;
 
@@ -11,13 +11,12 @@ namespace DeluxeHats
 {
     public static class HatService
     {
-        public static int BuffId = 6284;
+        public static string BuffId = "6284";
         public static string HarmonyId;
-
 
         public static IMonitor Monitor;
         public static IModHelper Helper;
-        public static HarmonyInstance Harmony;
+        public static Harmony Harmony;
 
         public delegate void OnUpdateTickedDelegate(UpdateTickedEventArgs e);
         public static OnUpdateTickedDelegate OnUpdateTicked;
@@ -100,137 +99,93 @@ namespace DeluxeHats
                 Monitor.Log($"Hat Equipped: {Game1.player.hat.Value.Name}", LogLevel.Trace);
                 switch (Game1.player.hat.Value.Name)
                 {
-                    case CowboyHat.Name:
-                        CowboyHat.Activate();
-                        DisableHat = CowboyHat.Disable;
+                    case UnknownHat.Name:
+                        UnknownHat.Activate();
+                        DisableHat = UnknownHat.Disable;
                         break;
-                    case BowlerHat.Name:
-                        BowlerHat.Activate();
-                        DisableHat = BowlerHat.Disable;
+                    case AbigailsBow.Name:
+                        AbigailsBow.Activate();
+                        DisableHat = AbigailsBow.Disable;
                         break;
-                    case TopHat.Name:
-                        TopHat.Activate();
-                        DisableHat = TopHat.Disable;
+                    case ArcaneHat.Name:
+                        ArcaneHat.Activate();
+                        DisableHat = ArcaneHat.Disable;
                         break;
-                    case Sombrero.Name:
-                        Sombrero.Activate();
-                        DisableHat = Sombrero.Disable;
+                    case ArchersCap.Name:
+                        ArchersCap.Activate();
+                        DisableHat = ArchersCap.Disable;
                         break;
-                    case StrawHat.Name:
-                        StrawHat.Activate();
-                        DisableHat = StrawHat.Disable;
+                    case Beanie.Name:
+                        Beanie.Activate();
+                        DisableHat = Beanie.Disable;
                         break;
-                    case OfficialCap.Name:
-                        OfficialCap.Activate();
-                        DisableHat = OfficialCap.Disable;
+                    case BlobfishMask.Name:
+                        BlobfishMask.Activate();
+                        DisableHat = BlobfishMask.Disable;
                         break;
                     case BlueBonnet.Name:
                         BlueBonnet.Activate();
                         DisableHat = BlueBonnet.Disable;
                         break;
-                    case PlumChapeau.Name:
-                        PlumChapeau.Activate();
-                        DisableHat = PlumChapeau.Disable;
+                    case BlueBow.Name:
+                        BlueBow.Activate();
+                        DisableHat = BlueBow.Disable;
                         break;
-                    case SkeletonMask.Name:
-                        SkeletonMask.Activate();
-                        DisableHat = SkeletonMask.Disable;
+                    case BlueCowboyHat.Name:
+                        BlueCowboyHat.Activate();
+                        DisableHat = BlueCowboyHat.Disable;
                         break;
-                    case GoblinMask.Name:
-                        GoblinMask.Activate();
-                        DisableHat = GoblinMask.Disable;
+                    case BlueRibbon.Name:
+                        BlueRibbon.Activate();
+                        DisableHat = BlueRibbon.Disable;
                         break;
-                    case ChickenMask.Name:
-                        ChickenMask.Activate();
-                        DisableHat = ChickenMask.Disable;
+                    case BluebirdMask.Name:
+                        BluebirdMask.Activate();
+                        DisableHat = BluebirdMask.Disable;
                         break;
-                    case Earmuffs.Name:
-                        Earmuffs.Activate();
-                        DisableHat = Earmuffs.Disable;
+                    case BowlerHat.Name:
+                        BowlerHat.Activate();
+                        DisableHat = BowlerHat.Disable;
                         break;
-                    case DelicateBow.Name:
-                        DelicateBow.Activate();
-                        DisableHat = DelicateBow.Disable;
+                    case BridalVeil.Name:
+                        BridalVeil.Activate();
+                        DisableHat = BridalVeil.Disable;
                         break;
-                    case Tropiclip.Name:
-                        Tropiclip.Activate();
-                        DisableHat = Tropiclip.Disable;
+                    case BucketHat.Name:
+                        BucketHat.Activate();
+                        DisableHat = BucketHat.Disable;
                         break;
                     case ButterflyBow.Name:
                         ButterflyBow.Activate();
                         DisableHat = ButterflyBow.Disable;
                         break;
-                    case HuntersCap.Name:
-                        HuntersCap.Activate();
-                        DisableHat = HuntersCap.Disable;
+                    case CatEars.Name:
+                        CatEars.Activate();
+                        DisableHat = CatEars.Disable;
                         break;
-                    case TruckerHat.Name:
-                        TruckerHat.Activate();
-                        DisableHat = TruckerHat.Disable;
+                    case ChefHat.Name:
+                        ChefHat.Activate();
+                        DisableHat = ChefHat.Disable;
                         break;
-                    case SailorsCap.Name:
-                        SailorsCap.Activate();
-                        DisableHat = SailorsCap.Disable;
+                    case ChickenMask.Name:
+                        ChickenMask.Activate();
+                        DisableHat = ChickenMask.Disable;
                         break;
-                    case GoodOlCap.Name:
-                        GoodOlCap.Activate();
-                        DisableHat = GoodOlCap.Disable;
-                        break;
-                    case Fedora.Name:
-                        Fedora.Activate();
-                        DisableHat = Fedora.Disable;
+                    case ConeHat.Name:
+                        ConeHat.Activate();
+                        DisableHat = ConeHat.Disable;
                         break;
                     case CoolCap.Name:
                         CoolCap.Activate();
                         DisableHat = CoolCap.Disable;
                         break;
-                    case LuckyBow.Name:
-                        LuckyBow.Activate();
-                        DisableHat = LuckyBow.Disable;
+                    case CopperPan.Name:
+                        CopperPan.Activate();
+                        DisableHat = CopperPan.Disable;
                         break;
-                    case PolkaBow.Name:
-                        PolkaBow.Activate();
-                        DisableHat = PolkaBow.Disable;
-                        break;
-                    case GnomesCap.Name:
-                        GnomesCap.Activate();
-                        DisableHat = GnomesCap.Disable;
-                        break;
-                    case EyePatch.Name:
-                        EyePatch.Activate();
-                        DisableHat = EyePatch.Disable;
-                        break;
-                    case SantaHat.Name:
-                        SantaHat.Activate();
-                        DisableHat = SantaHat.Disable;
-                        break;
-                    case Tiara.Name:
-                        Tiara.Activate();
-                        DisableHat = Tiara.Disable;
-                        break;
-                    case HardHat.Name:
-                        HardHat.Activate();
-                        DisableHat = HardHat.Disable;
-                        break;
-                    case Souwester.Name:
-                        Souwester.Activate();
-                        DisableHat = Souwester.Disable;
-                        break;
-                    case Daisy.Name:
-                        Daisy.Activate();
-                        DisableHat = Daisy.Disable;
-                        break;
-                    case WatermelonBand.Name:
-                        WatermelonBand.Activate();
-                        DisableHat = WatermelonBand.Disable;
-                        break;
-                    case MouseEars.Name:
-                        MouseEars.Activate();
-                        DisableHat = MouseEars.Disable;
-                        break;
-                    case CatEars.Name:
-                        CatEars.Activate();
-                        DisableHat = CatEars.Disable;
+                    case CowboyHat.Name:
+                        CowboyHat.Activate();
+                        DisableHat = CowboyHat.Disable;
                         break;
                     case CowgalHat.Name:
                         CowgalHat.Activate();
@@ -240,145 +195,181 @@ namespace DeluxeHats
                         CowpokeHat.Activate();
                         DisableHat = CowpokeHat.Disable;
                         break;
-                    case ArchersCap.Name:
-                        ArchersCap.Activate();
-                        DisableHat = ArchersCap.Disable;
+                    case DarkBallcap.Name:
+                        DarkBallcap.Activate();
+                        DisableHat = DarkBallcap.Disable;
                         break;
-                    case PandaHat.Name:
-                        PandaHat.Activate();
-                        DisableHat = PandaHat.Disable;
+                    case DarkCowboyHat.Name:
+                        DarkCowboyHat.Activate();
+                        DisableHat = DarkCowboyHat.Disable;
                         break;
-                    case BlueCowboyHat.Name:
-                        BlueCowboyHat.Activate();
-                        DisableHat = BlueCowboyHat.Disable;
+                    case DarkVelvetBow.Name:
+                        DarkVelvetBow.Activate();
+                        DisableHat = DarkVelvetBow.Disable;
                         break;
-                    case RedCowboyHat.Name:
-                        RedCowboyHat.Activate();
-                        DisableHat = RedCowboyHat.Disable;
+                    case Daisy.Name:
+                        Daisy.Activate();
+                        DisableHat = Daisy.Disable;
                         break;
-                    case ConeHat.Name:
-                        ConeHat.Activate();
-                        DisableHat = ConeHat.Disable;
+                    case DelicateBow.Name:
+                        DelicateBow.Activate();
+                        DisableHat = DelicateBow.Disable;
                         break;
-                    case LivingHat.Name:
-                        LivingHat.Activate();
-                        DisableHat = LivingHat.Disable;
+                    case DeluxeCowboyHat.Name:
+                        DeluxeCowboyHat.Activate();
+                        DisableHat = DeluxeCowboyHat.Disable;
                         break;
-                    case EmilysMagicHat.Name:
-                        EmilysMagicHat.Activate();
-                        DisableHat = EmilysMagicHat.Disable;
-                        break;
-                    case MushroomCap.Name:
-                        MushroomCap.Activate();
-                        DisableHat = MushroomCap.Disable;
+                    case DeluxePirateHat.Name:
+                        DeluxePirateHat.Activate();
+                        DisableHat = DeluxePirateHat.Disable;
                         break;
                     case DinosaurHat.Name:
                         DinosaurHat.Activate();
                         DisableHat = DinosaurHat.Disable;
                         break;
-                    case TotemMask.Name:
-                        TotemMask.Activate();
-                        DisableHat = TotemMask.Disable;
-                        break;
-                    case LogoCap.Name:
-                        LogoCap.Activate();
-                        DisableHat = LogoCap.Disable;
-                        break;
-                    case WearableDwarfHelm.Name:
-                        WearableDwarfHelm.Activate();
-                        DisableHat = WearableDwarfHelm.Disable;
-                        break;
-                    case FashionHat.Name:
-                        FashionHat.Activate();
-                        DisableHat = FashionHat.Disable;
-                        break;
-                    case PumpkinMask.Name:
-                        PumpkinMask.Activate();
-                        DisableHat = PumpkinMask.Disable;
-                        break;
-                    case HairBone.Name:
-                        HairBone.Activate();
-                        DisableHat = HairBone.Disable;
-                        break;
-                    case KnightsHelmet.Name:
-                        KnightsHelmet.Activate();
-                        DisableHat = KnightsHelmet.Disable;
-                        break;
-                    case SquiresHelmet.Name:
-                        SquiresHelmet.Activate();
-                        DisableHat = SquiresHelmet.Disable;
-                        break;
-                    case SpottedHeadscarf.Name:
-                        SpottedHeadscarf.Activate();
-                        DisableHat = SpottedHeadscarf.Disable;
-                        break;
-                    case Beanie.Name:
-                        Beanie.Activate();
-                        DisableHat = Beanie.Disable;
-                        break;
-                    case FishingHat.Name:
-                        FishingHat.Activate();
-                        DisableHat = FishingHat.Disable;
-                        break;
-                    case BlobfishMask.Name:
-                        BlobfishMask.Activate();
-                        DisableHat = BlobfishMask.Disable;
-                        break;
-                    case PartyHat.Name:
-                        PartyHat.Activate();
-                        DisableHat = PartyHat.Disable;
-                        break;
-                    case ArcaneHat.Name:
-                        ArcaneHat.Activate();
-                        DisableHat = ArcaneHat.Disable;
-                        break;
-                    case ChefHat.Name:
-                        ChefHat.Activate();
-                        DisableHat = ChefHat.Disable;
-                        break;
-                    case PirateHat.Name:
-                        PirateHat.Activate();
-                        DisableHat = PirateHat.Disable;
-                        break;
-                    case FlatToppedHat.Name:
-                        FlatToppedHat.Activate();
-                        DisableHat = FlatToppedHat.Disable;
+                    case Earmuffs.Name:
+                        Earmuffs.Activate();
+                        DisableHat = Earmuffs.Disable;
                         break;
                     case ElegantTurban.Name:
                         ElegantTurban.Activate();
                         DisableHat = ElegantTurban.Disable;
                         break;
-                    case WhiteTurban.Name:
-                        WhiteTurban.Activate();
-                        DisableHat = WhiteTurban.Disable;
+                    case EmilysMagicHat.Name:
+                        EmilysMagicHat.Activate();
+                        DisableHat = EmilysMagicHat.Disable;
+                        break;
+                    case EyePatch.Name:
+                        EyePatch.Activate();
+                        DisableHat = EyePatch.Disable;
+                        break;
+                    case FashionHat.Name:
+                        FashionHat.Activate();
+                        DisableHat = FashionHat.Disable;
+                        break;
+                    case Fedora.Name:
+                        Fedora.Activate();
+                        DisableHat = Fedora.Disable;
+                        break;
+                    case FishingHat.Name:
+                        FishingHat.Activate();
+                        DisableHat = FishingHat.Disable;
+                        break;
+                    case FlatToppedHat.Name:
+                        FlatToppedHat.Activate();
+                        DisableHat = FlatToppedHat.Disable;
+                        break;
+                    case FloppyBeanie.Name:
+                        FloppyBeanie.Activate();
+                        DisableHat = FloppyBeanie.Disable;
+                        break;
+                    case ForagersHat.Name:
+                        ForagersHat.Activate();
+                        DisableHat = ForagersHat.Disable;
+                        break;
+                    case FrogHat.Name:
+                        FrogHat.Activate();
+                        DisableHat = FrogHat.Disable;
                         break;
                     case GarbageHat.Name:
                         GarbageHat.Activate();
                         DisableHat = GarbageHat.Disable;
                         break;
+                    case GilsHat.Name:
+                        GilsHat.Activate();
+                        DisableHat = GilsHat.Disable;
+                        break;
+                    case GnomesCap.Name:
+                        GnomesCap.Activate();
+                        DisableHat = GnomesCap.Disable;
+                        break;
+                    case GoblinMask.Name:
+                        GoblinMask.Activate();
+                        DisableHat = GoblinMask.Disable;
+                        break;
+                    case Goggles.Name:
+                        Goggles.Activate();
+                        DisableHat = Goggles.Disable;
+                        break;
+                    case GoldPan.Name:
+                        GoldPan.Activate();
+                        DisableHat = GoldPan.Disable;
+                        break;
+                    case GoldenHelmet.Name:
+                        GoldenHelmet.Activate();
+                        DisableHat = GoldenHelmet.Disable;
+                        break;
                     case GoldenMask.Name:
                         GoldenMask.Activate();
                         DisableHat = GoldenMask.Disable;
                         break;
-                    case PropellerHat.Name:
-                        PropellerHat.Activate();
-                        DisableHat = PropellerHat.Disable;
+                    case GoodOlCap.Name:
+                        GoodOlCap.Activate();
+                        DisableHat = GoodOlCap.Disable;
                         break;
-                    case BridalVeil.Name:
-                        BridalVeil.Activate();
-                        DisableHat = BridalVeil.Disable;
-                        break;
-                    case WitchHat.Name:
-                        WitchHat.Activate();
-                        DisableHat = WitchHat.Disable;
-                        break;
-                    case CopperPan.Name:
-                        CopperPan.Activate();
-                        DisableHat = CopperPan.Disable;
+                    case GovernorsHat.Name:
+                        GovernorsHat.Activate();
+                        DisableHat = GovernorsHat.Disable;
                         break;
                     case GreenTurban.Name:
                         GreenTurban.Activate();
                         DisableHat = GreenTurban.Disable;
+                        break;
+                    case HairBone.Name:
+                        HairBone.Activate();
+                        DisableHat = HairBone.Disable;
+                        break;
+                    case HardHat.Name:
+                        HardHat.Activate();
+                        DisableHat = HardHat.Disable;
+                        break;
+                    case HuntersCap.Name:
+                        HuntersCap.Activate();
+                        DisableHat = HuntersCap.Disable;
+                        break;
+                    case InfinityCrown.Name:
+                        InfinityCrown.Activate();
+                        DisableHat = InfinityCrown.Disable;
+                        break;
+                    case IridiumPan.Name:
+                        IridiumPan.Activate();
+                        DisableHat = IridiumPan.Disable;
+                        break;
+                    case JesterHat.Name:
+                        JesterHat.Activate();
+                        DisableHat = JesterHat.Disable;
+                        break;
+                    case JojaCap.Name:
+                        JojaCap.Activate();
+                        DisableHat = JojaCap.Disable;
+                        break;
+                    case JunimoHat.Name:
+                        JunimoHat.Activate();
+                        DisableHat = JunimoHat.Disable;
+                        break;
+                    case KnightsHelmet.Name:
+                        KnightsHelmet.Activate();
+                        DisableHat = KnightsHelmet.Disable;
+                        break;
+                    case LaurelWreathCrown.Name:
+                        LaurelWreathCrown.Activate();
+                        DisableHat = LaurelWreathCrown.Disable;
+                        break;
+                    case LeprechaunHat.Name:
+                        LeprechaunHat.Activate();
+                        DisableHat = LeprechaunHat.Disable;
+                        break;
+                    case LivingHat.Name:
+                        LivingHat.Activate();
+                        DisableHat = LivingHat.Disable;
+                        break;
+                    case LogoCap.Name:
+                        LogoCap.Activate();
+                        DisableHat = LogoCap.Disable;
+                        break;
+                    case LuckyBow.Name:
+                        LuckyBow.Activate();
+                        DisableHat = LuckyBow.Disable;
                         break;
                     case MagicCowboyHat.Name:
                         MagicCowboyHat.Activate();
@@ -387,6 +378,206 @@ namespace DeluxeHats
                     case MagicTurban.Name:
                         MagicTurban.Activate();
                         DisableHat = MagicTurban.Disable;
+                        break;
+                    case MouseEars.Name:
+                        MouseEars.Activate();
+                        DisableHat = MouseEars.Disable;
+                        break;
+                    case MrQisHat.Name:
+                        MrQisHat.Activate();
+                        DisableHat = MrQisHat.Disable;
+                        break;
+                    case MummyMask.Name:
+                        MummyMask.Activate();
+                        DisableHat = MummyMask.Disable;
+                        break;
+                    case MushroomCap.Name:
+                        MushroomCap.Activate();
+                        DisableHat = MushroomCap.Disable;
+                        break;
+                    case MysteryHat.Name:
+                        MysteryHat.Activate();
+                        DisableHat = MysteryHat.Disable;
+                        break;
+                    case OfficialCap.Name:
+                        OfficialCap.Activate();
+                        DisableHat = OfficialCap.Disable;
+                        break;
+                    case PageboyCap.Name:
+                        PageboyCap.Activate();
+                        DisableHat = PageboyCap.Disable;
+                        break;
+                    case PandaHat.Name:
+                        PandaHat.Activate();
+                        DisableHat = PandaHat.Disable;
+                        break;
+                    case PaperHat.Name:
+                        PaperHat.Activate();
+                        DisableHat = PaperHat.Disable;
+                        break;
+                    case PartyHat.Name:
+                        PartyHat.Activate();
+                        DisableHat = PartyHat.Disable;
+                        break;
+                    case PinkBow.Name:
+                        PinkBow.Activate();
+                        DisableHat = PinkBow.Disable;
+                        break;
+                    case PirateHat.Name:
+                        PirateHat.Activate();
+                        DisableHat = PirateHat.Disable;
+                        break;
+                    case PlumChapeau.Name:
+                        PlumChapeau.Activate();
+                        DisableHat = PlumChapeau.Disable;
+                        break;
+                    case PolkaBow.Name:
+                        PolkaBow.Activate();
+                        DisableHat = PolkaBow.Disable;
+                        break;
+                    case PropellerHat.Name:
+                        PropellerHat.Activate();
+                        DisableHat = PropellerHat.Disable;
+                        break;
+                    case PumpkinMask.Name:
+                        PumpkinMask.Activate();
+                        DisableHat = PumpkinMask.Disable;
+                        break;
+                    case QiMask.Name:
+                        QiMask.Activate();
+                        DisableHat = QiMask.Disable;
+                        break;
+                    case RaccoonHat.Name:
+                        RaccoonHat.Activate();
+                        DisableHat = RaccoonHat.Disable;
+                        break;
+                    case RadioactiveGoggles.Name:
+                        RadioactiveGoggles.Activate();
+                        DisableHat = RadioactiveGoggles.Disable;
+                        break;
+                    case RedCowboyHat.Name:
+                        RedCowboyHat.Activate();
+                        DisableHat = RedCowboyHat.Disable;
+                        break;
+                    case RedFez.Name:
+                        RedFez.Activate();
+                        DisableHat = RedFez.Disable;
+                        break;
+                    case SailorsCap.Name:
+                        SailorsCap.Activate();
+                        DisableHat = SailorsCap.Disable;
+                        break;
+                    case SantaHat.Name:
+                        SantaHat.Activate();
+                        DisableHat = SantaHat.Disable;
+                        break;
+                    case SkeletonMask.Name:
+                        SkeletonMask.Activate();
+                        DisableHat = SkeletonMask.Disable;
+                        break;
+                    case SmallCap.Name:
+                        SmallCap.Activate();
+                        DisableHat = SmallCap.Disable;
+                        break;
+                    case Sombrero.Name:
+                        Sombrero.Activate();
+                        DisableHat = Sombrero.Disable;
+                        break;
+                    case Souwester.Name:
+                        Souwester.Activate();
+                        DisableHat = Souwester.Disable;
+                        break;
+                    case SpaceHelmet.Name:
+                        SpaceHelmet.Activate();
+                        DisableHat = SpaceHelmet.Disable;
+                        break;
+                    case SportsCap.Name:
+                        SportsCap.Activate();
+                        DisableHat = SportsCap.Disable;
+                        break;
+                    case SpottedHeadscarf.Name:
+                        SpottedHeadscarf.Activate();
+                        DisableHat = SpottedHeadscarf.Disable;
+                        break;
+                    case SquidHat.Name:
+                        SquidHat.Activate();
+                        DisableHat = SquidHat.Disable;
+                        break;
+                    case SquiresHelmet.Name:
+                        SquiresHelmet.Activate();
+                        DisableHat = SquiresHelmet.Disable;
+                        break;
+                    case StarHelmet.Name:
+                        StarHelmet.Activate();
+                        DisableHat = StarHelmet.Disable;
+                        break;
+                    case SteelPan.Name:
+                        SteelPan.Activate();
+                        DisableHat = SteelPan.Disable;
+                        break;
+                    case StrawHat.Name:
+                        StrawHat.Activate();
+                        DisableHat = StrawHat.Disable;
+                        break;
+                    case Sunglasses.Name:
+                        Sunglasses.Activate();
+                        DisableHat = Sunglasses.Disable;
+                        break;
+                    case SwashbucklerHat.Name:
+                        SwashbucklerHat.Activate();
+                        DisableHat = SwashbucklerHat.Disable;
+                        break;
+                    case Tiara.Name:
+                        Tiara.Activate();
+                        DisableHat = Tiara.Disable;
+                        break;
+                    case TigerHat.Name:
+                        TigerHat.Activate();
+                        DisableHat = TigerHat.Disable;
+                        break;
+                    case TopHat.Name:
+                        TopHat.Activate();
+                        DisableHat = TopHat.Disable;
+                        break;
+                    case TotemMask.Name:
+                        TotemMask.Activate();
+                        DisableHat = TotemMask.Disable;
+                        break;
+                    case TricornHat.Name:
+                        TricornHat.Activate();
+                        DisableHat = TricornHat.Disable;
+                        break;
+                    case Tropiclip.Name:
+                        Tropiclip.Activate();
+                        DisableHat = Tropiclip.Disable;
+                        break;
+                    case TruckerHat.Name:
+                        TruckerHat.Activate();
+                        DisableHat = TruckerHat.Disable;
+                        break;
+                    case WarriorHelmet.Name:
+                        WarriorHelmet.Activate();
+                        DisableHat = WarriorHelmet.Disable;
+                        break;
+                    case WatermelonBand.Name:
+                        WatermelonBand.Activate();
+                        DisableHat = WatermelonBand.Disable;
+                        break;
+                    case WearableDwarfHelm.Name:
+                        WearableDwarfHelm.Activate();
+                        DisableHat = WearableDwarfHelm.Disable;
+                        break;
+                    case WhiteBow.Name:
+                        WhiteBow.Activate();
+                        DisableHat = WhiteBow.Disable;
+                        break;
+                    case WhiteTurban.Name:
+                        WhiteTurban.Activate();
+                        DisableHat = WhiteTurban.Disable;
+                        break;
+                    case WitchHat.Name:
+                        WitchHat.Activate();
+                        DisableHat = WitchHat.Disable;
                         break;
                     default:
                         Monitor.Log($"Hat not found: {Game1.player.hat.Value.Name}", LogLevel.Warn);
@@ -416,104 +607,71 @@ namespace DeluxeHats
                         __result = true;
                         switch (strArray[0])
                         {
-                            case CowboyHat.Name:
-                                __instance.description += CowboyHat.Description;
+                            case UnknownHat.Name:
+                                __instance.description += UnknownHat.Description;
                                 break;
-                            case BowlerHat.Name:
-                                __instance.description += BowlerHat.Description;
+                            case AbigailsBow.Name:
+                                __instance.description += AbigailsBow.Description;
                                 break;
-                            case TopHat.Name:
-                                __instance.description += TopHat.Description;
+                            case ArcaneHat.Name:
+                                __instance.description += ArcaneHat.Description;
                                 break;
-                            case Sombrero.Name:
-                                __instance.description += Sombrero.Description;
+                            case ArchersCap.Name:
+                                __instance.description += ArchersCap.Description;
                                 break;
-                            case StrawHat.Name:
-                                __instance.description += StrawHat.Description;
+                            case Beanie.Name:
+                                __instance.description += Beanie.Description;
                                 break;
-                            case OfficialCap.Name:
-                                __instance.description += OfficialCap.Description;
+                            case BlobfishMask.Name:
+                                __instance.description += BlobfishMask.Description;
                                 break;
                             case BlueBonnet.Name:
                                 __instance.description += BlueBonnet.Description;
                                 break;
-                            case PlumChapeau.Name:
-                                __instance.description += PlumChapeau.Description;
+                            case BlueBow.Name:
+                                __instance.description += BlueBow.Description;
                                 break;
-                            case SkeletonMask.Name:
-                                __instance.description += SkeletonMask.Description;
+                            case BlueCowboyHat.Name:
+                                __instance.description += BlueCowboyHat.Description;
                                 break;
-                            case GoblinMask.Name:
-                                __instance.description += GoblinMask.Description;
+                            case BlueRibbon.Name:
+                                __instance.description += BlueRibbon.Description;
                                 break;
-                            case ChickenMask.Name:
-                                __instance.description += ChickenMask.Description;
+                            case BluebirdMask.Name:
+                                __instance.description += BluebirdMask.Description;
                                 break;
-                            case Earmuffs.Name:
-                                __instance.description += Earmuffs.Description;
+                            case BowlerHat.Name:
+                                __instance.description += BowlerHat.Description;
                                 break;
-                            case DelicateBow.Name:
-                                __instance.description += DelicateBow.Description;
+                            case BridalVeil.Name:
+                                __instance.description += BridalVeil.Description;
                                 break;
-                            case Tropiclip.Name:
-                                __instance.description += Tropiclip.Description;
+                            case BucketHat.Name:
+                                __instance.description += BucketHat.Description;
                                 break;
                             case ButterflyBow.Name:
                                 __instance.description += ButterflyBow.Description;
                                 break;
-                            case HuntersCap.Name:
-                                __instance.description += HuntersCap.Description;
+                            case CatEars.Name:
+                                __instance.description += CatEars.Description;
                                 break;
-                            case TruckerHat.Name:
-                                __instance.description += TruckerHat.Description;
+                            case ChefHat.Name:
+                                __instance.description += ChefHat.Description;
                                 break;
-                            case SailorsCap.Name:
-                                __instance.description += SailorsCap.Description;
+                            case ChickenMask.Name:
+                                __instance.description += ChickenMask.Description;
                                 break;
-                            case GoodOlCap.Name:
-                                __instance.description += GoodOlCap.Description;
-                                break;
-                            case Fedora.Name:
-                                __instance.description += Fedora.Description;
+                            case ConeHat.Name:
+                                __instance.description += ConeHat.Description;
                                 break;
                             case CoolCap.Name:
                                 __instance.description += CoolCap.Description;
                                 break;
-                            case LuckyBow.Name:
-                                __instance.description += LuckyBow.Description;
+                            case CopperPan.Name:
+                                __instance.description += CopperPan.Description;
                                 break;
-                            case PolkaBow.Name:
-                                __instance.description += PolkaBow.Description;
-                                break;
-                            case GnomesCap.Name:
-                                __instance.description += GnomesCap.Description;
-                                break;
-                            case EyePatch.Name:
-                                __instance.description += EyePatch.Description;
-                                break;
-                            case SantaHat.Name:
-                                __instance.description += SantaHat.Description;
-                                break;
-                            case Tiara.Name:
-                                __instance.description += Tiara.Description;
-                                break;
-                            case HardHat.Name:
-                                __instance.description += HardHat.Description;
-                                break;
-                            case Souwester.Name:
-                                __instance.description += Souwester.Description;
-                                break;
-                            case Daisy.Name:
-                                __instance.description += Daisy.Description;
-                                break;
-                            case WatermelonBand.Name:
-                                __instance.description += WatermelonBand.Description;
-                                break;
-                            case MouseEars.Name:
-                                __instance.description += MouseEars.Description;
-                                break;
-                            case CatEars.Name:
-                                __instance.description += CatEars.Description;
+                            case CowboyHat.Name:
+                                __instance.description += CowboyHat.Description;
                                 break;
                             case CowgalHat.Name:
                                 __instance.description += CowgalHat.Description;
@@ -521,116 +679,293 @@ namespace DeluxeHats
                             case CowpokeHat.Name:
                                 __instance.description += CowpokeHat.Description;
                                 break;
-                            case ArchersCap.Name:
-                                __instance.description += ArchersCap.Description;
+                            case DarkBallcap.Name:
+                                __instance.description += DarkBallcap.Description;
                                 break;
-                            case PandaHat.Name:
-                                __instance.description += PandaHat.Description;
+                            case DarkCowboyHat.Name:
+                                __instance.description += DarkCowboyHat.Description;
                                 break;
-                            case BlueCowboyHat.Name:
-                                __instance.description += BlueCowboyHat.Description;
+                            case DarkVelvetBow.Name:
+                                __instance.description += DarkVelvetBow.Description;
                                 break;
-                            case RedCowboyHat.Name:
-                                __instance.description += RedCowboyHat.Description;
+                            case Daisy.Name:
+                                __instance.description += Daisy.Description;
                                 break;
-                            case ConeHat.Name:
-                                __instance.description += ConeHat.Description;
+                            case DelicateBow.Name:
+                                __instance.description += DelicateBow.Description;
                                 break;
-                            case LivingHat.Name:
-                                __instance.description += LivingHat.Description;
+                            case DeluxeCowboyHat.Name:
+                                __instance.description += DeluxeCowboyHat.Description;
                                 break;
-                            case EmilysMagicHat.Name:
-                                __instance.description += EmilysMagicHat.Description;
-                                break;
-                            case MushroomCap.Name:
-                                __instance.description += MushroomCap.Description;
+                            case DeluxePirateHat.Name:
+                                __instance.description += DeluxePirateHat.Description;
                                 break;
                             case DinosaurHat.Name:
                                 __instance.description += DinosaurHat.Description;
                                 break;
-                            case TotemMask.Name:
-                                __instance.description += TotemMask.Description;
-                                break;
-                            case LogoCap.Name:
-                                __instance.description += LogoCap.Description;
-                                break;
-                            case WearableDwarfHelm.Name:
-                                __instance.description += WearableDwarfHelm.Description;
-                                break;
-                            case FashionHat.Name:
-                                __instance.description += FashionHat.Description;
-                                break;
-                            case PumpkinMask.Name:
-                                __instance.description += PumpkinMask.Description;
-                                break;
-                            case HairBone.Name:
-                                __instance.description += HairBone.Description;
-                                break;
-                            case KnightsHelmet.Name:
-                                __instance.description += KnightsHelmet.Description;
-                                break;
-                            case SquiresHelmet.Name:
-                                __instance.description += SquiresHelmet.Description;
-                                break;
-                            case SpottedHeadscarf.Name:
-                                __instance.description += SpottedHeadscarf.Description;
-                                break;
-                            case Beanie.Name:
-                                __instance.description += Beanie.Description;
-                                break;
-                            case FishingHat.Name:
-                                __instance.description += FishingHat.Description;
-                                break;
-                            case BlobfishMask.Name:
-                                __instance.description += BlobfishMask.Description;
-                                break;
-                            case PartyHat.Name:
-                                __instance.description += PartyHat.Description;
-                                break;
-                            case ArcaneHat.Name:
-                                __instance.description += ArcaneHat.Description;
-                                break;
-                            case ChefHat.Name:
-                                __instance.description += ChefHat.Description;
-                                break;
-                            case PirateHat.Name:
-                                __instance.description += PirateHat.Description;
-                                break;
-                            case FlatToppedHat.Name:
-                                __instance.description += FlatToppedHat.Description;
+                            case Earmuffs.Name:
+                                __instance.description += Earmuffs.Description;
                                 break;
                             case ElegantTurban.Name:
                                 __instance.description += ElegantTurban.Description;
                                 break;
-                            case WhiteTurban.Name:
-                                __instance.description += WhiteTurban.Description;
+                            case EmilysMagicHat.Name:
+                                __instance.description += EmilysMagicHat.Description;
+                                break;
+                            case EyePatch.Name:
+                                __instance.description += EyePatch.Description;
+                                break;
+                            case FashionHat.Name:
+                                __instance.description += FashionHat.Description;
+                                break;
+                            case Fedora.Name:
+                                __instance.description += Fedora.Description;
+                                break;
+                            case FishingHat.Name:
+                                __instance.description += FishingHat.Description;
+                                break;
+                            case FlatToppedHat.Name:
+                                __instance.description += FlatToppedHat.Description;
+                                break;
+                            case FloppyBeanie.Name:
+                                __instance.description += FloppyBeanie.Description;
+                                break;
+                            case ForagersHat.Name:
+                                __instance.description += ForagersHat.Description;
+                                break;
+                            case FrogHat.Name:
+                                __instance.description += FrogHat.Description;
                                 break;
                             case GarbageHat.Name:
                                 __instance.description += GarbageHat.Description;
                                 break;
+                            case GilsHat.Name:
+                                __instance.description += GilsHat.Description;
+                                break;
+                            case GnomesCap.Name:
+                                __instance.description += GnomesCap.Description;
+                                break;
+                            case GoblinMask.Name:
+                                __instance.description += GoblinMask.Description;
+                                break;
+                            case Goggles.Name:
+                                __instance.description += Goggles.Description;
+                                break;
+                            case GoldPan.Name:
+                                __instance.description += GoldPan.Description;
+                                break;
+                            case GoldenHelmet.Name:
+                                __instance.description += GoldenHelmet.Description;
+                                break;
                             case GoldenMask.Name:
                                 __instance.description += GoldenMask.Description;
                                 break;
-                            case PropellerHat.Name:
-                                __instance.description += PropellerHat.Description;
+                            case GoodOlCap.Name:
+                                __instance.description += GoodOlCap.Description;
                                 break;
-                            case BridalVeil.Name:
-                                __instance.description += BridalVeil.Description;
-                                break;
-                            case WitchHat.Name:
-                                __instance.description += WitchHat.Description;
-                                break;
-                            case CopperPan.Name:
-                                __instance.description += CopperPan.Description;
+                            case GovernorsHat.Name:
+                                __instance.description += GovernorsHat.Description;
                                 break;
                             case GreenTurban.Name:
                                 __instance.description += GreenTurban.Description;
+                                break;
+                            case HairBone.Name:
+                                __instance.description += HairBone.Description;
+                                break;
+                            case HardHat.Name:
+                                __instance.description += HardHat.Description;
+                                break;
+                            case HuntersCap.Name:
+                                __instance.description += HuntersCap.Description;
+                                break;
+                            case InfinityCrown.Name:
+                                __instance.description += InfinityCrown.Description;
+                                break;
+                            case IridiumPan.Name:
+                                __instance.description += IridiumPan.Description;
+                                break;
+                            case JesterHat.Name:
+                                __instance.description += JesterHat.Description;
+                                break;
+                            case JojaCap.Name:
+                                __instance.description += JojaCap.Description;
+                                break;
+                            case JunimoHat.Name:
+                                __instance.description += JunimoHat.Description;
+                                break;
+                            case KnightsHelmet.Name:
+                                __instance.description += KnightsHelmet.Description;
+                                break;
+                            case LaurelWreathCrown.Name:
+                                __instance.description += LaurelWreathCrown.Description;
+                                break;
+                            case LeprechaunHat.Name:
+                                __instance.description += LeprechaunHat.Description;
+                                break;
+                            case LivingHat.Name:
+                                __instance.description += LivingHat.Description;
+                                break;
+                            case LogoCap.Name:
+                                __instance.description += LogoCap.Description;
+                                break;
+                            case LuckyBow.Name:
+                                __instance.description += LuckyBow.Description;
                                 break;
                             case MagicCowboyHat.Name:
                                 __instance.description += MagicCowboyHat.Description;
                                 break;
                             case MagicTurban.Name:
                                 __instance.description += MagicTurban.Description;
+                                break;
+                            case MouseEars.Name:
+                                __instance.description += MouseEars.Description;
+                                break;
+                            case MrQisHat.Name:
+                                __instance.description += MrQisHat.Description;
+                                break;
+                            case MummyMask.Name:
+                                __instance.description += MummyMask.Description;
+                                break;
+                            case MushroomCap.Name:
+                                __instance.description += MushroomCap.Description;
+                                break;
+                            case MysteryHat.Name:
+                                __instance.description += MysteryHat.Description;
+                                break;
+                            case OfficialCap.Name:
+                                __instance.description += OfficialCap.Description;
+                                break;
+                            case PageboyCap.Name:
+                                __instance.description += PageboyCap.Description;
+                                break;
+                            case PandaHat.Name:
+                                __instance.description += PandaHat.Description;
+                                break;
+                            case PaperHat.Name:
+                                __instance.description += PaperHat.Description;
+                                break;
+                            case PartyHat.Name:
+                                __instance.description += PartyHat.Description;
+                                break;
+                            case PinkBow.Name:
+                                __instance.description += PinkBow.Description;
+                                break;
+                            case PirateHat.Name:
+                                __instance.description += PirateHat.Description;
+                                break;
+                            case PlumChapeau.Name:
+                                __instance.description += PlumChapeau.Description;
+                                break;
+                            case PolkaBow.Name:
+                                __instance.description += PolkaBow.Description;
+                                break;
+                            case PropellerHat.Name:
+                                __instance.description += PropellerHat.Description;
+                                break;
+                            case PumpkinMask.Name:
+                                __instance.description += PumpkinMask.Description;
+                                break;
+                            case QiMask.Name:
+                                __instance.description += QiMask.Description;
+                                break;
+                            case RaccoonHat.Name:
+                                __instance.description += RaccoonHat.Description;
+                                break;
+                            case RadioactiveGoggles.Name:
+                                __instance.description += RadioactiveGoggles.Description;
+                                break;
+                            case RedCowboyHat.Name:
+                                __instance.description += RedCowboyHat.Description;
+                                break;
+                            case RedFez.Name:
+                                __instance.description += RedFez.Description;
+                                break;
+                            case SailorsCap.Name:
+                                __instance.description += SailorsCap.Description;
+                                break;
+                            case SantaHat.Name:
+                                __instance.description += SantaHat.Description;
+                                break;
+                            case SkeletonMask.Name:
+                                __instance.description += SkeletonMask.Description;
+                                break;
+                            case SmallCap.Name:
+                                __instance.description += SmallCap.Description;
+                                break;
+                            case Sombrero.Name:
+                                __instance.description += Sombrero.Description;
+                                break;
+                            case Souwester.Name:
+                                __instance.description += Souwester.Description;
+                                break;
+                            case SpaceHelmet.Name:
+                                __instance.description += SpaceHelmet.Description;
+                                break;
+                            case SportsCap.Name:
+                                __instance.description += SportsCap.Description;
+                                break;
+                            case SpottedHeadscarf.Name:
+                                __instance.description += SpottedHeadscarf.Description;
+                                break;
+                            case SquidHat.Name:
+                                __instance.description += SquidHat.Description;
+                                break;
+                            case SquiresHelmet.Name:
+                                __instance.description += SquiresHelmet.Description;
+                                break;
+                            case StarHelmet.Name:
+                                __instance.description += StarHelmet.Description;
+                                break;
+                            case SteelPan.Name:
+                                __instance.description += SteelPan.Description;
+                                break;
+                            case StrawHat.Name:
+                                __instance.description += StrawHat.Description;
+                                break;
+                            case Sunglasses.Name:
+                                __instance.description += Sunglasses.Description;
+                                break;
+                            case SwashbucklerHat.Name:
+                                __instance.description += SwashbucklerHat.Description;
+                                break;
+                            case Tiara.Name:
+                                __instance.description += Tiara.Description;
+                                break;
+                            case TigerHat.Name:
+                                __instance.description += TigerHat.Description;
+                                break;
+                            case TopHat.Name:
+                                __instance.description += TopHat.Description;
+                                break;
+                            case TotemMask.Name:
+                                __instance.description += TotemMask.Description;
+                                break;
+                            case TricornHat.Name:
+                                __instance.description += TricornHat.Description;
+                                break;
+                            case Tropiclip.Name:
+                                __instance.description += Tropiclip.Description;
+                                break;
+                            case TruckerHat.Name:
+                                __instance.description += TruckerHat.Description;
+                                break;
+                            case WarriorHelmet.Name:
+                                __instance.description += WarriorHelmet.Description;
+                                break;
+                            case WatermelonBand.Name:
+                                __instance.description += WatermelonBand.Description;
+                                break;
+                            case WearableDwarfHelm.Name:
+                                __instance.description += WearableDwarfHelm.Description;
+                                break;
+                            case WhiteBow.Name:
+                                __instance.description += WhiteBow.Description;
+                                break;
+                            case WhiteTurban.Name:
+                                __instance.description += WhiteTurban.Description;
+                                break;
+                            case WitchHat.Name:
+                                __instance.description += WitchHat.Description;
                                 break;
                             default:
                                 __instance.description += "No effect.";

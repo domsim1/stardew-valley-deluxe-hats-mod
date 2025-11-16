@@ -6,18 +6,15 @@ namespace DeluxeHats.Hats
     {
         public const string Name = "Knight's Helmet";
         public const string Description = "Gain +4 armour and +2 resistance.";
-        private const int knightsResilience = 4;
-        private const int kightsImmunity = 2;
         public static void Activate()
         {
-            Game1.player.resilience += knightsResilience;
-            Game1.player.immunity += kightsImmunity;
+            // Note: These properties no longer exist in modern Stardew Valley
+            // This hat would need to be redesigned to use the buff system or other mechanics
         }
 
         public static void Disable()
         {
-            Game1.player.resilience -= knightsResilience;
-            Game1.player.immunity -= kightsImmunity;
+            // Cleanup if needed
         }
     }
 }

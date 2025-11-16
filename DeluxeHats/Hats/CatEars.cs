@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using HarmonyLib;
 using StardewValley;
+using StardewValley.Buffs;
 
 namespace DeluxeHats.Hats
 {
@@ -15,30 +17,21 @@ namespace DeluxeHats.Hats
                 if (PlayerOldHP > Game1.player.health)
                 {
                     Game1.playSound("cat");
-                    Buff catBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+                    Buff catBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
                     if (catBuff == null)
                     {
+                        var effects = new BuffEffects();
+                        effects.Speed.Set(3);
+                        effects.Attack.Set(2);
                         catBuff = new Buff(
-                        farming: 0,
-                        fishing: 0,
-                        mining: 0,
-                        digging: 0,
-                        luck: 0,
-                        foraging: 0,
-                        crafting: 0,
-                        maxStamina: 0,
-                        magneticRadius: 0,
-                        speed: 3,
-                        defense: 0,
-                        attack: 2,
-                        minutesDuration: 1,
-                        source: "Deluxe Hats",
-                        displaySource: Name)
-                        {
-                            which = HatService.BuffId,
-                        };
+                            id: HatService.BuffId,
+                            source: "Deluxe Hats",
+                            displaySource: Name,
+                            displayName: "Skittish Kitty",
+                            effects: effects
+                            );
                         catBuff.description = "Skittish Kitty\n+3 Speed\n+2 Attack";
-                        Game1.buffsDisplay.addOtherBuff(catBuff);
+                        Game1.buffsDisplay.GetSortedBuffs().AddItem(catBuff);
                     }
                     catBuff.millisecondsDuration = 1500;
                 }
@@ -49,7 +42,7 @@ namespace DeluxeHats.Hats
         public static void Disable()
         {
             PlayerOldHP = 0;
-            Buff catBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff catBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
             if (catBuff != null)
             {
                 catBuff.millisecondsDuration = 0;
