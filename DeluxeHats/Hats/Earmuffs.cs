@@ -31,7 +31,7 @@ namespace DeluxeHats.Hats
                             );
                         earmuffBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
                         earmuffBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                        Game1.player.applyBuff(earmuffBuff);
+                        HatService.CurrentPlayer.applyBuff(earmuffBuff);
                     }
                 }
                 else

@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     fashionBuff.description = "Fashionable\n+2 Luck";
                     fashionBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(fashionBuff);
+                    HatService.CurrentPlayer.applyBuff(fashionBuff);
                 }
             };
         }

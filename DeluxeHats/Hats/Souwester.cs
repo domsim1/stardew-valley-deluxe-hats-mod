@@ -35,7 +35,7 @@ namespace DeluxeHats.Hats
                         );
                     fishingBuff.description = "Fishing in the Rain\n+4 Fishing";
                     fishingBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(fishingBuff);
+                    HatService.CurrentPlayer.applyBuff(fishingBuff);
                 }
             };
         }

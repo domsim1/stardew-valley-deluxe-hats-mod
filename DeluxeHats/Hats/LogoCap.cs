@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     logoBuff.description = "Brand Ambassador\n+1 Defense\n+1 Attack";
                     logoBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(logoBuff);
+                    HatService.CurrentPlayer.applyBuff(logoBuff);
                 }
             };
         }

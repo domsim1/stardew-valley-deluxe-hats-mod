@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     magicTurbanBuff.description = "Mystic\n+2 Luck\n+2 Foraging";
                     magicTurbanBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(magicTurbanBuff);
+                    HatService.CurrentPlayer.applyBuff(magicTurbanBuff);
                 }
             };
         }

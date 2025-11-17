@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     garbageBuff.description = "Trash Panda\n+3 Foraging";
                     garbageBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(garbageBuff);
+                    HatService.CurrentPlayer.applyBuff(garbageBuff);
                 }
             };
         }

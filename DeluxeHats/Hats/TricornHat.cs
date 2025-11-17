@@ -8,18 +8,43 @@ namespace DeluxeHats.Hats
     public static class TricornHat
     {
         public const string Name = "Tricorn Hat";
-        public const string Description = "No effect.";
+        public const string Description = "Gain the Revolutionary Spirit Buff:\n+2 Attack, +2 Defense, +1 Luck";
+
         public static void Activate()
         {
-            HatService.OnUpdateTicked = (e) =>
+            var effects = new BuffEffects();
+            effects.Attack.Set(2);
+            effects.Defense.Set(2);
+            effects.LuckLevel.Set(1);
+
+            var buff = new Buff(
+                id: HatService.BuffId,
+                source: "Deluxe Hats",
+                displaySource: Name,
+                displayName: "Revolutionary Spirit",
+                effects: effects
+            );
+            buff.description = "Revolutionary Spirit\n+2 Attack\n+2 Defense\n+1 Luck";
+            buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+            HatService.CurrentPlayer.applyBuff(buff);
+
+            HatService.OnTimeChanged = (e) =>
             {
-                // No effect
+                Buff tricornBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                if (tricornBuff != null)
+                {
+                    tricornBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                }
             };
         }
 
         public static void Disable()
         {
-            // No effect
+            Buff tricornBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            if (tricornBuff != null)
+            {
+                tricornBuff.millisecondsDuration = 0;
+            }
         }
     }
 }

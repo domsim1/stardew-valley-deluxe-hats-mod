@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     floppyBuff.description = "Cozy\n+1 Defense";
                     floppyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(floppyBuff);
+                    HatService.CurrentPlayer.applyBuff(floppyBuff);
                 }
             };
         }

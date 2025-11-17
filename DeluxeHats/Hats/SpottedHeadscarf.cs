@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     spottedBuff.description = "Spotted Grace\n+1 Luck";
                     spottedBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(spottedBuff);
+                    HatService.CurrentPlayer.applyBuff(spottedBuff);
                 }
             };
         }

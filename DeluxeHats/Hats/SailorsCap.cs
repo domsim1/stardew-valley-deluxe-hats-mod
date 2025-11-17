@@ -32,13 +32,13 @@ namespace DeluxeHats.Hats
                         powerBuff.description = "Drunken Sailor\n+10 Attack";
                         var buffsList = (List<Buff>)HatService.Helper.Reflection.GetField<List<Buff>>(Game1.buffsDisplay, "buffs").GetValue();
                         buffsList.Add(powerBuff);
-                        Game1.player.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
+                        HatService.CurrentPlayer.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
                     }
                     powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
                 }
-                else if (Game1.player.isGlowing && Game1.player.glowingColor == Color.OrangeRed * 0.5f)
+                else if (HatService.CurrentPlayer.isGlowing && HatService.CurrentPlayer.glowingColor == Color.OrangeRed * 0.5f)
                 {
-                    Game1.player.stopGlowing();
+                    HatService.CurrentPlayer.stopGlowing();
                 }
             };
         }

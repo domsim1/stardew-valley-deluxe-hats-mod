@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     sombruroBuff.description = "Fiesta\n+2 Luck";
                     sombruroBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(sombruroBuff);
+                    HatService.CurrentPlayer.applyBuff(sombruroBuff);
                 }
             };
         }

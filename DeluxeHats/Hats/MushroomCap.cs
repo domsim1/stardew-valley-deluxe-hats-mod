@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     mushroomBuff.description = "Fungi Guide\n+2 Foraging";
                     mushroomBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(mushroomBuff);
+                    HatService.CurrentPlayer.applyBuff(mushroomBuff);
                 }
             };
         }

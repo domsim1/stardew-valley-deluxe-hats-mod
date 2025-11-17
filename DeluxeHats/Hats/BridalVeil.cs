@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     bridalBuff.description = "Blissful\n+2 Luck";
                     bridalBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(bridalBuff);
+                    HatService.CurrentPlayer.applyBuff(bridalBuff);
                 }
             };
         }

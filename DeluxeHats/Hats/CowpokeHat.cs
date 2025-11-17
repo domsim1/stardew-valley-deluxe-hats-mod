@@ -14,7 +14,7 @@ namespace DeluxeHats.Hats
             HatService.OnUpdateTicked = (e) =>
             {
                 Buff cowpokeBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (Game1.player.isRidingHorse())
+                if (HatService.CurrentPlayer.isRidingHorse())
                 {
                     if (cowpokeBuff == null)
                     {
@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
                             );
                         cowpokeBuff.description = "Buckeroo\n+1 Speed";
                         cowpokeBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                        Game1.player.applyBuff(cowpokeBuff);
+                        HatService.CurrentPlayer.applyBuff(cowpokeBuff);
                     }
                 }
                 else

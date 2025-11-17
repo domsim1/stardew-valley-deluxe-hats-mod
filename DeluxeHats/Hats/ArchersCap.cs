@@ -14,7 +14,7 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.player.hasMenuOpen.Value || !Game1.player.canMove || !Game1.game1.IsActive)
+                if (HatService.CurrentPlayer.hasMenuOpen.Value || !HatService.CurrentPlayer.canMove || !Game1.game1.IsActive)
                 {
                     return;
                 }
@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
                         }
                     }
                 }
-                if (Game1.player.usingSlingshot)
+                if (HatService.CurrentPlayer.usingSlingshot)
                 {
                 }
             };

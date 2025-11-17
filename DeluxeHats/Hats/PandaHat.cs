@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     pandaBuff.description = "Bamboo Muncher\n+3 Farming";
                     pandaBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(pandaBuff);
+                    HatService.CurrentPlayer.applyBuff(pandaBuff);
                 }
             };
         }

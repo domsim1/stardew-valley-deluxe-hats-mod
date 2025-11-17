@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     bowlerBuff.description = "Dapper\n+1 Defense";
                     bowlerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(bowlerBuff);
+                    HatService.CurrentPlayer.applyBuff(bowlerBuff);
                 }
             };
         }

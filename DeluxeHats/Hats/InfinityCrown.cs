@@ -30,7 +30,7 @@ namespace DeluxeHats.Hats
                         );
                     buff.description = "Infinite Power\n+4 Farming, +4 Mining, +4 Fishing, +3 Luck";
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(buff);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }

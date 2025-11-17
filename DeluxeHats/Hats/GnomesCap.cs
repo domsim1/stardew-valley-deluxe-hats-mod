@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     gnomeBuff.description = "Gnome Protection\n+1 Luck\n+1 Mining";
                     gnomeBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(gnomeBuff);
+                    HatService.CurrentPlayer.applyBuff(gnomeBuff);
                 }
             };
         }

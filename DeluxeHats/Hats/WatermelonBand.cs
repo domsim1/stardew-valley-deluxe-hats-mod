@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     watermelonBuff.description = "Summer Refreshment\n+2 Foraging\n+1 Fishing";
                     watermelonBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(watermelonBuff);
+                    HatService.CurrentPlayer.applyBuff(watermelonBuff);
                 }
             };
         }

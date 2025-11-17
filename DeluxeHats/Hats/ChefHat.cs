@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using StardewValley;
+﻿using StardewValley;
 using StardewValley.Buffs;
 using System.Linq;
 
@@ -20,7 +19,7 @@ namespace DeluxeHats.Hats
                     return;
                 }
                 Buff chefBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (Game1.player.isEating)
+                if (HatService.CurrentPlayer.isEating)
                 {
                     if (chefBuff != null)
                     {
@@ -53,7 +52,7 @@ namespace DeluxeHats.Hats
                         );
                     chefBuff.description = $"Head Chef\nx2 {foodBuff.displaySource}";
                     chefBuff.millisecondsDuration = foodBuff.millisecondsDuration;
-                    Game1.player.applyBuff(chefBuff);
+                    HatService.CurrentPlayer.applyBuff(chefBuff);
                 }
                 else
                 {

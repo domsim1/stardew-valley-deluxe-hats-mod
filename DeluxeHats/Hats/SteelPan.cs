@@ -8,18 +8,42 @@ namespace DeluxeHats.Hats
     public static class SteelPan
     {
         public const string Name = "Steel Pan (hat)";
-        public const string Description = "No effect.";
+        public const string Description = "Gain the Steel Prospector Buff:\n+2 Mining, +1 Defense";
+
         public static void Activate()
         {
-            HatService.OnUpdateTicked = (e) =>
+            var effects = new BuffEffects();
+            effects.MiningLevel.Set(2);
+            effects.Defense.Set(1);
+
+            var buff = new Buff(
+                id: HatService.BuffId,
+                source: "Deluxe Hats",
+                displaySource: Name,
+                displayName: "Steel Prospector",
+                effects: effects
+            );
+            buff.description = "Steel Prospector\n+2 Mining\n+1 Defense";
+            buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+            HatService.CurrentPlayer.applyBuff(buff);
+
+            HatService.OnTimeChanged = (e) =>
             {
-                // No effect
+                Buff steelBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                if (steelBuff != null)
+                {
+                    steelBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                }
             };
         }
 
         public static void Disable()
         {
-            // No effect
+            Buff steelBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            if (steelBuff != null)
+            {
+                steelBuff.millisecondsDuration = 0;
+            }
         }
     }
 }

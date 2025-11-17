@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<EnableHarmony>true</EnableHarmony>
 		<RootNamespace>DeluxeHats</RootNamespace>
 		<AssemblyName>DeluxeHats</AssemblyName>
 		<Nullable>disable</Nullable>

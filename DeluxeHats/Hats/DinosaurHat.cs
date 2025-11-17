@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     dinooBuff.description = "Ancient Predator\n+3 Attack";
                     dinooBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(dinooBuff);
+                    HatService.CurrentPlayer.applyBuff(dinooBuff);
                 }
             };
         }

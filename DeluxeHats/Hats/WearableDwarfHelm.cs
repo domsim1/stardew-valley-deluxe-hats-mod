@@ -13,10 +13,10 @@ namespace DeluxeHats.Hats
         private static string locaction;
         public static void Activate()
         {
-            Game1.player.canUnderstandDwarves = true;
+            HatService.CurrentPlayer.canUnderstandDwarves = true;
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.player.hasMenuOpen.Value || !Game1.player.canMove || !Game1.game1.IsActive || Game1.eventUp)
+                if (HatService.CurrentPlayer.hasMenuOpen.Value || !HatService.CurrentPlayer.canMove || !Game1.game1.IsActive || Game1.eventUp)
                 {
                     return;
                 }
@@ -48,7 +48,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     dwarfBuff.description = "Mad Dwarf King\n+4 Mining\n+2 Speed\n+1 Attack";
-                    Game1.player.applyBuff(dwarfBuff);
+                    HatService.CurrentPlayer.applyBuff(dwarfBuff);
                 }
                 dwarfBuff.millisecondsDuration = 21510;
             };
@@ -62,11 +62,11 @@ namespace DeluxeHats.Hats
                 var museumItems = new HashSet<int>(mus.museumPieces.Values.Select(s => int.TryParse(s, out var id) ? id : -1));
                 if (museumItems.Contains(96) && museumItems.Contains(97) && museumItems.Contains(98) && museumItems.Contains(99))
                 {
-                    Game1.player.canUnderstandDwarves = true;
+                    HatService.CurrentPlayer.canUnderstandDwarves = true;
                 }
                 else
                 {
-                    Game1.player.canUnderstandDwarves = false;
+                    HatService.CurrentPlayer.canUnderstandDwarves = false;
                 }
             }
             Buff dwarfBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);

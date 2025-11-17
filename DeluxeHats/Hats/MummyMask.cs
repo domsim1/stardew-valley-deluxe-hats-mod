@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
                         );
                     buff.description = "Ancient Curse\n+2 Attack, +2 Defense, +1 Mining";
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(buff);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }

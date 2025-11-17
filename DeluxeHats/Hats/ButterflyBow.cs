@@ -14,15 +14,15 @@ namespace DeluxeHats.Hats
             
             HatService.OnUpdateTicked = (e) =>
             {
-                if (!Game1.currentLocation.isOutdoors.Value || Game1.player.hasMenuOpen.Value || !Game1.player.canMove || !Game1.game1.IsActive)
+                if (!Game1.currentLocation.isOutdoors.Value || HatService.CurrentPlayer.hasMenuOpen.Value || !HatService.CurrentPlayer.canMove || !Game1.game1.IsActive)
                 {
                     return;
                 }
                 var critters = HatService.Helper.Reflection.GetField<List<Critter>>(Game1.currentLocation, "critters").GetValue();
                 if (critters != null && (e.Ticks%30) == 0 && critters.Count < 340)
                 {
-                    var randomX = Game1.player.position.X + Game1.random.Next(3);
-                    var randomY = Game1.player.position.Y + Game1.random.Next(3);
+                    var randomX = HatService.CurrentPlayer.position.X + Game1.random.Next(3);
+                    var randomY = HatService.CurrentPlayer.position.Y + Game1.random.Next(3);
                     critters.Add(new Butterfly(
                         Game1.currentLocation,
                         new Vector2(randomX, randomY)
@@ -32,7 +32,7 @@ namespace DeluxeHats.Hats
                 {
                     foreach (var npc in Game1.currentLocation.characters)
                     {
-                        Game1.player.changeFriendship(5, npc);
+                        HatService.CurrentPlayer.changeFriendship(5, npc);
                     }
                 }
                 

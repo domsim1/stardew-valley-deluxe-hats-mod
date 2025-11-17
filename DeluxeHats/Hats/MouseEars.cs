@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using StardewValley;
+﻿using StardewValley;
 using StardewValley.Buffs;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +9,19 @@ namespace DeluxeHats.Hats
     {
         public const string Name = "Mouse Ears";
         public const string Description = "When you are hit gain Skittish Mouse Buff:\n+4 Speed";
-        public static int PlayerOldHP = 0;
+        private static Dictionary<long, int> playerOldHP = new Dictionary<long, int>();
+
         public static void Activate()
         {
+            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
+            if (!playerOldHP.ContainsKey(playerId))
+            {
+                playerOldHP[playerId] = HatService.CurrentPlayer.health;
+            }
+
             HatService.OnUpdateTicked = (e) =>
             {
-                if (PlayerOldHP > Game1.player.health)
+                if (playerOldHP.TryGetValue(HatService.CurrentPlayer.UniqueMultiplayerID, out int oldHP) && oldHP > HatService.CurrentPlayer.health)
                 {
                     Buff mouseBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
                     if (mouseBuff == null)
@@ -30,17 +36,24 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         mouseBuff.description = "Skittish Mouse\n+4 Speed";
-                        Game1.buffsDisplay.GetSortedBuffs().AddItem(mouseBuff);
+                        mouseBuff.millisecondsDuration = 1500;
+                        HatService.CurrentPlayer.applyBuff(mouseBuff);
                     }
-                    mouseBuff.millisecondsDuration = 1500;
+                    else
+                    {
+                        mouseBuff.millisecondsDuration = 1500;
+                    }
                 }
-                PlayerOldHP = Game1.player.health;
+                playerOldHP[HatService.CurrentPlayer.UniqueMultiplayerID] = HatService.CurrentPlayer.health;
             };
         }
 
         public static void Disable()
         {
-            PlayerOldHP = 0;
+            if (HatService.CurrentPlayer != null)
+            {
+                playerOldHP.Remove(HatService.CurrentPlayer.UniqueMultiplayerID);
+            }
             Buff mouseBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
             if (mouseBuff != null)
             {

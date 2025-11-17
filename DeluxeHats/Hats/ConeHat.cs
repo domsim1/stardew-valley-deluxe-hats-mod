@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     coneBuff.description = "Celebratory\n+1 Luck";
                     coneBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(coneBuff);
+                    HatService.CurrentPlayer.applyBuff(coneBuff);
                 }
             };
         }

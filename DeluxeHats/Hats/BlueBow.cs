@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     buff.description = "Serene Grace\n+1 Luck, +1 Fishing";
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(buff);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }

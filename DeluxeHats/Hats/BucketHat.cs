@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     buff.description = "Rain Protection\n+2 Defense, +1 Immunity";
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(buff);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }

@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     greenBuff.description = "Jungle Mystic\n+1 Luck\n+1 Foraging";
                     greenBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(greenBuff);
+                    HatService.CurrentPlayer.applyBuff(greenBuff);
                 }
             };
         }

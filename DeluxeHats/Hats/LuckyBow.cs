@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     luckBuff.description = "Lucky charm\n+1 Luck";
                     luckBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(luckBuff);
+                    HatService.CurrentPlayer.applyBuff(luckBuff);
                 }
             };
         }

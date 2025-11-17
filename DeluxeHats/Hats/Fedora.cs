@@ -35,7 +35,7 @@ namespace DeluxeHats.Hats
                         );
                     luckBuff.description = "\"Fortune and glory, kid.\"\n+2 Luck";
                     luckBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(luckBuff);
+                    HatService.CurrentPlayer.applyBuff(luckBuff);
                 }
             };
         }

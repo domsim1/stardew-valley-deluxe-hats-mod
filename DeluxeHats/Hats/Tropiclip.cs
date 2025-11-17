@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     tropiclipBuff.description = "Tropical Paradise\n+2 Farming\n+1 Luck";
                     tropiclipBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(tropiclipBuff);
+                    HatService.CurrentPlayer.applyBuff(tropiclipBuff);
                 }
             };
         }

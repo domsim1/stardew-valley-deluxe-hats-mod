@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     buff.description = "Lucky Gold\n+3 Luck, +2 Farming";
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(buff);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }

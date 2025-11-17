@@ -17,22 +17,22 @@ namespace DeluxeHats.Hats
             }
             if (daredevil == null)
             {
-                daredevil = new Horse(new Guid(), (int)Game1.player.Tile.X, (int)Game1.player.Tile.Y)
+                daredevil = new Horse(new Guid(), (int)HatService.CurrentPlayer.Tile.X, (int)HatService.CurrentPlayer.Tile.Y)
                 {
                     currentLocation = Game1.currentLocation,
                 };
-                daredevil.faceDirection(Game1.player.getDirection());
+                daredevil.faceDirection(HatService.CurrentPlayer.getDirection());
                 daredevil.Name = "Daredevil";
                 daredevil.displayName = "Daredevil";
                 Game1.getFarm().characters.Add((NPC)daredevil);
-                daredevil.checkAction(Game1.player, Game1.currentLocation);
+                daredevil.checkAction(HatService.CurrentPlayer, Game1.currentLocation);
             }
         }
 
         public static void Disable()
         {
             if (daredevil != null) {
-                daredevil.checkAction(Game1.player, Game1.currentLocation);
+                daredevil.checkAction(HatService.CurrentPlayer, Game1.currentLocation);
             }
             Game1.getFarm().characters.Remove(daredevil);
             daredevil = null;

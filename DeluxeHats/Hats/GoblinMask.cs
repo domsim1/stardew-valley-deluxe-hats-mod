@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     goblinBuff.description = "Mischievous\n+2 Attack";
                     goblinBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(goblinBuff);
+                    HatService.CurrentPlayer.applyBuff(goblinBuff);
                 }
             };
         }

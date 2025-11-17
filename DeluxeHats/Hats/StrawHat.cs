@@ -36,7 +36,7 @@ namespace DeluxeHats.Hats
                         );
                     farmingBuff.description = "Dawn Farming\n+3 Farming";
                     farmingBuff.millisecondsDuration = Convert.ToInt32((3.3f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(farmingBuff);
+                    HatService.CurrentPlayer.applyBuff(farmingBuff);
                 }
             };
         }

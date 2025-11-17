@@ -19,26 +19,26 @@ namespace DeluxeHats.Hats
                     if (Game1.activeClickableMenu != null
                     || !Game1.displayFarmer
                     || Game1.dialogueUp
-                    || !Game1.player.canMove
-                    || Game1.player.isRidingHorse()
+                    || !HatService.CurrentPlayer.canMove
+                    || HatService.CurrentPlayer.isRidingHorse()
                     || Game1.isFestival()
                     || Game1.isWarping
                     || Game1.eventUp
                     || Game1.fadeIn
-                    || Game1.player.isInBed.Value
+                    || HatService.CurrentPlayer.isInBed.Value
                     || Game1.isActionAtCurrentCursorTile
                     || Game1.fadeToBlack)
                     {
                         return;
                     }
-                    if (new string[] { "Warp Totem: Farm", "Warp Totem: Beach", "Warp Totem: Desert", "Rain Totem" }.Contains(Game1.player.CurrentItem.Name))
+                    if (new string[] { "Warp Totem: Farm", "Warp Totem: Beach", "Warp Totem: Desert", "Rain Totem" }.Contains(HatService.CurrentPlayer.CurrentItem.Name))
                     {
                         HatService.Helper.Input.Suppress(SButton.MouseRight);
-                        if (Game1.player.ActiveObject.performUseAction(Game1.currentLocation))
+                        if (HatService.CurrentPlayer.ActiveObject.performUseAction(Game1.currentLocation))
                         {
                             if (!(Game1.random.NextDouble() < saveTotemChance))
                             {
-                                Game1.player.reduceActiveItemByOne();
+                                HatService.CurrentPlayer.reduceActiveItemByOne();
                             }
                         }
                     }

@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     topHatBuff.description = "Distinguished Gentleman\n+2 Luck";
                     topHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(topHatBuff);
+                    HatService.CurrentPlayer.applyBuff(topHatBuff);
                 }
             };
         }

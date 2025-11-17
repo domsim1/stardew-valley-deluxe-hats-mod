@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     flatBuff.description = "Noble\n+1 Defense\n+1 Luck";
                     flatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(flatBuff);
+                    HatService.CurrentPlayer.applyBuff(flatBuff);
                 }
             };
         }

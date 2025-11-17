@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         );
                     santaBuff.description = "Holiday Spirit\n+1 Luck\n+1 Farming";
                     santaBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(santaBuff);
+                    HatService.CurrentPlayer.applyBuff(santaBuff);
                 }
             };
         }

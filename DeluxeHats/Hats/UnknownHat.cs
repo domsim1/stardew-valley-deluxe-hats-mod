@@ -35,7 +35,7 @@ namespace DeluxeHats.Hats
                         );
                     unknownBuff.description = "Mysterious Power\n+10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity";
                     unknownBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(unknownBuff);
+                    HatService.CurrentPlayer.applyBuff(unknownBuff);
                 }
             };
         }

@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
                         );
                     buff.description = "Iridium Mastery\n+3 Mining, +3 Luck, +2 Attack";
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(buff);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }

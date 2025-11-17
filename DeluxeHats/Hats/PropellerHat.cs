@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     propellerBuff.description = "Airborne\n+1 Speed";
                     propellerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(propellerBuff);
+                    HatService.CurrentPlayer.applyBuff(propellerBuff);
                 }
             };
         }

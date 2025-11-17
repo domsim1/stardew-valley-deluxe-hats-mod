@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     emilyBuff.description = "Magical Aura\n+3 Luck";
                     emilyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(emilyBuff);
+                    HatService.CurrentPlayer.applyBuff(emilyBuff);
                 }
             };
         }

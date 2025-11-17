@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     elegantBuff.description = "Posh\n+2 Luck";
                     elegantBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(elegantBuff);
+                    HatService.CurrentPlayer.applyBuff(elegantBuff);
                 }
             };
         }

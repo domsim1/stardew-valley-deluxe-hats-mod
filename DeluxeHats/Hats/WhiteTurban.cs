@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     turbanBuff.description = "Sage\n+2 Foraging";
                     turbanBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(turbanBuff);
+                    HatService.CurrentPlayer.applyBuff(turbanBuff);
                 }
             };
         }

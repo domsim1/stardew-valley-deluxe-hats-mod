@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         );
                     daisyBuff.description = "Flower Child\n+2 Farming";
                     daisyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(daisyBuff);
+                    HatService.CurrentPlayer.applyBuff(daisyBuff);
                 }
             };
         }

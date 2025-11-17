@@ -14,7 +14,7 @@ namespace DeluxeHats.Hats
             HatService.OnUpdateTicked = (e) =>
             {
                 Buff magicBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (Game1.player.isRidingHorse())
+                if (HatService.CurrentPlayer.isRidingHorse())
                 {
                     if (magicBuff == null)
                     {
@@ -30,7 +30,7 @@ namespace DeluxeHats.Hats
                             );
                         magicBuff.description = "Spellslinger\n+2 Speed\n+1 Attack";
                         magicBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                        Game1.player.applyBuff(magicBuff);
+                        HatService.CurrentPlayer.applyBuff(magicBuff);
                     }
                 }
                 else

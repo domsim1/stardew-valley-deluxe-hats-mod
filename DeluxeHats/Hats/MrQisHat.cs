@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
                         );
                     buff.description = "Qi's Blessing\n+5 Luck, +3 Mining, +2 Speed";
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    Game1.player.applyBuff(buff);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }
