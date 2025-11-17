@@ -95,8 +95,6 @@ namespace DeluxeHats
 
         public static void CleanUp()
         {
-            // Don't call DisableHat when returning to title - players are being destroyed anyway
-            // Just clear our internal state to prevent memory leaks
             playerStates.Clear();
             hookedPlayers.Clear();
             CurrentPlayer = null;

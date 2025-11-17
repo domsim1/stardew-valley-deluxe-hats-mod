@@ -9,7 +9,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 1 | ??? | Mysterious Power | +10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity |
 | 2 | Abigail's Bow | Enchanted Presence | +2 Luck, +1 Foraging |
 | 3 | Arcane Hat | Arcane Mastery | +2 Luck, +2 Speed, +1 Attack |
-| 4 | Archer's Cap | Precision Aim | Shots from slingshot deal more damage the further they travel |
+| 4 | Archer's Cap | Precision Aim | +2 Attack, +1 Speed, +1 Defense |
 | 5 | Beanie | Burglar's Luck | +2 Luck, +2 Attack |
 | 6 | Blobfish Mask | Deep Sea Treasure | +3 Fishing, +2 Luck (at night) |
 | 7 | Blue Bonnet | Season Protection | +2 Foraging, +1 Farming, +1 Fishing (outside in spring) |
@@ -20,9 +20,9 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 12 | Bowler Hat | Dapper | +1 Defense |
 | 13 | Bridal Veil | Blissful | +2 Luck |
 | 14 | Bucket Hat | Rain Protection | +2 Defense, +1 Immunity |
-| 15 | Butterfly Bow | Graceful Flight | Spawns butterflies; +5 friendship/7s to nearby NPCs (outdoor) |
+| 15 | Butterfly Bow | Graceful Flight | +2 Luck, +1 Foraging, +1 Farming |
 | 16 | Cat Ears | Skittish Kitty | +3 Speed, +2 Attack (when hit) |
-| 17 | Chef Hat | Head Chef | Doubles buff from eating food |
+| 17 | Chef Hat | Master Chef | +2 Farming, +1 Foraging, +1 Fishing |
 | 18 | Chicken Mask | Chicken Friend | +2 Farming |
 | 19 | Cone Hat | Celebratory | +1 Luck |
 | 20 | Cool Cap | Season Protection | +2 Foraging, +1 Farming, +1 Fishing (outside in spring) |
@@ -34,7 +34,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 26 | Dark Ballcap | Shadow Stealth | +1 Defense, +1 Attack |
 | 27 | Dark Cowboy Hat | Dark Rider | +2 Attack, +1 Speed |
 | 28 | Dark Velvet Bow | Elegant Poise | +2 Luck |
-| 29 | Delicate Bow | Delicate Grace | Sparkles; +5 friendship/7s to nearby NPCs (indoor) |
+| 29 | Delicate Bow | Delicate Grace | +2 Luck, +1 Speed |
 | 30 | Deluxe Cowboy Hat | Premium Rider | +3 Speed, +2 Attack |
 | 31 | Deluxe Pirate Hat | Elite Buccaneer | +3 Attack, +2 Defense, +2 Luck |
 | 32 | Dinosaur Hat | Ancient Predator | +3 Attack |
@@ -68,7 +68,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 60 | Jester Hat | Jester's Luck | +1 Luck, +1 Speed |
 | 61 | Joja Cap | Corporate Efficiency | +1 Speed |
 | 62 | Junimo Hat | Forest Spirit | +2 Foraging, +1 Farming |
-| 63 | Knight's Helmet | Knight's Valor | +2 Defense, +2 Attack |
+| 63 | Knight's Helmet | Knight's Valor | +4 Defense, +2 Immunity |
 | 64 | Laurel Wreath Crown | Champion's Valor | +3 Attack, +3 Defense, +2 Luck |
 | 65 | Leprechaun Hat | Lucky Gold | +3 Luck, +2 Farming |
 | 66 | Living Hat | Living Bond | +2 Farming |

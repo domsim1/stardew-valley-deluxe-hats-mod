@@ -1,46 +1,48 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using StardewValley;
-using StardewValley.BellsAndWhistles;
+﻿using StardewValley;
+using StardewValley.Buffs;
+using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class ButterflyBow
     {
         public const string Name = "Butterfly Bow";
-        public const string Description = "Spawns Butterflies around you while outside.\nPeople in the same outdoor area as you will gain 5 friendship every 7 seconds.";
+        public const string Description = "Gain the Graceful Flight Buff:\n+2 Luck, +1 Foraging, +1 Farming";
         public static void Activate()
         {
-            
             HatService.OnUpdateTicked = (e) =>
             {
-                if (!HatService.CurrentPlayer.currentLocation.isOutdoors.Value || HatService.CurrentPlayer.hasMenuOpen.Value || !HatService.CurrentPlayer.canMove || !Game1.game1.IsActive)
+                Buff butterflyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (butterflyBuff == null)
                 {
-                    return;
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(2);
+                    effects.ForagingLevel.Set(1);
+                    effects.FarmingLevel.Set(1);
+                    butterflyBuff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Graceful Flight",
+                        effects: effects
+                        );
+                    butterflyBuff.description = "Graceful Flight\n+2 Luck, +1 Foraging, +1 Farming";
+                    butterflyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(butterflyBuff);
                 }
-                var critters = HatService.Helper.Reflection.GetField<List<Critter>>(HatService.CurrentPlayer.currentLocation, "critters").GetValue();
-                if (critters != null && (e.Ticks%30) == 0 && critters.Count < 340)
-                {
-                    var randomX = HatService.CurrentPlayer.position.X + Game1.random.Next(3);
-                    var randomY = HatService.CurrentPlayer.position.Y + Game1.random.Next(3);
-                    critters.Add(new Butterfly(
-                        HatService.CurrentPlayer.currentLocation,
-                        new Vector2(randomX, randomY)
-                    ));
-                }
-                if (e.Ticks % 480 == 0)
-                {
-                    foreach (var npc in HatService.CurrentPlayer.currentLocation.characters)
-                    {
-                        HatService.CurrentPlayer.changeFriendship(5, npc);
-                    }
-                }
-                
             };
         }
 
         public static void Disable()
         {
+            if (HatService.CurrentPlayer == null) return;
+
+            Buff butterflyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (butterflyBuff != null)
+            {
+                butterflyBuff.millisecondsDuration = 0;
+            }
         }
     }
 }

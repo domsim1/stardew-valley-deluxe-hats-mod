@@ -45,9 +45,9 @@ namespace DeluxeHats.Hats
 
             if (playerHorses.TryGetValue(playerId, out Horse horse))
             {
-                if (HatService.CurrentPlayer.isRidingHorse())
+                if (HatService.CurrentPlayer.mount != null && HatService.CurrentPlayer.mount.Equals(horse))
                 {
-                    HatService.CurrentPlayer.mount?.dismount();
+                    HatService.CurrentPlayer.mount.dismount();
                 }
 
                 if (horse.currentLocation != null)
