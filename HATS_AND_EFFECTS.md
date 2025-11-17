@@ -99,7 +99,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 91 | Red Fez | Exotic Flair | +1 Luck, +1 Speed |
 | 92 | Sailor's Cap | Drunken Sailor | +10 Attack (when tipsy) |
 | 93 | Santa Hat | Holiday Spirit | +1 Luck, +1 Farming |
-| 94 | Skeleton Mask | Bone Defense | Shoots 4 bones (40 damage each) when hit |
+| 94 | Skeleton Mask | Undead Resilience | +3 Defense, +2 Attack, +1 Immunity |
 | 95 | Small Cap | Quick Reflexes | +1 Speed |
 | 96 | Sombrero | Fiesta | +2 Luck |
 | 97 | Sou'wester | Fishing in the Rain | +4 Fishing (outside in rain) |
@@ -122,7 +122,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 114 | Trucker Hat | Season Protection | +2 Foraging, +1 Farming, +1 Fishing (outside in summer) |
 | 115 | Warrior Helmet | Battle Hardened | +4 Defense, +3 Attack |
 | 116 | Watermelon Band | Summer Refreshment | +2 Foraging, +1 Fishing |
-| 117 | Wearable Dwarf Helm | Mad Dwarf King | +4 Mining, +2 Speed, +1 Attack (entering mine level) |
+| 117 | Wearable Dwarf Helm | Mad Dwarf King | +4 Mining, +2 Speed, +1 Attack (in mines) |
 | 118 | White Bow | Pure Elegance | +2 Luck, +1 Foraging |
 | 119 | White Turban | Sage | +2 Foraging |
 | 120 | Witch Hat | Witching Hour | +2 Luck, +2 Foraging |

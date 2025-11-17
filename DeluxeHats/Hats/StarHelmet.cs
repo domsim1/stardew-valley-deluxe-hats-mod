@@ -12,38 +12,36 @@ namespace DeluxeHats.Hats
 
         public static void Activate()
         {
-            var effects = new BuffEffects();
-            effects.Defense.Set(2);
-            effects.MiningLevel.Set(2);
-            effects.LuckLevel.Set(1);
-
-            var buff = new Buff(
-                id: HatService.BuffId,
-                source: "Deluxe Hats",
-                displaySource: Name,
-                displayName: "Starlight Protection",
-                effects: effects
-            );
-            buff.description = "Starlight Protection\n+2 Defense\n+2 Mining\n+1 Luck";
-            buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-            HatService.CurrentPlayer.applyBuff(buff);
-
-            HatService.OnTimeChanged = (e) =>
+            HatService.OnUpdateTicked = (e) =>
             {
-                Buff starBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (starBuff != null)
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
                 {
-                    starBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    var effects = new BuffEffects();
+                    effects.Defense.Set(2);
+                    effects.MiningLevel.Set(2);
+                    effects.LuckLevel.Set(1);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Starlight Protection",
+                        effects: effects
+                    );
+                    buff.description = "Starlight Protection\n+2 Defense\n+2 Mining\n+1 Luck";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }
 
         public static void Disable()
         {
-            Buff starBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (starBuff != null)
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                starBuff.millisecondsDuration = 0;
+                buff.millisecondsDuration = 0;
             }
         }
     }

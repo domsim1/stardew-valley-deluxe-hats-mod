@@ -12,37 +12,35 @@ namespace DeluxeHats.Hats
 
         public static void Activate()
         {
-            var effects = new BuffEffects();
-            effects.MiningLevel.Set(2);
-            effects.Defense.Set(1);
-
-            var buff = new Buff(
-                id: HatService.BuffId,
-                source: "Deluxe Hats",
-                displaySource: Name,
-                displayName: "Steel Prospector",
-                effects: effects
-            );
-            buff.description = "Steel Prospector\n+2 Mining\n+1 Defense";
-            buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-            HatService.CurrentPlayer.applyBuff(buff);
-
-            HatService.OnTimeChanged = (e) =>
+            HatService.OnUpdateTicked = (e) =>
             {
-                Buff steelBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (steelBuff != null)
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
                 {
-                    steelBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    var effects = new BuffEffects();
+                    effects.MiningLevel.Set(2);
+                    effects.Defense.Set(1);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Steel Prospector",
+                        effects: effects
+                    );
+                    buff.description = "Steel Prospector\n+2 Mining\n+1 Defense";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }
 
         public static void Disable()
         {
-            Buff steelBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (steelBuff != null)
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                steelBuff.millisecondsDuration = 0;
+                buff.millisecondsDuration = 0;
             }
         }
     }

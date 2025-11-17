@@ -11,31 +11,34 @@ namespace DeluxeHats.Hats
         public const string Description = "Gain the Treasure Hunter Buff:\n+2 Fishing, +2 Luck";
         public static void Activate()
         {
-            Buff pirateBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (pirateBuff == null)
+            HatService.OnUpdateTicked = (e) =>
             {
-                var effects = new BuffEffects();
-                effects.FishingLevel.Set(2);
-                effects.LuckLevel.Set(2);
-                pirateBuff = new Buff(
-                    id: HatService.BuffId,
-                    source: "Deluxe Hats",
-                    displaySource: Name,
-                    displayName: "Treasure Hunter",
-                    effects: effects
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
+                {
+                    var effects = new BuffEffects();
+                    effects.FishingLevel.Set(2);
+                    effects.LuckLevel.Set(2);
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Treasure Hunter",
+                        effects: effects
                     );
-                pirateBuff.description = "Treasure Hunter\n+2 Fishing, +2 Luck";
-                pirateBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                HatService.CurrentPlayer.applyBuff(pirateBuff);
-            }
+                    buff.description = "Treasure Hunter\n+2 Fishing, +2 Luck";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            Buff pirateBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (pirateBuff != null)
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                pirateBuff.millisecondsDuration = 0;
+                buff.millisecondsDuration = 0;
             }
         }
     }

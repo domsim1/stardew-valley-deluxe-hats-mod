@@ -12,38 +12,36 @@ namespace DeluxeHats.Hats
 
         public static void Activate()
         {
-            var effects = new BuffEffects();
-            effects.Attack.Set(3);
-            effects.Speed.Set(2);
-            effects.Defense.Set(1);
-
-            var buff = new Buff(
-                id: HatService.BuffId,
-                source: "Deluxe Hats",
-                displaySource: Name,
-                displayName: "Tiger's Prowess",
-                effects: effects
-            );
-            buff.description = "Tiger's Prowess\n+3 Attack\n+2 Speed\n+1 Defense";
-            buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-            HatService.CurrentPlayer.applyBuff(buff);
-
-            HatService.OnTimeChanged = (e) =>
+            HatService.OnUpdateTicked = (e) =>
             {
-                Buff tigerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (tigerBuff != null)
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
                 {
-                    tigerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    var effects = new BuffEffects();
+                    effects.Attack.Set(3);
+                    effects.Speed.Set(2);
+                    effects.Defense.Set(1);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Tiger's Prowess",
+                        effects: effects
+                    );
+                    buff.description = "Tiger's Prowess\n+3 Attack\n+2 Speed\n+1 Defense";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }
 
         public static void Disable()
         {
-            Buff tigerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (tigerBuff != null)
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                tigerBuff.millisecondsDuration = 0;
+                buff.millisecondsDuration = 0;
             }
         }
     }

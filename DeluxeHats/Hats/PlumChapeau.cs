@@ -11,30 +11,33 @@ namespace DeluxeHats.Hats
         public const string Description = "Gain the Royal Elegance Buff:\n+1 Luck";
         public static void Activate()
         {
-            Buff plumBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (plumBuff == null)
+            HatService.OnUpdateTicked = (e) =>
             {
-                var effects = new BuffEffects();
-                effects.LuckLevel.Set(1);
-                plumBuff = new Buff(
-                    id: HatService.BuffId,
-                    source: "Deluxe Hats",
-                    displaySource: Name,
-                    displayName: "Royal Elegance",
-                    effects: effects
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
+                {
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(1);
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Royal Elegance",
+                        effects: effects
                     );
-                plumBuff.description = "Royal Elegance\n+1 Luck";
-                plumBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                HatService.CurrentPlayer.applyBuff(plumBuff);
-            }
+                    buff.description = "Royal Elegance\n+1 Luck";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            Buff plumBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (plumBuff != null)
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                plumBuff.millisecondsDuration = 0;
+                buff.millisecondsDuration = 0;
             }
         }
     }

@@ -12,37 +12,35 @@ namespace DeluxeHats.Hats
 
         public static void Activate()
         {
-            var effects = new BuffEffects();
-            effects.LuckLevel.Set(2);
-            effects.Speed.Set(1);
-
-            var buff = new Buff(
-                id: HatService.BuffId,
-                source: "Deluxe Hats",
-                displaySource: Name,
-                displayName: "Cool and Collected",
-                effects: effects
-            );
-            buff.description = "Cool and Collected\n+2 Luck\n+1 Speed";
-            buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-            HatService.CurrentPlayer.applyBuff(buff);
-
-            HatService.OnTimeChanged = (e) =>
+            HatService.OnUpdateTicked = (e) =>
             {
-                Buff coolBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (coolBuff != null)
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
                 {
-                    coolBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(2);
+                    effects.Speed.Set(1);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Cool and Collected",
+                        effects: effects
+                    );
+                    buff.description = "Cool and Collected\n+2 Luck\n+1 Speed";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
             };
         }
 
         public static void Disable()
         {
-            Buff coolBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (coolBuff != null)
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                coolBuff.millisecondsDuration = 0;
+                buff.millisecondsDuration = 0;
             }
         }
     }

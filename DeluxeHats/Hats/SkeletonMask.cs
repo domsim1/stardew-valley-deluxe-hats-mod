@@ -1,42 +1,48 @@
-﻿using Microsoft.Xna.Framework;
-using StardewValley;
-using StardewValley.Projectiles;
-using System.Collections.Generic;
+﻿using StardewValley;
+using StardewValley.Buffs;
+using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class SkeletonMask
     {
         public const string Name = "Skeleton Mask";
-        public const string Description = "Shoot out bones when you get hit that deal 40 damage on impact.";
-        private static Dictionary<long, int> playerOldHP = new Dictionary<long, int>();
+        public const string Description = "Gain the Undead Resilience Buff:\n+3 Defense, +2 Attack, +1 Immunity";
 
         public static void Activate()
         {
-            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
-            if (!playerOldHP.ContainsKey(playerId))
-            {
-                playerOldHP[playerId] = HatService.CurrentPlayer.health;
-            }
-
             HatService.OnUpdateTicked = (e) =>
             {
-                if (playerOldHP.TryGetValue(HatService.CurrentPlayer.UniqueMultiplayerID, out int oldHP) && oldHP > HatService.CurrentPlayer.health)
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
                 {
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10f, 10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10f, 10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10f, -10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10f, -10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
+                    var effects = new BuffEffects();
+                    effects.Defense.Set(3);
+                    effects.Attack.Set(2);
+                    effects.Immunity.Set(1);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Undead Resilience",
+                        effects: effects
+                    );
+                    buff.description = "Undead Resilience\n+3 Defense\n+2 Attack\n+1 Immunity";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
                 }
-                playerOldHP[HatService.CurrentPlayer.UniqueMultiplayerID] = HatService.CurrentPlayer.health;
             };
         }
 
         public static void Disable()
         {
-            if (HatService.CurrentPlayer == null) return;
-
-            playerOldHP.Remove(HatService.CurrentPlayer.UniqueMultiplayerID);
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
+            {
+                buff.millisecondsDuration = 0;
+            }
         }
     }
 }

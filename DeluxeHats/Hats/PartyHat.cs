@@ -12,31 +12,34 @@ namespace DeluxeHats.Hats
 
         public static void Activate()
         {
-            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (buff == null)
+            HatService.OnUpdateTicked = (e) =>
             {
-                var effects = new BuffEffects();
-                effects.LuckLevel.Set(3);
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
+                {
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(3);
 
-                buff = new Buff(
-                    id: HatService.BuffId,
-                    source: "Deluxe Hats",
-                    displaySource: Name,
-                    displayName: "Party Time",
-                    effects: effects
-                );
-                buff.description = "Party Time\n+3 Luck";
-                buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                HatService.CurrentPlayer.applyBuff(buff);
-            }
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Party Time",
+                        effects: effects
+                    );
+                    buff.description = "Party Time\n+3 Luck";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            Buff partyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-            if (partyBuff != null)
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                partyBuff.millisecondsDuration = 0;
+                buff.millisecondsDuration = 0;
             }
         }
     }

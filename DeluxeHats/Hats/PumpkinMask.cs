@@ -22,6 +22,11 @@ namespace DeluxeHats.Hats
 
             long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
 
+            if (HatService.CurrentPlayer.isRidingHorse())
+            {
+                return;
+            }
+
             if (!playerHorses.ContainsKey(playerId))
             {
                 var horse = new Horse(new Guid(), (int)HatService.CurrentPlayer.Tile.X, (int)HatService.CurrentPlayer.Tile.Y)
@@ -46,9 +51,11 @@ namespace DeluxeHats.Hats
             if (playerHorses.TryGetValue(playerId, out Horse horse))
             {
                 playerHorses.Remove(playerId);
+
                 if (HatService.CurrentPlayer.mount != null && HatService.CurrentPlayer.mount.Equals(horse))
                 {
-                    HatService.CurrentPlayer.mount.dismount();
+                    HatService.CurrentPlayer.mount = null;
+                    HatService.CurrentPlayer.setMountedPosition(0, 0);
                 }
 
                 if (horse.currentLocation != null)
