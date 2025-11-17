@@ -13,7 +13,7 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff dinooBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff dinooBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (dinooBuff == null)
                 {
                     var effects = new BuffEffects();
@@ -34,7 +34,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff dinooBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff dinooBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (dinooBuff != null)
             {
                 dinooBuff.millisecondsDuration = 0;

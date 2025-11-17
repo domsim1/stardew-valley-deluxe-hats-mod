@@ -1,39 +1,55 @@
-﻿using StardewModdingAPI;
-using StardewValley;
+﻿using StardewValley;
+using StardewValley.Buffs;
+using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class BlobfishMask
     {
         public const string Name = "Blobfish Mask";
-        public const string Description = "Triple the chance to find treasure while fishing at night.";
-        private const int blobfishMaskTreasureChanceMultiplyer = 3;
-        private static bool isEffectActive = false;
+        public const string Description = "While fishing at night gain the Deep Sea Treasure Buff:\n+3 Fishing, +2 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.timeOfDay < 1800)
+                Buff blobfishBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (Game1.timeOfDay >= 1800)
                 {
-                    if (isEffectActive == true)
+                    if (blobfishBuff == null)
                     {
-                        Disable();
+                        var effects = new BuffEffects();
+                        effects.FishingLevel.Set(3);
+                        effects.LuckLevel.Set(2);
+                        blobfishBuff = new Buff(
+                            id: HatService.BuffId,
+                            source: "Deluxe Hats",
+                            displaySource: Name,
+                            displayName: "Deep Sea Treasure",
+                            effects: effects
+                            );
+                        blobfishBuff.description = "Deep Sea Treasure\n+3 Fishing, +2 Luck";
+                        blobfishBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        HatService.CurrentPlayer.applyBuff(blobfishBuff);
                     }
-                    return;
                 }
-                if (isEffectActive == true)
+                else
                 {
-                    return;
+                    if (blobfishBuff != null)
+                    {
+                        blobfishBuff.millisecondsDuration = 0;
+                    }
                 }
-                StardewValley.Tools.FishingRod.baseChanceForTreasure *= blobfishMaskTreasureChanceMultiplyer;
-                isEffectActive = true;
             };
         }
 
         public static void Disable()
         {
-            StardewValley.Tools.FishingRod.baseChanceForTreasure /= blobfishMaskTreasureChanceMultiplyer;
-            isEffectActive = false;
+            Buff blobfishBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (blobfishBuff != null)
+            {
+                blobfishBuff.millisecondsDuration = 0;
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff fashionBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff fashionBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (fashionBuff == null)
                 {
                     var effects = new BuffEffects();
@@ -34,7 +34,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff fashionBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff fashionBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (fashionBuff != null)
             {
                 fashionBuff.millisecondsDuration = 0;

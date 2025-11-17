@@ -13,8 +13,8 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff huntersCapBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (Game1.currentLocation.isOutdoors.Value && Game1.currentSeason == "fall")
+                Buff huntersCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value && Game1.currentSeason == "fall")
                 {
                     if (huntersCapBuff == null)
                     {
@@ -46,7 +46,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff huntersCapBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff huntersCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (huntersCapBuff != null)
             {
                 huntersCapBuff.millisecondsDuration = 0;

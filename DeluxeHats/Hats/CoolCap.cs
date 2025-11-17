@@ -14,8 +14,8 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff coolCapBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (Game1.currentLocation.isOutdoors.Value && Game1.currentSeason == "spring")
+                Buff coolCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value && Game1.currentSeason == "spring")
                 {
                     if (coolCapBuff == null)
                     {
@@ -32,8 +32,7 @@ namespace DeluxeHats.Hats
                             );
                         coolCapBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
                         coolCapBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                        var buffsList = (List<Buff>)HatService.Helper.Reflection.GetField<List<Buff>>(Game1.buffsDisplay, "buffs").GetValue();
-                        buffsList.Add(coolCapBuff);
+                        HatService.CurrentPlayer.applyBuff(coolCapBuff);
                     }
                 }
                 else
@@ -48,7 +47,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff coolCapBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff coolCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (coolCapBuff != null)
             {
                 coolCapBuff.millisecondsDuration = 0;

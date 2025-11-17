@@ -95,13 +95,11 @@ namespace DeluxeHats
 
         public static void CleanUp()
         {
-            foreach (var state in playerStates.Values)
-            {
-                CurrentPlayer = null;
-                state.DisableHat?.Invoke();
-            }
+            // Don't call DisableHat when returning to title - players are being destroyed anyway
+            // Just clear our internal state to prevent memory leaks
             playerStates.Clear();
             hookedPlayers.Clear();
+            CurrentPlayer = null;
         }
 
         public static void SetupPlayerHatTracking()

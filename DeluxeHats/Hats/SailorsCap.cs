@@ -14,10 +14,10 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff tipsyBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.source == "drink");
+                Buff tipsyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.source == "drink");
                 if (tipsyBuff != null)
                 {
-                    Buff powerBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                    Buff powerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                     if (powerBuff == null)
                     {
                         var effects = new BuffEffects();
@@ -30,8 +30,7 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         powerBuff.description = "Drunken Sailor\n+10 Attack";
-                        var buffsList = (List<Buff>)HatService.Helper.Reflection.GetField<List<Buff>>(Game1.buffsDisplay, "buffs").GetValue();
-                        buffsList.Add(powerBuff);
+                        HatService.CurrentPlayer.applyBuff(powerBuff);
                         HatService.CurrentPlayer.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
                     }
                     powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
@@ -45,7 +44,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff powerBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff powerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (powerBuff != null)
             {
                 powerBuff.millisecondsDuration = 0;

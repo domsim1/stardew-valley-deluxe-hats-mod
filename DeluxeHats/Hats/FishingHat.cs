@@ -14,8 +14,8 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff fishingBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (!Game1.currentLocation.IsOutdoors || Game1.currentLocation.Name.Contains("Beach"))
+                Buff fishingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (!HatService.CurrentPlayer.currentLocation.IsOutdoors || HatService.CurrentPlayer.currentLocation.Name.Contains("Beach"))
                 {
                     if (fishingBuff != null)
                     {
@@ -36,15 +36,14 @@ namespace DeluxeHats.Hats
                         );
                     fishingBuff.description = "Shaded\n+2 Fishing";
                     fishingBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                    var buffsList = (List<Buff>)HatService.Helper.Reflection.GetField<List<Buff>>(Game1.buffsDisplay, "buffs").GetValue();
-                    buffsList.Add(fishingBuff);
+                    HatService.CurrentPlayer.applyBuff(fishingBuff);
                 }
             };
         }
 
         public static void Disable()
         {
-            Buff fishinBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff fishinBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (fishinBuff != null)
             {
                 fishinBuff.millisecondsDuration = 0;

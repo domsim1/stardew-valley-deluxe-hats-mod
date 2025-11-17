@@ -1,8 +1,6 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
-using StardewValley;
 using DeluxeHats.Hats;
-using System.Collections.Generic;
 
 namespace DeluxeHats
 {

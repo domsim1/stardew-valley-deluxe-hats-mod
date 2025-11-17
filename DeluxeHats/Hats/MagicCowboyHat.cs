@@ -13,7 +13,7 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff magicBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff magicBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (HatService.CurrentPlayer.isRidingHorse())
                 {
                     if (magicBuff == null)
@@ -45,7 +45,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff magicBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff magicBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (magicBuff != null)
             {
                 magicBuff.millisecondsDuration = 0;

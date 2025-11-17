@@ -1,6 +1,7 @@
 ﻿using StardewValley;
 using StardewValley.Characters;
 using System;
+using System.Collections.Generic;
 
 namespace DeluxeHats.Hats
 {
@@ -8,34 +9,54 @@ namespace DeluxeHats.Hats
     {
         public const string Name = "Pumpkin Mask";
         public const string Description = "Spawn a horse and mount it.\nThe horse will disappear when you unmount it.";
-        private static Horse daredevil;
+        private static Dictionary<long, Horse> playerHorses = new Dictionary<long, Horse>();
+
         public static void Activate()
         {
-            if (!Game1.currentLocation.isOutdoors.Value || Game1.eventUp)
+            if (HatService.CurrentPlayer == null) return;
+
+            if (!HatService.CurrentPlayer.currentLocation.isOutdoors.Value || Game1.eventUp)
             {
                 return;
             }
-            if (daredevil == null)
+
+            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
+
+            if (!playerHorses.ContainsKey(playerId))
             {
-                daredevil = new Horse(new Guid(), (int)HatService.CurrentPlayer.Tile.X, (int)HatService.CurrentPlayer.Tile.Y)
+                var horse = new Horse(new Guid(), (int)HatService.CurrentPlayer.Tile.X, (int)HatService.CurrentPlayer.Tile.Y)
                 {
-                    currentLocation = Game1.currentLocation,
+                    currentLocation = HatService.CurrentPlayer.currentLocation,
                 };
-                daredevil.faceDirection(HatService.CurrentPlayer.getDirection());
-                daredevil.Name = "Daredevil";
-                daredevil.displayName = "Daredevil";
-                Game1.getFarm().characters.Add((NPC)daredevil);
-                daredevil.checkAction(HatService.CurrentPlayer, Game1.currentLocation);
+                horse.faceDirection(HatService.CurrentPlayer.getDirection());
+                horse.Name = "Daredevil";
+                horse.displayName = "Daredevil";
+                HatService.CurrentPlayer.currentLocation.characters.Add((NPC)horse);
+                horse.checkAction(HatService.CurrentPlayer, HatService.CurrentPlayer.currentLocation);
+                playerHorses[playerId] = horse;
             }
         }
 
         public static void Disable()
         {
-            if (daredevil != null) {
-                daredevil.checkAction(HatService.CurrentPlayer, Game1.currentLocation);
+            if (HatService.CurrentPlayer == null) return;
+
+            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
+
+            if (playerHorses.TryGetValue(playerId, out Horse horse))
+            {
+                if (HatService.CurrentPlayer.isRidingHorse())
+                {
+                    HatService.CurrentPlayer.mount?.dismount();
+                }
+
+                if (horse.currentLocation != null)
+                {
+                    horse.currentLocation.characters.Remove(horse);
+                }
+
+                playerHorses.Remove(playerId);
             }
-            Game1.getFarm().characters.Remove(daredevil);
-            daredevil = null;
         }
     }
 }

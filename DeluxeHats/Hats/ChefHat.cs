@@ -13,12 +13,12 @@ namespace DeluxeHats.Hats
             HatService.OnUpdateTicked = (e) =>
             {
                 // Replace Game1.buffsDisplay.food with a call to get the food buff
-                Buff foodBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.source == "food");
+                Buff foodBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.source == "food");
                 if (foodBuff == null)
                 {
                     return;
                 }
-                Buff chefBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff chefBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (HatService.CurrentPlayer.isEating)
                 {
                     if (chefBuff != null)
@@ -63,7 +63,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff chefBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff chefBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (chefBuff != null)
             {
                 chefBuff.millisecondsDuration = 0;

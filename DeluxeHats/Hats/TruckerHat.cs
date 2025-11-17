@@ -14,8 +14,8 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff truckerHatBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (Game1.currentLocation.isOutdoors.Value && Game1.currentSeason == "summer")
+                Buff truckerHatBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value && Game1.currentSeason == "summer")
                 {
                     if (truckerHatBuff == null)
                     {
@@ -32,8 +32,7 @@ namespace DeluxeHats.Hats
                             );
                         truckerHatBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
                         truckerHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                        var buffsList = (List<Buff>)HatService.Helper.Reflection.GetField<List<Buff>>(Game1.buffsDisplay, "buffs").GetValue();
-                        buffsList.Add(truckerHatBuff);
+                        HatService.CurrentPlayer.applyBuff(truckerHatBuff);
                     }
                 }
                 else
@@ -48,7 +47,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff truckerHatBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff truckerHatBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (truckerHatBuff != null)
             {
                 truckerHatBuff.millisecondsDuration = 0;

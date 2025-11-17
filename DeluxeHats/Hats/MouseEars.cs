@@ -23,7 +23,7 @@ namespace DeluxeHats.Hats
             {
                 if (playerOldHP.TryGetValue(HatService.CurrentPlayer.UniqueMultiplayerID, out int oldHP) && oldHP > HatService.CurrentPlayer.health)
                 {
-                    Buff mouseBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                    Buff mouseBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                     if (mouseBuff == null)
                     {
                         var effects = new BuffEffects();
@@ -50,11 +50,11 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            if (HatService.CurrentPlayer != null)
-            {
-                playerOldHP.Remove(HatService.CurrentPlayer.UniqueMultiplayerID);
-            }
-            Buff mouseBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            if (HatService.CurrentPlayer == null) return;
+
+            playerOldHP.Remove(HatService.CurrentPlayer.UniqueMultiplayerID);
+
+            Buff mouseBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (mouseBuff != null)
             {
                 mouseBuff.millisecondsDuration = 0;

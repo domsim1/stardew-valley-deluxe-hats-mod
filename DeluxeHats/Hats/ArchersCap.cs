@@ -18,11 +18,11 @@ namespace DeluxeHats.Hats
                 {
                     return;
                 }
-                if (Game1.currentLocation.projectiles.Count > 0)
+                if (HatService.CurrentPlayer.currentLocation.projectiles.Count > 0)
                 {
-                    foreach (var projectile in Game1.currentLocation.projectiles)
+                    foreach (var projectile in HatService.CurrentPlayer.currentLocation.projectiles)
                     {
-                        if (HatService.Helper.Reflection.GetField<NetCharacterRef>(projectile, "theOneWhoFiredMe").GetValue().Get(Game1.currentLocation) is Farmer)
+                        if (HatService.Helper.Reflection.GetField<NetCharacterRef>(projectile, "theOneWhoFiredMe").GetValue().Get(HatService.CurrentPlayer.currentLocation) is Farmer)
                         {
                             var damage = HatService.Helper.Reflection.GetField<NetInt>(projectile, "damageToFarmer").GetValue();
                             damage.Value += Convert.ToInt32(Math.Log10((a * (1f / 60f)) * projectile.travelDistance));

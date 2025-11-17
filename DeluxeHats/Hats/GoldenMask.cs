@@ -23,7 +23,7 @@ namespace DeluxeHats.Hats
                         y: Convert.ToInt32(HatService.CurrentPlayer.position.Y - 320),
                         width: 640,
                         height: 640);
-                    Game1.currentLocation.damageMonster(rect, 1, 20, true, HatService.CurrentPlayer);
+                    HatService.CurrentPlayer.currentLocation.damageMonster(rect, 1, 20, true, HatService.CurrentPlayer);
                 }
             };
         }

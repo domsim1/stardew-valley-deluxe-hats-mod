@@ -8,10 +8,10 @@ This document contains a comprehensive table of all hats available in the Deluxe
 |---|----------|-----------|---------|
 | 1 | ??? | Mysterious Power | +10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity |
 | 2 | Abigail's Bow | Enchanted Presence | +2 Luck, +1 Foraging |
-| 3 | Arcane Hat | Time Manipulation | Random chance to delay time |
+| 3 | Arcane Hat | Arcane Mastery | +2 Luck, +2 Speed, +1 Attack |
 | 4 | Archer's Cap | Precision Aim | Shots from slingshot deal more damage the further they travel |
 | 5 | Beanie | Burglar's Luck | +2 Luck, +2 Attack |
-| 6 | Blobfish Mask | Deep Sea Hunter | Triple chance to find treasure while fishing at night |
+| 6 | Blobfish Mask | Deep Sea Treasure | +3 Fishing, +2 Luck (at night) |
 | 7 | Blue Bonnet | Season Protection | +2 Foraging, +1 Farming, +1 Fishing (outside in spring) |
 | 8 | Blue Bow | Serene Grace | +1 Luck, +1 Fishing |
 | 9 | Blue Cowboy Hat | Buckeroo | +2 Speed (while riding horse and 30s after) |
@@ -61,7 +61,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 53 | Governor's Hat | Royal Authority | +2 Luck, +1 Defense |
 | 54 | Green Turban | Jungle Mystic | +1 Luck, +1 Foraging |
 | 55 | Hair Bone | Primal Hunter | +2 Attack |
-| 56 | Hard Hat | Safety First | Reduce flying monster damage by 25% |
+| 56 | Hard Hat | Safety First | +3 Defense, +1 Immunity |
 | 57 | Hunter's Cap | Season Protection | +2 Foraging, +1 Farming, +1 Fishing (outside in fall) |
 | 58 | Infinity Crown | Infinite Power | +4 Farming, +4 Mining, +4 Fishing, +3 Luck |
 | 59 | Iridium Pan | Iridium Mastery | +3 Mining, +3 Luck, +2 Attack |
@@ -87,7 +87,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 79 | Paper Hat | Simple Joy | +1 Luck |
 | 80 | Party Hat | Party Time | +3 Luck |
 | 81 | Pink Bow | Sweet Charm | +1 Luck, +1 Foraging |
-| 82 | Pirate Hat | Treasure Hunter | Double chance to find treasure while fishing |
+| 82 | Pirate Hat | Treasure Hunter | +2 Fishing, +2 Luck |
 | 83 | Plum Chapeau | Royal Elegance | +1 Luck |
 | 84 | Polka Bow | Polka Dancer | +1 Speed |
 | 85 | Propeller Hat | Airborne | +1 Speed |

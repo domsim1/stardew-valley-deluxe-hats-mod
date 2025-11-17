@@ -13,7 +13,7 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff watermelonBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff watermelonBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (watermelonBuff == null)
                 {
                     var effects = new BuffEffects();
@@ -35,7 +35,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff watermelonBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff watermelonBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (watermelonBuff != null)
             {
                 watermelonBuff.millisecondsDuration = 0;

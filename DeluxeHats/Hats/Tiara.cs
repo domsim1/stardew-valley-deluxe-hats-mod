@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
 
             HatService.OnTimeChanged = (e) =>
             {
-                Buff tiaraBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff tiaraBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (tiaraBuff != null)
                 {
                     tiaraBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
@@ -39,7 +39,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff tiaraBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff tiaraBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (tiaraBuff != null)
             {
                 tiaraBuff.millisecondsDuration = 0;

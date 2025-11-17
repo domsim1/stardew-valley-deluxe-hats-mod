@@ -17,14 +17,14 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.currentLocation.isOutdoors.Value || HatService.CurrentPlayer.hasMenuOpen.Value || !HatService.CurrentPlayer.canMove || !Game1.game1.IsActive)
+                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value || HatService.CurrentPlayer.hasMenuOpen.Value || !HatService.CurrentPlayer.canMove || !Game1.game1.IsActive)
                 {
                     return;
                 }
                 if (e.Ticks % 480 == 0)
                 {
-                    multiplayer.GetValue().broadcastSprites(Game1.currentLocation, Utility.sparkleWithinArea(new Rectangle(Convert.ToInt32(HatService.CurrentPlayer.position.X), Convert.ToInt32(HatService.CurrentPlayer.position.Y) - 128, 32, 32), 2, Color.DeepPink));
-                    foreach (var npc in Game1.currentLocation.characters)
+                    multiplayer.GetValue().broadcastSprites(HatService.CurrentPlayer.currentLocation, Utility.sparkleWithinArea(new Rectangle(Convert.ToInt32(HatService.CurrentPlayer.position.X), Convert.ToInt32(HatService.CurrentPlayer.position.Y) - 128, 32, 32), 2, Color.DeepPink));
+                    foreach (var npc in HatService.CurrentPlayer.currentLocation.characters)
                     {
                         HatService.CurrentPlayer.changeFriendship(5, npc);
                     }

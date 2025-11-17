@@ -13,8 +13,8 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff fishingBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
-                if (!Game1.isRaining || !Game1.currentLocation.IsOutdoors)
+                Buff fishingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (!Game1.isRaining || !HatService.CurrentPlayer.currentLocation.IsOutdoors)
                 {
                     if (fishingBuff != null)
                     {
@@ -42,7 +42,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff fishinBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff fishinBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (fishinBuff != null)
             {
                 fishinBuff.millisecondsDuration = 0;

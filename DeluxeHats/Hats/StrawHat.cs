@@ -22,7 +22,7 @@ namespace DeluxeHats.Hats
                 {
                     return;
                 }
-                Buff farmingBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff farmingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (farmingBuff == null)
                 {
                     var effects = new BuffEffects();
@@ -43,7 +43,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff farmingBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+            Buff farmingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (farmingBuff != null)
             {
                 farmingBuff.millisecondsDuration = 0;

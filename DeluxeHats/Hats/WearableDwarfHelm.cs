@@ -10,9 +10,12 @@ namespace DeluxeHats.Hats
     {
         public const string Name = "Wearable Dwarf Helm";
         public const string Description = "You can Understand Dwarves.\nWhen entering a new level of a mine gain Mad Dwarf King buff:\n+4 Mining\n+2 Speed\n+1 Attack.";
-        private static string locaction;
+        private static Dictionary<long, string> playerLastLocation = new Dictionary<long, string>();
+
         public static void Activate()
         {
+            if (HatService.CurrentPlayer == null) return;
+
             HatService.CurrentPlayer.canUnderstandDwarves = true;
             HatService.OnUpdateTicked = (e) =>
             {
@@ -21,19 +24,22 @@ namespace DeluxeHats.Hats
                     return;
                 }
 
-                if (!Game1.currentLocation.name.Value.Contains("UndergroundMine"))
+                if (!HatService.CurrentPlayer.currentLocation.name.Value.Contains("UndergroundMine"))
                 {
                     return;
                 }
 
-                if (!string.IsNullOrEmpty(locaction) && Game1.currentLocation.name.Value == locaction)
+                long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
+                string currentLocation = HatService.CurrentPlayer.currentLocation.name.Value;
+
+                if (playerLastLocation.TryGetValue(playerId, out string lastLocation) && currentLocation == lastLocation)
                 {
                     return;
                 }
 
-                locaction = Game1.currentLocation.name.Value;
+                playerLastLocation[playerId] = currentLocation;
 
-                Buff dwarfBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+                Buff dwarfBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (dwarfBuff == null)
                 {
                     var effects = new BuffEffects();
@@ -56,6 +62,11 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
+            if (HatService.CurrentPlayer == null) return;
+
+            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
+            playerLastLocation.Remove(playerId);
+
             var mus = (LibraryMuseum)Game1.getLocationFromName("ArchaeologyHouse");
             if (mus != null)
             {
@@ -69,7 +80,8 @@ namespace DeluxeHats.Hats
                     HatService.CurrentPlayer.canUnderstandDwarves = false;
                 }
             }
-            Buff dwarfBuff = Game1.buffsDisplay.GetSortedBuffs().FirstOrDefault(x => x.id == HatService.BuffId);
+
+            Buff dwarfBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (dwarfBuff != null)
             {
                 dwarfBuff.millisecondsDuration = 0;
