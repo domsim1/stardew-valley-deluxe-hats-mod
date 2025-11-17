@@ -11,14 +11,9 @@ namespace DeluxeHats.Hats
         public const string Description = "Gain the Sage Buff:\n+2 Foraging";
         public static void Activate()
         {
-            HatService.OnUpdateTicked = (e) =>
-            {
-                Buff turbanBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (turbanBuff == null)
-                {
                     var effects = new BuffEffects();
                     effects.ForagingLevel.Set(2);
-                    turbanBuff = new Buff(
+                    var turbanBuff = new Buff(
                         id: HatService.BuffId,
                         source: "Deluxe Hats",
                         displaySource: Name,
@@ -28,8 +23,6 @@ namespace DeluxeHats.Hats
                     turbanBuff.description = "Sage\n+2 Foraging";
                     turbanBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(turbanBuff);
-                }
-            };
         }
 
         public static void Disable()

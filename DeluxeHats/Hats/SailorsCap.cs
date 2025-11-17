@@ -14,7 +14,7 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff tipsyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.source == "drink");
+                Buff tipsyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.displayName == "Tipsy");
                 if (tipsyBuff != null)
                 {
                     Buff powerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
@@ -30,9 +30,10 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         powerBuff.description = "Drunken Sailor\n+10 Attack";
+                        powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
                         HatService.CurrentPlayer.applyBuff(powerBuff);
                         HatService.CurrentPlayer.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
-                    }
+                    }   
                     powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
                 }
                 else if (HatService.CurrentPlayer.isGlowing && HatService.CurrentPlayer.glowingColor == Color.OrangeRed * 0.5f)

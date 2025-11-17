@@ -12,28 +12,23 @@ namespace DeluxeHats.Hats
 
         public static void Activate()
         {
-            var effects = new BuffEffects();
-            effects.LuckLevel.Set(3);
-
-            var buff = new Buff(
-                id: HatService.BuffId,
-                source: "Deluxe Hats",
-                displaySource: Name,
-                displayName: "Party Time",
-                effects: effects
-            );
-            buff.description = "Party Time\n+3 Luck";
-            buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-            HatService.CurrentPlayer.applyBuff(buff);
-
-            HatService.OnTimeChanged = (e) =>
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff == null)
             {
-                Buff partyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (partyBuff != null)
-                {
-                    partyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                }
-            };
+                var effects = new BuffEffects();
+                effects.LuckLevel.Set(3);
+
+                buff = new Buff(
+                    id: HatService.BuffId,
+                    source: "Deluxe Hats",
+                    displaySource: Name,
+                    displayName: "Party Time",
+                    effects: effects
+                );
+                buff.description = "Party Time\n+3 Luck";
+                buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                HatService.CurrentPlayer.applyBuff(buff);
+            }
         }
 
         public static void Disable()

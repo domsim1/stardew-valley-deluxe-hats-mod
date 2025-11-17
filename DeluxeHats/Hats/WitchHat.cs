@@ -26,15 +26,6 @@ namespace DeluxeHats.Hats
             buff.description = "Witching Hour\n+2 Luck\n+2 Foraging";
             buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
             HatService.CurrentPlayer.applyBuff(buff);
-
-            HatService.OnTimeChanged = (e) =>
-            {
-                Buff witchBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (witchBuff != null)
-                {
-                    witchBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
-                }
-            };
         }
 
         public static void Disable()

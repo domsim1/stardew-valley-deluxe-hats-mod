@@ -122,7 +122,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 114 | Trucker Hat | Season Protection | +2 Foraging, +1 Farming, +1 Fishing (outside in summer) |
 | 115 | Warrior Helmet | Battle Hardened | +4 Defense, +3 Attack |
 | 116 | Watermelon Band | Summer Refreshment | +2 Foraging, +1 Fishing |
-| 117 | Wearable Dwarf Helm | Mad Dwarf King | Understand Dwarves; +4 Mining, +2 Speed, +1 Attack (entering mine level) |
+| 117 | Wearable Dwarf Helm | Mad Dwarf King | +4 Mining, +2 Speed, +1 Attack (entering mine level) |
 | 118 | White Bow | Pure Elegance | +2 Luck, +1 Foraging |
 | 119 | White Turban | Sage | +2 Foraging |
 | 120 | Witch Hat | Witching Hour | +2 Luck, +2 Foraging |

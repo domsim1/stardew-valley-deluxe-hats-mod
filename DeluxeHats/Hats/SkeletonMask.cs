@@ -23,10 +23,10 @@ namespace DeluxeHats.Hats
             {
                 if (playerOldHP.TryGetValue(HatService.CurrentPlayer.UniqueMultiplayerID, out int oldHP) && oldHP > HatService.CurrentPlayer.health)
                 {
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, 10, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), "skeletonHit", "skeletonStep"));
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, 10, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), "skeletonHit", "skeletonStep"));
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, -10, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), "skeletonHit", "skeletonStep"));
-                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, -10, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), "skeletonHit", "skeletonStep"));
+                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10f, 10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
+                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10f, 10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
+                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10f, -10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
+                    HatService.CurrentPlayer.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10f, -10f, new Vector2(HatService.CurrentPlayer.Position.X, HatService.CurrentPlayer.Position.Y - 32), firingSound: "skeletonStep", collisionSound: "skeletonHit"));
                 }
                 playerOldHP[HatService.CurrentPlayer.UniqueMultiplayerID] = HatService.CurrentPlayer.health;
             };

@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
                     currentLocation = HatService.CurrentPlayer.currentLocation,
                 };
                 horse.faceDirection(HatService.CurrentPlayer.getDirection());
-                horse.Name = "Daredevil";
+                horse.Name = "Daredevil" + HatService.CurrentPlayer.name.Value;
                 horse.displayName = "Daredevil";
                 HatService.CurrentPlayer.currentLocation.characters.Add((NPC)horse);
                 horse.checkAction(HatService.CurrentPlayer, HatService.CurrentPlayer.currentLocation);
@@ -45,6 +45,7 @@ namespace DeluxeHats.Hats
 
             if (playerHorses.TryGetValue(playerId, out Horse horse))
             {
+                playerHorses.Remove(playerId);
                 if (HatService.CurrentPlayer.mount != null && HatService.CurrentPlayer.mount.Equals(horse))
                 {
                     HatService.CurrentPlayer.mount.dismount();
@@ -54,8 +55,6 @@ namespace DeluxeHats.Hats
                 {
                     horse.currentLocation.characters.Remove(horse);
                 }
-
-                playerHorses.Remove(playerId);
             }
         }
     }
