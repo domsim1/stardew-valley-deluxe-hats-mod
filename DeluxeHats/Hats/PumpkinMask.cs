@@ -1,66 +1,46 @@
 ﻿using StardewValley;
+using StardewValley.Buffs;
 using StardewValley.Characters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class PumpkinMask
     {
         public const string Name = "Pumpkin Mask";
-        public const string Description = "Spawn a horse and mount it.\nThe horse will disappear when you unmount it.";
-        private static Dictionary<long, Horse> playerHorses = new Dictionary<long, Horse>();
+        public const string Description = "Gain the Spooky Buff:\n+2 Speed";
 
         public static void Activate()
         {
-            if (HatService.CurrentPlayer == null) return;
-
-            if (!HatService.CurrentPlayer.currentLocation.isOutdoors.Value || Game1.eventUp)
+            HatService.OnUpdateTicked = (e) =>
             {
-                return;
-            }
-
-            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
-
-            if (HatService.CurrentPlayer.isRidingHorse())
-            {
-                return;
-            }
-
-            if (!playerHorses.ContainsKey(playerId))
-            {
-                var horse = new Horse(new Guid(), (int)HatService.CurrentPlayer.Tile.X, (int)HatService.CurrentPlayer.Tile.Y)
+                Buff propellerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (propellerBuff == null)
                 {
-                    currentLocation = HatService.CurrentPlayer.currentLocation,
-                };
-                horse.faceDirection(HatService.CurrentPlayer.getDirection());
-                horse.Name = "Daredevil" + HatService.CurrentPlayer.name.Value;
-                horse.displayName = "Daredevil";
-                HatService.CurrentPlayer.currentLocation.characters.Add((NPC)horse);
-                horse.checkAction(HatService.CurrentPlayer, HatService.CurrentPlayer.currentLocation);
-                playerHorses[playerId] = horse;
-            }
+                    var effects = new BuffEffects();
+                    effects.Speed.Set(2);
+                    propellerBuff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Pumpkin Mask",
+                        effects: effects
+                        );
+                    propellerBuff.description = "Spooky\n+2 Speed";
+                    propellerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(propellerBuff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            if (HatService.CurrentPlayer == null) return;
-
-            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
-
-            if (playerHorses.TryGetValue(playerId, out Horse horse))
+            Buff propellerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (propellerBuff != null)
             {
-                playerHorses.Remove(playerId);
-
-                if (HatService.CurrentPlayer.mount != null && HatService.CurrentPlayer.mount.Equals(horse))
-                {
-                    HatService.CurrentPlayer.mount = null;
-                }
-
-                if (horse.currentLocation != null)
-                {
-                    horse.currentLocation.characters.Remove(horse);
-                }
+                propellerBuff.millisecondsDuration = 0;
             }
         }
     }

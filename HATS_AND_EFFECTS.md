@@ -91,7 +91,7 @@ This document contains a comprehensive table of all hats available in the Deluxe
 | 83 | Plum Chapeau | Royal Elegance | +1 Luck |
 | 84 | Polka Bow | Polka Dancer | +1 Speed |
 | 85 | Propeller Hat | Airborne | +1 Speed |
-| 86 | Pumpkin Mask | Harvest Steed | Spawn and mount temporary horse |
+| 86 | Pumpkin Mask | Spooky | +2 Speed |
 | 87 | Qi Mask | Shadowy Power | +3 Mining, +3 Attack, +2 Defense |
 | 88 | Raccoon Hat | Clever Thief | +2 Foraging, +1 Speed |
 | 89 | Radioactive Goggles | Contaminated Vision | +2 Mining, +1 Attack, +1 Defense |
