@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using StardewValley;
+using StardewValley.Buffs;
+using System.Collections.Generic;
 
 namespace DeluxeHats.Hats
 {
@@ -20,38 +22,28 @@ namespace DeluxeHats.Hats
                 {
                     return;
                 }
-                Buff farmingBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+                Buff farmingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (farmingBuff == null)
                 {
+                    var effects = new BuffEffects();
+                    effects.FarmingLevel.Set(3);
                     farmingBuff = new Buff(
-                        farming: 3,
-                        fishing: 0,
-                        mining: 0,
-                        digging: 0,
-                        luck: 0,
-                        foraging: 0,
-                        crafting: 0,
-                        maxStamina: 0,
-                        magneticRadius: 0,
-                        speed: 0,
-                        defense: 0,
-                        attack: 0,
-                        minutesDuration: 1,
+                        id: HatService.BuffId,
                         source: "Deluxe Hats",
-                        displaySource: Name)
-                    {
-                        which = HatService.BuffId,
-                    };
-                    Game1.buffsDisplay.addOtherBuff(farmingBuff);
+                        displaySource: Name,
+                        displayName: "Dawn Farming",
+                        effects: effects
+                        );
                     farmingBuff.description = "Dawn Farming\n+3 Farming";
                     farmingBuff.millisecondsDuration = Convert.ToInt32((3.3f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(farmingBuff);
                 }
             };
         }
 
         public static void Disable()
         {
-            Buff farmingBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff farmingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (farmingBuff != null)
             {
                 farmingBuff.millisecondsDuration = 0;

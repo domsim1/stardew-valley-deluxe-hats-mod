@@ -1,5 +1,7 @@
 ﻿using StardewValley;
+using StardewValley.Buffs;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DeluxeHats.Hats
@@ -12,33 +14,25 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff truckerHatBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
-                if (Game1.currentLocation.isOutdoors && Game1.currentSeason == "summer")
+                Buff truckerHatBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value && Game1.currentSeason == "summer")
                 {
                     if (truckerHatBuff == null)
                     {
+                        var effects = new BuffEffects();
+                        effects.FarmingLevel.Set(1);
+                        effects.FishingLevel.Set(1);
+                        effects.ForagingLevel.Set(2);
                         truckerHatBuff = new Buff(
-                            farming: 1,
-                            fishing: 1,
-                            mining: 0,
-                            digging: 0,
-                            luck: 0,
-                            foraging: 2,
-                            crafting: 0,
-                            maxStamina: 0,
-                            magneticRadius: 0,
-                            speed: 0,
-                            defense: 0,
-                            attack: 0,
-                            minutesDuration: 1,
+                            id: HatService.BuffId,
                             source: "Deluxe Hats",
-                            displaySource: Name)
-                        {
-                            which = HatService.BuffId,
-                        };
-                        Game1.buffsDisplay.addOtherBuff(truckerHatBuff);
+                            displaySource: Name,
+                            displayName: "Season Protection",
+                            effects: effects
+                            );
                         truckerHatBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
                         truckerHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        HatService.CurrentPlayer.applyBuff(truckerHatBuff);
                     }
                 }
                 else
@@ -53,7 +47,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff truckerHatBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff truckerHatBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (truckerHatBuff != null)
             {
                 truckerHatBuff.millisecondsDuration = 0;

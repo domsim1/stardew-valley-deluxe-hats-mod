@@ -1,57 +1,47 @@
-﻿using Harmony;
-using Microsoft.Xna.Framework;
-using StardewValley;
-using StardewValley.Monsters;
-using StardewValley.Projectiles;
+﻿using StardewValley;
+using StardewValley.Buffs;
 using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class SkeletonMask
     {
         public const string Name = "Skeleton Mask";
-        public const string Description = "Shoot out bones when you get hit that deal 40 damage on impact.";
+        public const string Description = "Gain the Undead Resilience Buff:\n+3 Defense, +2 Attack, +1 Immunity";
+
         public static void Activate()
         {
-            HatService.Harmony.Patch(
-                original: AccessTools.Method(typeof(Farmer), nameof(Farmer.takeDamage)), 
-                prefix: new HarmonyMethod(typeof(SkeletonMask), nameof(SkeletonMask.TakeDamage_Prefix)));
+            HatService.OnUpdateTicked = (e) =>
+            {
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
+                {
+                    var effects = new BuffEffects();
+                    effects.Defense.Set(3);
+                    effects.Attack.Set(2);
+                    effects.Immunity.Set(1);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Undead Resilience",
+                        effects: effects
+                    );
+                    buff.description = "Undead Resilience\n+3 Defense\n+2 Attack\n+1 Immunity";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
+                }
+            };
         }
+
         public static void Disable()
         {
-            HatService.Harmony.Unpatch(
-                AccessTools.Method(typeof(Farmer), nameof(Farmer.takeDamage)),
-                HarmonyPatchType.Prefix,
-                HatService.HarmonyId);
-        }
-
-        private static bool TakeDamage_Prefix(Monster damager)
-        {
-            try
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                if (Game1.eventUp || Game1.player.FarmerSprite.isPassingOut())
-                { 
-                    return true;
-                }
-
-                bool flag1 = (damager == null || !damager.isInvincible()) && (damager == null || !(damager is GreenSlime) && !(damager is BigSlime) || !Game1.player.isWearingRing(520));
-                bool flag3 = !Game1.player.temporarilyInvincible && !Game1.player.isEating && !Game1.fadeToBlack && !Game1.buffsDisplay.hasBuff(21);
-
-                if (!(flag1 & flag3)) 
-                {
-                    return true;
-                }
-
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, 10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, 10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, 10, -10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
-                Game1.currentLocation.projectiles.Add(new BasicProjectile(40, 4, 0, 0, 0.202f, -10, -10, new Vector2(Game1.player.Position.X, Game1.player.Position.Y - 32), "skeletonHit", "skeletonStep", false, true, Game1.currentLocation, Game1.player, false, null));
-                return true;
-            }
-            catch (Exception ex)
-            {
-                HatService.Monitor.Log($"Failed in {nameof(TakeDamage_Prefix)}:\n{ex}");
-                return true;
+                buff.millisecondsDuration = 0;
             }
         }
     }

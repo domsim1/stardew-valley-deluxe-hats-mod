@@ -1,42 +1,46 @@
-﻿using Harmony;
-using StardewValley;
+﻿using StardewValley;
+using StardewValley.Buffs;
 using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class Beanie
     {
         public const string Name = "Beanie";
-        public const string Description = "Monsters have a greater chance of dropping loot.";
+        public const string Description = "Gain Burglar's Luck Buff:\n+2 Luck\n+2 Attack";
+
         public static void Activate()
         {
-            HatService.Harmony.Patch(
-                original: AccessTools.Method(typeof(Farmer), nameof(Farmer.isWearingRing)),
-                prefix: new HarmonyMethod(typeof(Beanie), nameof(Beanie.IsWearingRing_Prefix)));
+            HatService.OnUpdateTicked = (e) =>
+            {
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
+                {
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(2);
+                    effects.Attack.Set(2);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Burglar's Luck",
+                        effects: effects
+                    );
+                    buff.description = "Burglar's Luck\n+2 Luck\n+2 Attack";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            HatService.Harmony.Unpatch(
-               AccessTools.Method(typeof(Farmer), nameof(Farmer.isWearingRing)),
-               HarmonyPatchType.Prefix,
-               HatService.HarmonyId);
-        }
-
-        public static bool IsWearingRing_Prefix(ref bool __result, int ringIndex)
-        {
-            try
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                if (ringIndex == 526) {
-                    __result = true;
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                HatService.Monitor.Log($"Failed in {nameof(IsWearingRing_Prefix)}:\n{ex}");
-                return true;
+                buff.millisecondsDuration = 0;
             }
         }
     }

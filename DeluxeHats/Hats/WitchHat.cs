@@ -1,44 +1,46 @@
-﻿using System;
-using Harmony;
-using StardewValley;
-using StardewValley.Events;
+﻿using StardewValley;
+using StardewValley.Buffs;
+using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class WitchHat
     {
         public const string Name = "Witch Hat";
-        public const string Description = "When sleeping, increase chance for the witch farm event.";
+        public const string Description = "Gain Witching Hour Buff:\n+2 Luck\n+2 Foraging";
+
         public static void Activate()
         {
-            HatService.Harmony.Patch(
-                original: AccessTools.Method(typeof(Utility), nameof(Utility.pickFarmEvent)),
-                postfix: new HarmonyMethod(typeof(WitchHat), nameof(WitchHat.PickFarmEvent_Postfix)));
+            HatService.OnUpdateTicked = (e) =>
+            {
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
+                {
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(2);
+                    effects.ForagingLevel.Set(2);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Witching Hour",
+                        effects: effects
+                    );
+                    buff.description = "Witching Hour\n+2 Luck\n+2 Foraging";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            HatService.Harmony.Unpatch(
-                  AccessTools.Method(typeof(Utility), nameof(Utility.pickFarmEvent)),
-                  HarmonyPatchType.Postfix,
-                  HatService.HarmonyId);
-        }
-
-        public static void PickFarmEvent_Postfix(ref FarmEvent __result)
-        {
-            try
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                if (__result == null)
-                {
-                    if (Game1.random.NextDouble() < 0.45)
-                    {
-                        __result = new WitchEvent();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                HatService.Monitor.Log($"Failed in {nameof(PickFarmEvent_Postfix)}:\n{ex}");
+                buff.millisecondsDuration = 0;
             }
         }
     }

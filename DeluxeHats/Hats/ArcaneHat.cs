@@ -1,29 +1,46 @@
 ﻿using StardewValley;
+using StardewValley.Buffs;
+using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class ArcaneHat
     {
         public const string Name = "Arcane Hat";
-        public const string Description = "Random chance to delay time.";
-        private const double arcaneSetbackTimerChance = 0.0008f;
+        public const string Description = "Gain the Arcane Mastery Buff:\n+2 Luck, +2 Speed, +1 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.player.hasMenuOpen || !Game1.player.canMove || !Game1.game1.IsActive)
+                Buff arcaneBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (arcaneBuff == null)
                 {
-                    return;
-                }
-                if (Game1.random.NextDouble() < (arcaneSetbackTimerChance + (Game1.player.DailyLuck / 2000.0)))
-                {
-                    Game1.gameTimeInterval = 0;
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(2);
+                    effects.Speed.Set(2);
+                    effects.Attack.Set(1);
+                    arcaneBuff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Arcane Mastery",
+                        effects: effects
+                        );
+                    arcaneBuff.description = "Arcane Mastery\n+2 Luck, +2 Speed, +1 Attack";
+                    arcaneBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(arcaneBuff);
                 }
             };
         }
 
         public static void Disable()
         {
+            Buff arcaneBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (arcaneBuff != null)
+            {
+                arcaneBuff.millisecondsDuration = 0;
+            }
         }
     }
 }

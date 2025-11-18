@@ -1,60 +1,45 @@
-﻿using Harmony;
-using StardewValley;
+﻿using StardewValley;
+using StardewValley.Buffs;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 
 namespace DeluxeHats.Hats
 {
     public static class PartyHat
     {
         public const string Name = "Party Hat";
-        public const string Description = "Gifts given on a birthdays give even more friendship.";
+        public const string Description = "Gain Party Time Buff:\n+3 Luck";
+
         public static void Activate()
         {
-            HatService.Harmony.Patch(
-                original: AccessTools.Method(typeof(NPC), nameof(NPC.receiveGift)),
-                transpiler: new HarmonyMethod(typeof(PartyHat), nameof(PartyHat.SetUp_Transpiler)));
+            HatService.OnUpdateTicked = (e) =>
+            {
+                Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (buff == null)
+                {
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(3);
+
+                    buff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Party Time",
+                        effects: effects
+                    );
+                    buff.description = "Party Time\n+3 Luck";
+                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(buff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            HatService.Harmony.Unpatch(
-                AccessTools.Method(typeof(NPC), nameof(NPC.receiveGift)),
-                HarmonyPatchType.Transpiler,
-                HatService.HarmonyId);
-        }
-
-        public static IEnumerable<CodeInstruction> SetUp_Transpiler(IEnumerable<CodeInstruction> instructions)
-        {
-            try
+            Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (buff != null)
             {
-                var codes = new List<CodeInstruction>(instructions);
-                var found = false;
-                for (int i = 0; i < codes.Count; i++)
-                {
-                    if (codes[i].opcode == OpCodes.Ldc_R4)
-                    {
-                        if (codes[i].operand.ToString() == "8")
-                        {
-                            codes[i].opcode = OpCodes.Ldc_I4;
-                            codes[i].operand = 10f;
-                            found = true;
-                            break;
-                        }
-                    }
-                }
-                if (!found)
-                {
-                    throw new Exception("Could not find opcode Ldc_R4 with operand of 8");
-                }
-                return codes.AsEnumerable();
-            }
-            catch (Exception ex)
-            {
-                HatService.Monitor.Log($"Failed in {nameof(SetUp_Transpiler)}:\n{ex}");
-                return instructions;
+                buff.millisecondsDuration = 0;
             }
         }
     }

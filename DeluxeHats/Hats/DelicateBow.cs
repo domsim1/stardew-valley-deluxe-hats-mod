@@ -1,40 +1,47 @@
-﻿using Microsoft.Xna.Framework;
-using StardewModdingAPI;
-using StardewValley;
-using StardewValley.BellsAndWhistles;
+﻿using StardewValley;
+using StardewValley.Buffs;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class DelicateBow
     {
         public const string Name = "Delicate Bow";
-        public const string Description = "Sparkles inside!\nPeople in the same inside area as you will gain 5 friendship every 7 seconds.";
-
-        private static readonly IReflectedField<Multiplayer> multiplayer = HatService.Helper.Reflection.GetField<Multiplayer>(typeof(Game1), "multiplayer");
+        public const string Description = "Gain the Delicate Grace Buff:\n+2 Luck, +1 Speed";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.currentLocation.isOutdoors || Game1.player.hasMenuOpen || !Game1.player.canMove || !Game1.game1.IsActive)
+                Buff delicateBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (delicateBuff == null)
                 {
-                    return;
+                    var effects = new BuffEffects();
+                    effects.LuckLevel.Set(2);
+                    effects.Speed.Set(1);
+                    delicateBuff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Delicate Grace",
+                        effects: effects
+                        );
+                    delicateBuff.description = "Delicate Grace\n+2 Luck, +1 Speed";
+                    delicateBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(delicateBuff);
                 }
-                if (e.Ticks % 480 == 0)
-                {
-                    multiplayer.GetValue().broadcastSprites(Game1.currentLocation, Utility.sparkleWithinArea(new Rectangle(Convert.ToInt32(Game1.player.position.X), Convert.ToInt32(Game1.player.position.Y) - 128, 32, 32), 2, Color.DeepPink));
-                    foreach (var npc in Game1.currentLocation.getCharacters())
-                    {
-                        Game1.player.changeFriendship(5, npc);
-                    }
-                }
-
             };
         }
 
         public static void Disable()
         {
+            if (HatService.CurrentPlayer == null) return;
+
+            Buff delicateBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (delicateBuff != null)
+            {
+                delicateBuff.millisecondsDuration = 0;
+            }
         }
     }
 }

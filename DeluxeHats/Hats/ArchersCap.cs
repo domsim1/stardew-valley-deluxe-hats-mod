@@ -1,42 +1,48 @@
-﻿using Netcode;
-using StardewValley;
-using StardewValley.Network;
+﻿using StardewValley;
+using StardewValley.Buffs;
 using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class ArchersCap
     {
         public const string Name = "Archer's Cap";
-        public const string Description = "Shots from slingshot deal more damage the further they travel.";
-        public const double a = 1.0f;
+        public const string Description = "Gain the Precision Aim Buff:\n+2 Attack, +1 Speed, +1 Defense";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.player.hasMenuOpen || !Game1.player.canMove || !Game1.game1.IsActive)
+                Buff archerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (archerBuff == null)
                 {
-                    return;
-                }
-                if (Game1.currentLocation.projectiles.Count > 0)
-                {
-                    foreach (var projectile in Game1.currentLocation.projectiles)
-                    {
-                        if (HatService.Helper.Reflection.GetField<NetCharacterRef>(projectile, "theOneWhoFiredMe").GetValue().Get(Game1.currentLocation) is Farmer)
-                        {
-                            var damage = HatService.Helper.Reflection.GetField<NetInt>(projectile, "damageToFarmer").GetValue();
-                            damage.Value += Convert.ToInt32(Math.Log10((a * (1f / 60f)) * projectile.travelDistance));
-                        }
-                    }
-                }
-                if (Game1.player.usingSlingshot)
-                {
+                    var effects = new BuffEffects();
+                    effects.Attack.Set(2);
+                    effects.Speed.Set(1);
+                    effects.Defense.Set(1);
+                    archerBuff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Precision Aim",
+                        effects: effects
+                        );
+                    archerBuff.description = "Precision Aim\n+2 Attack, +1 Speed, +1 Defense";
+                    archerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(archerBuff);
                 }
             };
         }
 
         public static void Disable()
         {
+            if (HatService.CurrentPlayer == null) return;
+
+            Buff archerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (archerBuff != null)
+            {
+                archerBuff.millisecondsDuration = 0;
+            }
         }
     }
 }

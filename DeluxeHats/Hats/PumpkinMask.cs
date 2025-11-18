@@ -1,41 +1,47 @@
 ﻿using StardewValley;
+using StardewValley.Buffs;
 using StardewValley.Characters;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class PumpkinMask
     {
         public const string Name = "Pumpkin Mask";
-        public const string Description = "Spawn a horse and mount it.\nThe horse will disappear when you unmount it.";
-        private static Horse daredevil;
+        public const string Description = "Gain the Spooky Buff:\n+2 Speed";
+
         public static void Activate()
         {
-            if (!Game1.currentLocation.isOutdoors || Game1.eventUp)
+            HatService.OnUpdateTicked = (e) =>
             {
-                return;
-            }
-            if (daredevil == null)
-            {
-                daredevil = new Horse(new Guid(), Game1.player.getTileX(), Game1.player.getTileY())
+                Buff propellerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (propellerBuff == null)
                 {
-                    currentLocation = Game1.currentLocation,
-                };
-                daredevil.faceDirection(Game1.player.getDirection());
-                daredevil.Name = "Daredevil";
-                daredevil.displayName = "Daredevil";
-                Game1.getFarm().characters.Add((NPC)daredevil);
-                daredevil.checkAction(Game1.player, Game1.currentLocation);
-            }
+                    var effects = new BuffEffects();
+                    effects.Speed.Set(2);
+                    propellerBuff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Pumpkin Mask",
+                        effects: effects
+                        );
+                    propellerBuff.description = "Spooky\n+2 Speed";
+                    propellerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(propellerBuff);
+                }
+            };
         }
 
         public static void Disable()
         {
-            if (daredevil != null) {
-                daredevil.checkAction(Game1.player, Game1.currentLocation);
+            Buff propellerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (propellerBuff != null)
+            {
+                propellerBuff.millisecondsDuration = 0;
             }
-            Game1.getFarm().characters.Remove(daredevil);
-            daredevil = null;
         }
     }
 }

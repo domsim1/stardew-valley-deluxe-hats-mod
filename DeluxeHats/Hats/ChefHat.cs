@@ -1,61 +1,44 @@
-﻿using System.Linq;
-using StardewValley;
+﻿using StardewValley;
+using StardewValley.Buffs;
+using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class ChefHat
     {
         public const string Name = "Chef Hat";
-        public const string Description = "Double the buff from eating food.";
+        public const string Description = "Gain the Master Chef Buff:\n+2 Farming, +1 Foraging, +1 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                if (Game1.buffsDisplay.food == null)
-                {
-                    return;
-                }
-                Buff chefBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
-                if (Game1.player.isEating)
-                {
-                    if (chefBuff != null) 
-                    {
-                        chefBuff.millisecondsDuration = 0;
-                    }
-                    return;
-                }
+                Buff chefBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (chefBuff == null)
                 {
-                    var foodAttributes = HatService.Helper.Reflection.GetField<int[]>(Game1.buffsDisplay.food, "buffAttributes").GetValue();
+                    var effects = new BuffEffects();
+                    effects.FarmingLevel.Set(2);
+                    effects.ForagingLevel.Set(1);
+                    effects.FishingLevel.Set(1);
                     chefBuff = new Buff(
-                        farming: foodAttributes[0],
-                        fishing: foodAttributes[1],
-                        mining: foodAttributes[2],
-                        digging: foodAttributes[3],
-                        luck: foodAttributes[4],
-                        foraging: foodAttributes[5],
-                        crafting: foodAttributes[6],
-                        maxStamina: foodAttributes[7],
-                        magneticRadius: foodAttributes[8],
-                        speed: foodAttributes[9],
-                        defense: foodAttributes[10],
-                        attack: foodAttributes[11],
-                        minutesDuration: 1,
+                        id: HatService.BuffId,
                         source: "Deluxe Hats",
-                        displaySource: Name)
-                    {
-                        which = 6284,
-                    };
-                    chefBuff.description = $"Head Chef\nx2 {Game1.buffsDisplay.food.displaySource}";
-                    Game1.buffsDisplay.addOtherBuff(chefBuff);
+                        displaySource: Name,
+                        displayName: "Master Chef",
+                        effects: effects
+                        );
+                    chefBuff.description = "Master Chef\n+2 Farming, +1 Foraging, +1 Fishing";
+                    chefBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(chefBuff);
                 }
-                chefBuff.millisecondsDuration = Game1.buffsDisplay.food.millisecondsDuration;
             };
         }
 
         public static void Disable()
         {
-            Buff chefBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            if (HatService.CurrentPlayer == null) return;
+
+            Buff chefBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (chefBuff != null)
             {
                 chefBuff.millisecondsDuration = 0;

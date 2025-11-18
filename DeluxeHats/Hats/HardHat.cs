@@ -1,46 +1,46 @@
 ﻿using StardewValley;
-using StardewValley.Monsters;
+using StardewValley.Buffs;
 using System;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
     public static class HardHat
     {
         public const string Name = "Hard Hat";
-        public const string Description = "Reduce damage done by flying monsters by 25%.";
+        public const string Description = "Gain the Safety First Buff:\n+3 Defense, +1 Immunity";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                foreach (var character in Game1.currentLocation.getCharacters())
+                Buff hardHatBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (hardHatBuff == null)
                 {
-                    if (character.IsMonster)
-                    {
-                        var monster = character as Monster;
-                        if (monster.isGlider.Value && !monster.datingFarmer)
-                        {
-                            monster.age.Set(monster.damageToFarmer.Value);
-                            monster.damageToFarmer.Set(Convert.ToInt32(monster.damageToFarmer * 0.85));
-                            monster.datingFarmer = true;
-                        }
-                    }
+                    var effects = new BuffEffects();
+                    effects.Defense.Set(3);
+                    effects.Immunity.Set(1);
+                    hardHatBuff = new Buff(
+                        id: HatService.BuffId,
+                        source: "Deluxe Hats",
+                        displaySource: Name,
+                        displayName: "Safety First",
+                        effects: effects
+                        );
+                    hardHatBuff.description = "Safety First\n+3 Defense, +1 Immunity";
+                    hardHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    HatService.CurrentPlayer.applyBuff(hardHatBuff);
                 }
             };
         }
 
         public static void Disable()
         {
-            foreach (var character in Game1.currentLocation.getCharacters())
+            if (HatService.CurrentPlayer == null) return;
+
+            Buff hardHatBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (hardHatBuff != null)
             {
-                if (character.IsMonster)
-                {
-                    var monster = character as Monster;
-                    if (monster.isGlider.Value && monster.datingFarmer)
-                    {
-                        monster.damageToFarmer.Set(monster.age.Value);
-                        monster.datingFarmer = false;
-                    }
-                }
+                hardHatBuff.millisecondsDuration = 0;
             }
         }
     }

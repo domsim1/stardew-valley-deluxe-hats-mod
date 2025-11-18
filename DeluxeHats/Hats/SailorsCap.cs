@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Buffs;
+using System.Collections.Generic;
 
 namespace DeluxeHats.Hats
 {
@@ -12,29 +14,38 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff tipsyBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == Buff.tipsy);
+                Buff tipsyBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.displayName == "Tipsy");
                 if (tipsyBuff != null)
                 {
-                    Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+                    Buff powerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                     if (powerBuff == null)
                     {
-                        powerBuff = new Buff(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, attack: 10, minutesDuration: 1, source: "Deluxe Hats", displaySource: Name) { which = HatService.BuffId };
-                        Game1.buffsDisplay.addOtherBuff(powerBuff);
-                        Game1.player.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
+                        var effects = new BuffEffects();
+                        effects.Attack.Set(10);
+                        powerBuff = new Buff(
+                            id: HatService.BuffId,
+                            source: "Deluxe Hats",
+                            displaySource: Name,
+                            displayName: "Drunken Sailor",
+                            effects: effects
+                            );
                         powerBuff.description = "Drunken Sailor\n+10 Attack";
-                    }
+                        powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
+                        HatService.CurrentPlayer.applyBuff(powerBuff);
+                        HatService.CurrentPlayer.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);
+                    }   
                     powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
                 }
-                else if (Game1.player.isGlowing && Game1.player.glowingColor == Color.OrangeRed * 0.5f)
+                else if (HatService.CurrentPlayer.isGlowing && HatService.CurrentPlayer.glowingColor == Color.OrangeRed * 0.5f)
                 {
-                    Game1.player.stopGlowing();
+                    HatService.CurrentPlayer.stopGlowing();
                 }
             };
         }
 
         public static void Disable()
         {
-            Buff powerBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff powerBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (powerBuff != null)
             {
                 powerBuff.millisecondsDuration = 0;

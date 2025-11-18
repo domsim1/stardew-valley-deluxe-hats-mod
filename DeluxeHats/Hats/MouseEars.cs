@@ -1,5 +1,7 @@
-﻿using System.Linq;
-using StardewValley;
+﻿using StardewValley;
+using StardewValley.Buffs;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DeluxeHats.Hats
 {
@@ -7,51 +9,55 @@ namespace DeluxeHats.Hats
     {
         public const string Name = "Mouse Ears";
         public const string Description = "When you are hit gain Skittish Mouse Buff:\n+4 Speed";
-        public static int PlayerOldHP = 0;
+        private static Dictionary<long, int> playerOldHP = new Dictionary<long, int>();
+
         public static void Activate()
         {
+            long playerId = HatService.CurrentPlayer.UniqueMultiplayerID;
+            if (!playerOldHP.ContainsKey(playerId))
+            {
+                playerOldHP[playerId] = HatService.CurrentPlayer.health;
+            }
+
             HatService.OnUpdateTicked = (e) =>
             {
-                if (PlayerOldHP > Game1.player.health)
+                if (playerOldHP.TryGetValue(HatService.CurrentPlayer.UniqueMultiplayerID, out int oldHP) && oldHP > HatService.CurrentPlayer.health)
                 {
-                    Buff catBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
-                    if (catBuff == null)
+                    Buff mouseBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                    if (mouseBuff == null)
                     {
-                        catBuff = new Buff(
-                        farming: 0,
-                        fishing: 0,
-                        mining: 0,
-                        digging: 0,
-                        luck: 0,
-                        foraging: 0,
-                        crafting: 0,
-                        maxStamina: 0,
-                        magneticRadius: 0,
-                        speed: 4,
-                        defense: 0,
-                        attack: 0,
-                        minutesDuration: 1,
-                        source: "Deluxe Hats",
-                        displaySource: Name)
-                        {
-                            which = HatService.BuffId,
-                        };
-                        catBuff.description = "Skittish Mouse\n+4 Speed";
-                        Game1.buffsDisplay.addOtherBuff(catBuff);
+                        var effects = new BuffEffects();
+                        effects.Speed.Set(4);
+                        mouseBuff = new Buff(
+                            id: HatService.BuffId,
+                            source: "Deluxe Hats",
+                            displaySource: Name,
+                            displayName: "Skittish Mouse",
+                            effects: effects
+                            );
+                        mouseBuff.description = "Skittish Mouse\n+4 Speed";
+                        mouseBuff.millisecondsDuration = 1500;
+                        HatService.CurrentPlayer.applyBuff(mouseBuff);
                     }
-                    catBuff.millisecondsDuration = 1500;
+                    else
+                    {
+                        mouseBuff.millisecondsDuration = 1500;
+                    }
                 }
-                PlayerOldHP = Game1.player.health;
+                playerOldHP[HatService.CurrentPlayer.UniqueMultiplayerID] = HatService.CurrentPlayer.health;
             };
         }
 
         public static void Disable()
         {
-            PlayerOldHP = 0;
-            Buff catBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
-            if (catBuff != null)
+            if (HatService.CurrentPlayer == null) return;
+
+            playerOldHP.Remove(HatService.CurrentPlayer.UniqueMultiplayerID);
+
+            Buff mouseBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+            if (mouseBuff != null)
             {
-                catBuff.millisecondsDuration = 0;
+                mouseBuff.millisecondsDuration = 0;
             }
         }
     }

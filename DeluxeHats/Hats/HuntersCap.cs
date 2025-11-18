@@ -1,4 +1,5 @@
 ﻿using StardewValley;
+using StardewValley.Buffs;
 using System;
 using System.Linq;
 
@@ -12,33 +13,25 @@ namespace DeluxeHats.Hats
         {
             HatService.OnUpdateTicked = (e) =>
             {
-                Buff huntersCapBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
-                if (Game1.currentLocation.isOutdoors && Game1.currentSeason == "fall")
+                Buff huntersCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
+                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value && Game1.currentSeason == "fall")
                 {
                     if (huntersCapBuff == null)
                     {
+                        var effects = new BuffEffects();
+                        effects.FarmingLevel.Set(1);
+                        effects.FishingLevel.Set(1);
+                        effects.ForagingLevel.Set(2);
                         huntersCapBuff = new Buff(
-                            farming: 1,
-                            fishing: 1,
-                            mining: 0,
-                            digging: 0,
-                            luck: 0,
-                            foraging: 2,
-                            crafting: 0,
-                            maxStamina: 0,
-                            magneticRadius: 0,
-                            speed: 0,
-                            defense: 0,
-                            attack: 0,
-                            minutesDuration: 1,
+                            id: HatService.BuffId,
                             source: "Deluxe Hats",
-                            displaySource: Name)
-                        {
-                            which = HatService.BuffId,
-                        };
-                        Game1.buffsDisplay.addOtherBuff(huntersCapBuff);
+                            displaySource: Name,
+                            displayName: "Season Protection",
+                            effects: effects
+                            );
                         huntersCapBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
                         huntersCapBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        HatService.CurrentPlayer.applyBuff(huntersCapBuff);
                     }
                 }
                 else
@@ -53,7 +46,7 @@ namespace DeluxeHats.Hats
 
         public static void Disable()
         {
-            Buff huntersCapBuff = Game1.buffsDisplay.otherBuffs.FirstOrDefault(x => x.which == HatService.BuffId);
+            Buff huntersCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (huntersCapBuff != null)
             {
                 huntersCapBuff.millisecondsDuration = 0;
