@@ -55,7 +55,6 @@ namespace DeluxeHats.Hats
                 if (HatService.CurrentPlayer.mount != null && HatService.CurrentPlayer.mount.Equals(horse))
                 {
                     HatService.CurrentPlayer.mount = null;
-                    HatService.CurrentPlayer.setMountedPosition(0, 0);
                 }
 
                 if (horse.currentLocation != null)
