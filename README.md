@@ -16,7 +16,6 @@ All contributions would be much appreciated. You can contribute by:
 
 - Implement a hat or fix a bug.
 - Report an [issue](https://github.com/domsim1/stardew-valley-deluxe-hats-mod/issues).
-- Buy me a [coffee](https://www.buymeacoffee.com/domsim1) ☕.
 
 ## How to Implement a Hat or fix a bug
 
