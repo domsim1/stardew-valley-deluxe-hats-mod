@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class SpaceHelmet
     {
         public const string Name = "Space Helmet";
-        public const string Description = "Gain the Cosmic Adventure Buff:\n+3 Mining, +2 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(2);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Cosmic Adventure",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.space-helmet.name"),
+                        displayName: HatService.GetTranslation("hat.space-helmet.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Cosmic Adventure\n+3 Mining, +2 Luck";
+                    buff.description = HatService.GetTranslation("hat.space-helmet.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

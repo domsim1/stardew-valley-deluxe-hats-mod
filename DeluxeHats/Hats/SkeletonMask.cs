@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class SkeletonMask
     {
         public const string Name = "Skeleton Mask";
-        public const string Description = "Gain the Undead Resilience Buff:\n+3 Defense, +2 Attack, +1 Immunity";
 
         public static void Activate()
         {
@@ -24,12 +23,12 @@ namespace DeluxeHats.Hats
 
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Undead Resilience",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.skeleton-mask.name"),
+                        displayName: HatService.GetTranslation("hat.skeleton-mask.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Undead Resilience\n+3 Defense\n+2 Attack\n+1 Immunity";
+                    buff.description = HatService.GetTranslation("hat.skeleton-mask.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

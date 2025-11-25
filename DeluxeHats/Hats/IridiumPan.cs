@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class IridiumPan
     {
         public const string Name = "Iridium Pan (hat)";
-        public const string Description = "Gain the Iridium Mastery Buff:\n+3 Mining, +3 Luck, +2 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                     effects.Attack.Set(2);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Iridium Mastery",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.iridium-pan-hat.name"),
+                        displayName: HatService.GetTranslation("hat.iridium-pan-(hat).buff.name"),
                         effects: effects
                         );
-                    buff.description = "Iridium Mastery\n+3 Mining, +3 Luck, +2 Attack";
+                    buff.description = HatService.GetTranslation("hat.iridium-pan-(hat).buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

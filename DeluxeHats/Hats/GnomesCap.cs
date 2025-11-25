@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class GnomesCap
     {
         public const string Name = "Gnome's Cap";
-        public const string Description = "Gain the Gnome Protection Buff:\n+1 Luck\n+1 Mining";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.MiningLevel.Set(1);
                     gnomeBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Gnome Protection",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.gnomes-cap.name"),
+                        displayName: HatService.GetTranslation("hat.gnomes-cap.buff.name"),
                         effects: effects
                         );
-                    gnomeBuff.description = "Gnome Protection\n+1 Luck\n+1 Mining";
+                    gnomeBuff.description = HatService.GetTranslation("hat.gnomes-cap.buff.description");
                     gnomeBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(gnomeBuff);
                 }

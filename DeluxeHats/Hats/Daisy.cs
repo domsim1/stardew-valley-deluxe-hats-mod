@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class Daisy
     {
         public const string Name = "Daisy";
-        public const string Description = "Gain the Flower Child Buff:\n+2 Farming";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.FarmingLevel.Set(2);
                     daisyBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Flower Child",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.daisy.name"),
+                        displayName: HatService.GetTranslation("hat.daisy.buff.name"),
                         effects: effects
                         );
-                    daisyBuff.description = "Flower Child\n+2 Farming";
+                    daisyBuff.description = HatService.GetTranslation("hat.daisy.buff.description");
                     daisyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(daisyBuff);
                 }

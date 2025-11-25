@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class HairBone
     {
         public const string Name = "Hair Bone";
-        public const string Description = "Gain the Primal Hunter Buff:\n+2 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.Attack.Set(2);
                     boneBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Primal Hunter",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.hair-bone.name"),
+                        displayName: HatService.GetTranslation("hat.hair-bone.buff.name"),
                         effects: effects
                         );
-                    boneBuff.description = "Primal Hunter\n+2 Attack";
+                    boneBuff.description = HatService.GetTranslation("hat.hair-bone.buff.description");
                     boneBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(boneBuff);
                 }

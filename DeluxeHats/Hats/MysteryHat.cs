@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class MysteryHat
     {
         public const string Name = "Mystery Hat";
-        public const string Description = "Gain the Enigmatic Aura Buff:\n+2 Luck, +1 Farming, +1 Fishing, +1 Mining";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -23,12 +22,12 @@ namespace DeluxeHats.Hats
                     effects.MiningLevel.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Enigmatic Aura",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.mystery-hat.name"),
+                        displayName: HatService.GetTranslation("hat.mystery-hat.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Enigmatic Aura\n+2 Luck, +1 Farming, +1 Fishing, +1 Mining";
+                    buff.description = HatService.GetTranslation("hat.mystery-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

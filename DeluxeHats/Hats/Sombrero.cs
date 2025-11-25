@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class Sombrero
     {
         public const string Name = "Sombrero";
-        public const string Description = "Gain the Fiesta Buff:\n+2 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(2);
                     sombruroBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Fiesta",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.sombrero.name"),
+                        displayName: HatService.GetTranslation("hat.sombrero.buff.name"),
                         effects: effects
                         );
-                    sombruroBuff.description = "Fiesta\n+2 Luck";
+                    sombruroBuff.description = HatService.GetTranslation("hat.sombrero.buff.description");
                     sombruroBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(sombruroBuff);
                 }

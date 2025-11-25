@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class SwashbucklerHat
     {
         public const string Name = "Swashbuckler Hat";
-        public const string Description = "Gain the Swashbuckling Buff:\n+3 Attack, +2 Speed";
 
         public static void Activate()
         {
@@ -23,12 +22,12 @@ namespace DeluxeHats.Hats
 
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Swashbuckling",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.swashbuckler-hat.name"),
+                        displayName: HatService.GetTranslation("hat.swashbuckler-hat.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Swashbuckling\n+3 Attack\n+2 Speed";
+                    buff.description = HatService.GetTranslation("hat.swashbuckler-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

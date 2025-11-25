@@ -9,7 +9,6 @@ namespace DeluxeHats.Hats
     public static class StrawHat
     {
         public const string Name = "Straw Hat";
-        public const string Description = "When it's dawn and sunny, gain Dawn Farming Buff:\n+3 Farming";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -29,12 +28,12 @@ namespace DeluxeHats.Hats
                     effects.FarmingLevel.Set(3);
                     farmingBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Dawn Farming",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.straw-hat.name"),
+                        displayName: HatService.GetTranslation("hat.straw-hat.buff.name"),
                         effects: effects
                         );
-                    farmingBuff.description = "Dawn Farming\n+3 Farming";
+                    farmingBuff.description = HatService.GetTranslation("hat.straw-hat.buff.description");
                     farmingBuff.millisecondsDuration = Convert.ToInt32((3.3f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(farmingBuff);
                 }

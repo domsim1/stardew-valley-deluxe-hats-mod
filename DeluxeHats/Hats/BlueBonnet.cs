@@ -8,13 +8,14 @@ namespace DeluxeHats.Hats
     public static class BlueBonnet
     {
         public const string Name = "Blue Bonnet";
-        public const string Description = "While outside in spring get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
+                if (HatService.CurrentPlayer?.currentLocation == null)
+                    return;
                 Buff coolCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value && Game1.currentSeason == "spring")
+                if (HatService.CurrentPlayer.currentLocation.IsOutdoors && Game1.currentSeason == "spring")
                 {
                     if (coolCapBuff == null)
                     {
@@ -24,12 +25,12 @@ namespace DeluxeHats.Hats
                         effects.FishingLevel.Set(1);
                         coolCapBuff = new Buff(
                             id: HatService.BuffId,
-                            source: "Deluxe Hats",
-                            displaySource: Name,
-                            displayName: "Season Protection",
+                            source: HatService.GetTranslation("mod.name"),
+                            displaySource: HatService.GetTranslation("hat.blue-bonnet.name"),
+                            displayName: HatService.GetTranslation("hat.blue-bonnet.buff.name"),
                             effects: effects
                             );
-                        coolCapBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
+                        coolCapBuff.description = HatService.GetTranslation("hat.blue-bonnet.buff.description");
                         coolCapBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                         HatService.CurrentPlayer.applyBuff(coolCapBuff);
                     }

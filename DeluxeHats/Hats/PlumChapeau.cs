@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class PlumChapeau
     {
         public const string Name = "Plum Chapeau";
-        public const string Description = "Gain the Royal Elegance Buff:\n+1 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Royal Elegance",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.plum-chapeau.name"),
+                        displayName: HatService.GetTranslation("hat.plum-chapeau.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Royal Elegance\n+1 Luck";
+                    buff.description = HatService.GetTranslation("hat.plum-chapeau.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

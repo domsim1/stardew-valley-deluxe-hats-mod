@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class BowlerHat
     {
         public const string Name = "Bowler Hat";
-        public const string Description = "Gain the Dapper Buff:\n+1 Defense";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.Defense.Set(1);
                     bowlerBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Dapper",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.bowler-hat.name"),
+                        displayName: HatService.GetTranslation("hat.bowler-hat.buff.name"),
                         effects: effects
                         );
-                    bowlerBuff.description = "Dapper\n+1 Defense";
+                    bowlerBuff.description = HatService.GetTranslation("hat.bowler-hat.buff.description");
                     bowlerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(bowlerBuff);
                 }

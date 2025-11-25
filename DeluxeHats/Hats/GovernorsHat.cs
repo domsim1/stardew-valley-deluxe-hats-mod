@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class GovernorsHat
     {
         public const string Name = "Governor's Hat";
-        public const string Description = "Gain the Royal Authority Buff:\n+2 Luck, +1 Defense";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.Defense.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Royal Authority",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.governors-hat.name"),
+                        displayName: HatService.GetTranslation("hat.governors-hat.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Royal Authority\n+2 Luck, +1 Defense";
+                    buff.description = HatService.GetTranslation("hat.governors-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

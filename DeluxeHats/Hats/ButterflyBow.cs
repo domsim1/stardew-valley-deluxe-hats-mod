@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class ButterflyBow
     {
         public const string Name = "Butterfly Bow";
-        public const string Description = "Gain the Graceful Flight Buff:\n+2 Luck, +1 Foraging, +1 Farming";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                     effects.FarmingLevel.Set(1);
                     butterflyBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Graceful Flight",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.butterfly-bow.name"),
+                        displayName: HatService.GetTranslation("hat.butterfly-bow.buff.name"),
                         effects: effects
                         );
-                    butterflyBuff.description = "Graceful Flight\n+2 Luck, +1 Foraging, +1 Farming";
+                    butterflyBuff.description = HatService.GetTranslation("hat.butterfly-bow.buff.description");
                     butterflyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(butterflyBuff);
                 }

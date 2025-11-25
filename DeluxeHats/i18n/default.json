@@ -1,0 +1,603 @@
+{
+  "mod.name": "Deluxe Hats",
+  "mod.prefix": "Deluxe Hats:",
+
+  "debug.hat-equipped": "Hat Equipped by {0}: {1}",
+  "debug.hat-not-found": "Hat not found: {0}",
+
+  "hat.unknown.name": "???",
+  "hat.unknown.description": "Gain the Mysterious Power Buff:\n+10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity",
+  "hat.unknown.buff.name": "Mysterious Power",
+  "hat.unknown.buff.description": "Mysterious Power\n+10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity",
+
+  "hat.abigails-bow.name": "Abigail's Bow",
+  "hat.abigails-bow.description": "Gain the Enchanted Presence Buff:\n+2 Luck, +1 Foraging",
+  "hat.abigails-bow.buff.name": "Enchanted Presence",
+  "hat.abigails-bow.buff.description": "Enchanted Presence\n+2 Luck, +1 Foraging",
+
+  "hat.arcane-hat.name": "Arcane Hat",
+  "hat.arcane-hat.description": "Gain the Arcane Mastery Buff:\n+2 Luck, +2 Speed, +1 Attack",
+  "hat.arcane-hat.buff.name": "Arcane Mastery",
+  "hat.arcane-hat.buff.description": "Arcane Mastery\n+2 Luck, +2 Speed, +1 Attack",
+
+  "hat.archers-cap.name": "Archer's Cap",
+  "hat.archers-cap.description": "Gain the Precision Aim Buff:\n+2 Attack, +1 Speed, +1 Defense",
+  "hat.archers-cap.buff.name": "Precision Aim",
+  "hat.archers-cap.buff.description": "Precision Aim\n+2 Attack, +1 Speed, +1 Defense",
+
+  "hat.beanie.name": "Beanie",
+  "hat.beanie.description": "Gain Burglar's Luck Buff:\n+2 Luck\n+2 Attack",
+  "hat.beanie.buff.name": "Burglar's Luck",
+  "hat.beanie.buff.description": "Burglar's Luck\n+2 Luck\n+2 Attack",
+
+  "hat.blobfish-mask.name": "Blobfish Mask",
+  "hat.blobfish-mask.description": "While fishing at night gain the Deep Sea Treasure Buff:\n+3 Fishing, +2 Luck",
+  "hat.blobfish-mask.buff.name": "Deep Sea Treasure",
+  "hat.blobfish-mask.buff.description": "Deep Sea Treasure\n+3 Fishing, +2 Luck",
+
+  "hat.blue-bonnet.name": "Blue Bonnet",
+  "hat.blue-bonnet.description": "While outside in spring get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing",
+  "hat.blue-bonnet.buff.name": "Season Protection",
+  "hat.blue-bonnet.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
+
+  "hat.blue-bow.name": "Blue Bow",
+  "hat.blue-bow.description": "Gain the Serene Grace Buff:\n+1 Luck, +1 Fishing",
+  "hat.blue-bow.buff.name": "Serene Grace",
+  "hat.blue-bow.buff.description": "Serene Grace\n+1 Luck, +1 Fishing",
+
+  "hat.blue-cowboy-hat.name": "Blue Cowboy Hat",
+  "hat.blue-cowboy-hat.description": "While riding the horse and for 30 seconds after dismounting gain the Buckeroo Buff:\n+2 Speed",
+  "hat.blue-cowboy-hat.buff.name": "Buckeroo",
+  "hat.blue-cowboy-hat.buff.description": "Buckeroo\n+2 Speed",
+
+  "hat.blue-ribbon.name": "Blue Ribbon",
+  "hat.blue-ribbon.description": "Gain the Ribbon Charm Buff:\n+1 Luck",
+  "hat.blue-ribbon.buff.name": "Ribbon Charm",
+  "hat.blue-ribbon.buff.description": "Ribbon Charm\n+1 Luck",
+
+  "hat.bluebird-mask.name": "Bluebird Mask",
+  "hat.bluebird-mask.description": "Gain the Avian Grace Buff:\n+2 Foraging, +1 Speed",
+  "hat.bluebird-mask.buff.name": "Avian Grace",
+  "hat.bluebird-mask.buff.description": "Avian Grace\n+2 Foraging, +1 Speed",
+
+  "hat.bowler-hat.name": "Bowler Hat",
+  "hat.bowler-hat.description": "Gain the Dapper Buff:\n+1 Defense",
+  "hat.bowler-hat.buff.name": "Dapper",
+  "hat.bowler-hat.buff.description": "Dapper\n+1 Defense",
+
+  "hat.bridal-veil.name": "Bridal Veil",
+  "hat.bridal-veil.description": "Gain the Blissful Buff:\n+2 Luck",
+  "hat.bridal-veil.buff.name": "Blissful",
+  "hat.bridal-veil.buff.description": "Blissful\n+2 Luck",
+
+  "hat.bucket-hat.name": "Bucket Hat",
+  "hat.bucket-hat.description": "Gain the Rain Protection Buff:\n+2 Defense, +1 Immunity",
+  "hat.bucket-hat.buff.name": "Rain Protection",
+  "hat.bucket-hat.buff.description": "Rain Protection\n+2 Defense, +1 Immunity",
+
+  "hat.butterfly-bow.name": "Butterfly Bow",
+  "hat.butterfly-bow.description": "Gain the Graceful Flight Buff:\n+2 Luck, +1 Foraging, +1 Farming",
+  "hat.butterfly-bow.buff.name": "Graceful Flight",
+  "hat.butterfly-bow.buff.description": "Graceful Flight\n+2 Luck, +1 Foraging, +1 Farming",
+
+  "hat.cat-ears.name": "Cat Ears",
+  "hat.cat-ears.description": "When you are hit, meow and gain Skittish Kitty Buff:\n+3 Speed\n+2 Attack",
+  "hat.cat-ears.buff.name": "Skittish Kitty",
+  "hat.cat-ears.buff.description": "Skittish Kitty\n+3 Speed\n+2 Attack",
+
+  "hat.chef-hat.name": "Chef Hat",
+  "hat.chef-hat.description": "Gain the Master Chef Buff:\n+2 Farming, +1 Foraging, +1 Fishing",
+  "hat.chef-hat.buff.name": "Master Chef",
+  "hat.chef-hat.buff.description": "Master Chef\n+2 Farming, +1 Foraging, +1 Fishing",
+
+  "hat.chicken-mask.name": "Chicken Mask",
+  "hat.chicken-mask.description": "Gain the Chicken Friend Buff:\n+2 Farming",
+  "hat.chicken-mask.buff.name": "Chicken Friend",
+  "hat.chicken-mask.buff.description": "Chicken Friend\n+2 Farming",
+
+  "hat.cone-hat.name": "Cone Hat",
+  "hat.cone-hat.description": "Gain the Celebratory Buff:\n+1 Luck",
+  "hat.cone-hat.buff.name": "Celebratory",
+  "hat.cone-hat.buff.description": "Celebratory\n+1 Luck",
+
+  "hat.cool-cap.name": "Cool Cap",
+  "hat.cool-cap.description": "When outside in spring get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing",
+  "hat.cool-cap.buff.name": "Season Protection",
+  "hat.cool-cap.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
+
+  "hat.copper-pan.name": "Copper Pan",
+  "hat.copper-pan.description": "Gain the Prospector Buff:\n+2 Mining",
+  "hat.copper-pan.buff.name": "Prospector",
+  "hat.copper-pan.buff.description": "Prospector\n+2 Mining",
+
+  "hat.cowboy-hat.name": "Cowboy Hat",
+  "hat.cowboy-hat.description": "While riding the horse gain the Buckeroo Buff:\n+2 Speed",
+  "hat.cowboy-hat.buff.name": "Buckeroo",
+  "hat.cowboy-hat.buff.description": "Buckeroo\n+2 Speed",
+
+  "hat.cowgal-hat.name": "Cowgal Hat",
+  "hat.cowgal-hat.description": "While riding the horse gain the Buckeroo Buff:\n+2 Speed",
+  "hat.cowgal-hat.buff.name": "Buckeroo",
+  "hat.cowgal-hat.buff.description": "Buckeroo\n+2 Speed",
+
+  "hat.cowpoke-hat.name": "Cowpoke Hat",
+  "hat.cowpoke-hat.description": "While riding the horse gain the Buckeroo Buff:\n+1 Speed",
+  "hat.cowpoke-hat.buff.name": "Buckeroo",
+  "hat.cowpoke-hat.buff.description": "Buckeroo\n+1 Speed",
+
+  "hat.daisy.name": "Daisy",
+  "hat.daisy.description": "Gain the Flower Child Buff:\n+2 Farming",
+  "hat.daisy.buff.name": "Flower Child",
+  "hat.daisy.buff.description": "Flower Child\n+2 Farming",
+
+  "hat.dark-ballcap.name": "Dark Ballcap",
+  "hat.dark-ballcap.description": "Gain the Shadow Stealth Buff:\n+1 Defense, +1 Attack",
+  "hat.dark-ballcap.buff.name": "Shadow Stealth",
+  "hat.dark-ballcap.buff.description": "Shadow Stealth\n+1 Defense, +1 Attack",
+
+  "hat.dark-cowboy-hat.name": "Dark Cowboy Hat",
+  "hat.dark-cowboy-hat.description": "Gain the Dark Rider Buff:\n+2 Attack, +1 Speed",
+  "hat.dark-cowboy-hat.buff.name": "Dark Rider",
+  "hat.dark-cowboy-hat.buff.description": "Dark Rider\n+2 Attack, +1 Speed",
+
+  "hat.dark-velvet-bow.name": "Dark Velvet Bow",
+  "hat.dark-velvet-bow.description": "Gain the Elegant Poise Buff:\n+2 Luck",
+  "hat.dark-velvet-bow.buff.name": "Elegant Poise",
+  "hat.dark-velvet-bow.buff.description": "Elegant Poise\n+2 Luck",
+
+  "hat.delicate-bow.name": "Delicate Bow",
+  "hat.delicate-bow.description": "Gain the Delicate Grace Buff:\n+2 Luck, +1 Speed",
+  "hat.delicate-bow.buff.name": "Delicate Grace",
+  "hat.delicate-bow.buff.description": "Delicate Grace\n+2 Luck, +1 Speed",
+
+  "hat.deluxe-cowboy-hat.name": "Deluxe Cowboy Hat",
+  "hat.deluxe-cowboy-hat.description": "Gain the Premium Rider Buff:\n+3 Speed, +2 Attack",
+  "hat.deluxe-cowboy-hat.buff.name": "Premium Rider",
+  "hat.deluxe-cowboy-hat.buff.description": "Premium Rider\n+3 Speed, +2 Attack",
+
+  "hat.deluxe-pirate-hat.name": "Deluxe Pirate Hat",
+  "hat.deluxe-pirate-hat.description": "Gain the Elite Buccaneer Buff:\n+3 Attack, +2 Defense, +2 Luck",
+  "hat.deluxe-pirate-hat.buff.name": "Elite Buccaneer",
+  "hat.deluxe-pirate-hat.buff.description": "Elite Buccaneer\n+3 Attack, +2 Defense, +2 Luck",
+
+  "hat.dinosaur-hat.name": "Dinosaur Hat",
+  "hat.dinosaur-hat.description": "Gain the Ancient Predator Buff:\n+3 Attack",
+  "hat.dinosaur-hat.buff.name": "Ancient Predator",
+  "hat.dinosaur-hat.buff.description": "Ancient Predator\n+3 Attack",
+
+  "hat.earmuffs.name": "Earmuffs",
+  "hat.earmuffs.description": "When outside in winter get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing",
+  "hat.earmuffs.buff.name": "Season Protection",
+  "hat.earmuffs.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
+
+  "hat.elegant-turban.name": "Elegant Turban",
+  "hat.elegant-turban.description": "Gain the Posh Buff:\n+2 Luck",
+  "hat.elegant-turban.buff.name": "Posh",
+  "hat.elegant-turban.buff.description": "Posh\n+2 Luck",
+
+  "hat.emilys-magic-hat.name": "Emily's Magic Hat",
+  "hat.emilys-magic-hat.description": "Gain the Magical Aura Buff:\n+3 Luck",
+  "hat.emilys-magic-hat.buff.name": "Magical Aura",
+  "hat.emilys-magic-hat.buff.description": "Magical Aura\n+3 Luck",
+
+  "hat.eye-patch.name": "Eye Patch",
+  "hat.eye-patch.description": "Gain the Pirate Vision Buff:\n+1 Attack",
+  "hat.eye-patch.buff.name": "Pirate Vision",
+  "hat.eye-patch.buff.description": "Pirate Vision\n+1 Attack",
+
+  "hat.fashion-hat.name": "Fashion Hat",
+  "hat.fashion-hat.description": "Gain the Fashionable Buff:\n+2 Luck",
+  "hat.fashion-hat.buff.name": "Fashionable",
+  "hat.fashion-hat.buff.description": "Fashionable\n+2 Luck",
+
+  "hat.fedora.name": "Fedora",
+  "hat.fedora.description": "When in the Mines or Skull Cavern gain the \"Fortune and glory, kid.\" Buff:\n+2 Luck",
+  "hat.fedora.buff.name": "Fortune and glory",
+  "hat.fedora.buff.description": "\"Fortune and glory, kid.\"\n+2 Luck",
+
+  "hat.fishing-hat.name": "Fishing Hat",
+  "hat.fishing-hat.description": "While outside and not on the beach get the Shaded Buff:\n+2 Fishing",
+  "hat.fishing-hat.buff.name": "Shaded",
+  "hat.fishing-hat.buff.description": "Shaded\n+2 Fishing",
+
+  "hat.flat-topped-hat.name": "Flat Topped Hat",
+  "hat.flat-topped-hat.description": "Gain the Noble Buff:\n+1 Defense\n+1 Luck",
+  "hat.flat-topped-hat.buff.name": "Noble",
+  "hat.flat-topped-hat.buff.description": "Noble\n+1 Defense\n+1 Luck",
+
+  "hat.floppy-beanie.name": "Floppy Beanie",
+  "hat.floppy-beanie.description": "Gain the Cozy Buff:\n+1 Defense",
+  "hat.floppy-beanie.buff.name": "Cozy",
+  "hat.floppy-beanie.buff.description": "Cozy\n+1 Defense",
+
+  "hat.foragers-hat.name": "Forager's Hat",
+  "hat.foragers-hat.description": "Gain the Foraging Expertise Buff:\n+3 Foraging, +1 Luck",
+  "hat.foragers-hat.buff.name": "Foraging Expertise",
+  "hat.foragers-hat.buff.description": "Foraging Expertise\n+3 Foraging, +1 Luck",
+
+  "hat.frog-hat.name": "Frog Hat",
+  "hat.frog-hat.description": "Gain the Amphibian Adaptation Buff:\n+2 Fishing, +1 Immunity",
+  "hat.frog-hat.buff.name": "Amphibian Adaptation",
+  "hat.frog-hat.buff.description": "Amphibian Adaptation\n+2 Fishing, +1 Immunity",
+
+  "hat.garbage-hat.name": "Garbage Hat",
+  "hat.garbage-hat.description": "Gain the Trash Panda Buff:\n+3 Foraging",
+  "hat.garbage-hat.buff.name": "Trash Panda",
+  "hat.garbage-hat.buff.description": "Trash Panda\n+3 Foraging",
+
+  "hat.gils-hat.name": "Gil's Hat",
+  "hat.gils-hat.description": "Gain the Carpenter's Pride Buff:\n+2 Farming, +1 Defense",
+  "hat.gils-hat.buff.name": "Carpenter's Pride",
+  "hat.gils-hat.buff.description": "Carpenter's Pride\n+2 Farming, +1 Defense",
+
+  "hat.gnomes-cap.name": "Gnome's Cap",
+  "hat.gnomes-cap.description": "Gain the Gnome Protection Buff:\n+1 Luck\n+1 Mining",
+  "hat.gnomes-cap.buff.name": "Gnome Protection",
+  "hat.gnomes-cap.buff.description": "Gnome Protection\n+1 Luck\n+1 Mining",
+
+  "hat.goblin-mask.name": "Goblin Mask",
+  "hat.goblin-mask.description": "Gain the Mischievous Buff:\n+2 Attack",
+  "hat.goblin-mask.buff.name": "Mischievous",
+  "hat.goblin-mask.buff.description": "Mischievous\n+2 Attack",
+
+  "hat.goggles.name": "Goggles",
+  "hat.goggles.description": "Gain the Focused Vision Buff:\n+1 Mining, +1 Fishing",
+  "hat.goggles.buff.name": "Focused Vision",
+  "hat.goggles.buff.description": "Focused Vision\n+1 Mining, +1 Fishing",
+
+  "hat.gold-pan.name": "Gold Pan (hat)",
+  "hat.gold-pan.description": "Gain the Golden Prosperity Buff:\n+2 Mining, +2 Luck",
+  "hat.gold-pan.buff.name": "Golden Prosperity",
+  "hat.gold-pan.buff.description": "Golden Prosperity\n+2 Mining, +2 Luck",
+
+  "hat.golden-helmet.name": "Golden Helmet",
+  "hat.golden-helmet.description": "Gain the Golden Guardian Buff:\n+3 Defense, +3 Luck, +2 Immunity",
+  "hat.golden-helmet.buff.name": "Golden Guardian",
+  "hat.golden-helmet.buff.description": "Golden Guardian\n+3 Defense, +3 Luck, +2 Immunity",
+
+  "hat.golden-mask.name": "Golden Mask",
+  "hat.golden-mask.description": "Damage enemies near you every 3 seconds, the damage can kill mummies.",
+
+  "hat.good-ol-cap.name": "Good Ol' Cap",
+  "hat.good-ol-cap.description": "When outside in spring, fall or summer get The Forager Buff:\n+2 Foraging",
+  "hat.good-ol-cap.buff.name": "The Forager",
+  "hat.good-ol-cap.buff.description": "The Forager\n+2 Foraging",
+
+  "hat.governors-hat.name": "Governor's Hat",
+  "hat.governors-hat.description": "Gain the Royal Authority Buff:\n+2 Luck, +1 Defense",
+  "hat.governors-hat.buff.name": "Royal Authority",
+  "hat.governors-hat.buff.description": "Royal Authority\n+2 Luck, +1 Defense",
+
+  "hat.green-turban.name": "Green Turban",
+  "hat.green-turban.description": "Gain the Jungle Mystic Buff:\n+1 Luck\n+1 Foraging",
+  "hat.green-turban.buff.name": "Jungle Mystic",
+  "hat.green-turban.buff.description": "Jungle Mystic\n+1 Luck\n+1 Foraging",
+
+  "hat.hair-bone.name": "Hair Bone",
+  "hat.hair-bone.description": "Gain the Primal Hunter Buff:\n+2 Attack",
+  "hat.hair-bone.buff.name": "Primal Hunter",
+  "hat.hair-bone.buff.description": "Primal Hunter\n+2 Attack",
+
+  "hat.hard-hat.name": "Hard Hat",
+  "hat.hard-hat.description": "Gain the Safety First Buff:\n+3 Defense, +1 Immunity",
+  "hat.hard-hat.buff.name": "Safety First",
+  "hat.hard-hat.buff.description": "Safety First\n+3 Defense, +1 Immunity",
+
+  "hat.hunters-cap.name": "Hunter's Cap",
+  "hat.hunters-cap.description": "When outside in fall get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing",
+  "hat.hunters-cap.buff.name": "Season Protection",
+  "hat.hunters-cap.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
+
+  "hat.infinity-crown.name": "Infinity Crown",
+  "hat.infinity-crown.description": "Gain the Infinite Power Buff:\n+4 Farming, +4 Mining, +4 Fishing, +3 Luck",
+  "hat.infinity-crown.buff.name": "Infinite Power",
+  "hat.infinity-crown.buff.description": "Infinite Power\n+4 Farming, +4 Mining, +4 Fishing, +3 Luck",
+
+  "hat.iridium-pan.name": "Iridium Pan (hat)",
+  "hat.iridium-pan.description": "Gain the Iridium Mastery Buff:\n+3 Mining, +3 Luck, +2 Attack",
+  "hat.iridium-pan.buff.name": "Iridium Mastery",
+  "hat.iridium-pan.buff.description": "Iridium Mastery\n+3 Mining, +3 Luck, +2 Attack",
+
+  "hat.jester-hat.name": "Jester Hat",
+  "hat.jester-hat.description": "Gain the Carnival Spirit Buff:\n+1 Speed, +1 Luck",
+  "hat.jester-hat.buff.name": "Carnival Spirit",
+  "hat.jester-hat.buff.description": "Carnival Spirit\n+1 Speed, +1 Luck",
+
+  "hat.joja-cap.name": "Joja Cap",
+  "hat.joja-cap.description": "Gain the Profit Seeker Buff:\n+1 Luck",
+  "hat.joja-cap.buff.name": "Profit Seeker",
+  "hat.joja-cap.buff.description": "Profit Seeker\n+1 Luck",
+
+  "hat.junimo-hat.name": "Junimo Hat",
+  "hat.junimo-hat.description": "Gain the Junimo Spirit Buff:\n+3 Farming, +2 Foraging, +1 Luck",
+  "hat.junimo-hat.buff.name": "Junimo Spirit",
+  "hat.junimo-hat.buff.description": "Junimo Spirit\n+3 Farming, +2 Foraging, +1 Luck",
+
+  "hat.knights-helmet.name": "Knight's Helmet",
+  "hat.knights-helmet.description": "Gain the Knight's Valor Buff:\n+4 Defense, +2 Immunity",
+  "hat.knights-helmet.buff.name": "Knight's Valor",
+  "hat.knights-helmet.buff.description": "Knight's Valor\n+4 Defense, +2 Immunity",
+
+  "hat.laurel-wreath-crown.name": "Laurel Wreath Crown",
+  "hat.laurel-wreath-crown.description": "Gain the Champion's Valor Buff:\n+3 Attack, +3 Defense, +2 Luck",
+  "hat.laurel-wreath-crown.buff.name": "Champion's Valor",
+  "hat.laurel-wreath-crown.buff.description": "Champion's Valor\n+3 Attack, +3 Defense, +2 Luck",
+
+  "hat.leprechaun-hat.name": "Leprechaun Hat",
+  "hat.leprechaun-hat.description": "Gain the Lucky Gold Buff:\n+3 Luck, +2 Farming",
+  "hat.leprechaun-hat.buff.name": "Lucky Gold",
+  "hat.leprechaun-hat.buff.description": "Lucky Gold\n+3 Luck, +2 Farming",
+
+  "hat.living-hat.name": "Living Hat",
+  "hat.living-hat.description": "Gain the Living Bond Buff:\n+2 Farming",
+  "hat.living-hat.buff.name": "Living Bond",
+  "hat.living-hat.buff.description": "Living Bond\n+2 Farming",
+
+  "hat.logo-cap.name": "Logo Cap",
+  "hat.logo-cap.description": "Gain the Brand Ambassador Buff:\n+1 Defense\n+1 Attack",
+  "hat.logo-cap.buff.name": "Brand Ambassador",
+  "hat.logo-cap.buff.description": "Brand Ambassador\n+1 Defense\n+1 Attack",
+
+  "hat.lucky-bow.name": "Lucky Bow",
+  "hat.lucky-bow.description": "Gain Lucky charm Buff:\n+1 Luck",
+  "hat.lucky-bow.buff.name": "Lucky charm",
+  "hat.lucky-bow.buff.description": "Lucky charm\n+1 Luck",
+
+  "hat.magic-cowboy-hat.name": "Magic Cowboy Hat",
+  "hat.magic-cowboy-hat.description": "While riding the horse gain the Spellslinger Buff:\n+2 Speed\n+1 Attack",
+  "hat.magic-cowboy-hat.buff.name": "Spellslinger",
+  "hat.magic-cowboy-hat.buff.description": "Spellslinger\n+2 Speed\n+1 Attack",
+
+  "hat.magic-turban.name": "Magic Turban",
+  "hat.magic-turban.description": "Gain the Mystic Buff:\n+2 Luck\n+2 Foraging",
+  "hat.magic-turban.buff.name": "Mystic",
+  "hat.magic-turban.buff.description": "Mystic\n+2 Luck\n+2 Foraging",
+
+  "hat.mouse-ears.name": "Mouse Ears",
+  "hat.mouse-ears.description": "When you are hit gain Skittish Mouse Buff:\n+4 Speed",
+  "hat.mouse-ears.buff.name": "Skittish Mouse",
+  "hat.mouse-ears.buff.description": "Skittish Mouse\n+4 Speed",
+
+  "hat.mr-qis-hat.name": "Mr. Qi's Hat",
+  "hat.mr-qis-hat.description": "Gain the Qi's Blessing Buff:\n+5 Luck, +3 Mining, +2 Speed",
+  "hat.mr-qis-hat.buff.name": "Qi's Blessing",
+  "hat.mr-qis-hat.buff.description": "Qi's Blessing\n+5 Luck, +3 Mining, +2 Speed",
+
+  "hat.mummy-mask.name": "Mummy Mask",
+  "hat.mummy-mask.description": "Gain the Ancient Curse Buff:\n+2 Attack, +2 Defense, +1 Mining",
+  "hat.mummy-mask.buff.name": "Ancient Curse",
+  "hat.mummy-mask.buff.description": "Ancient Curse\n+2 Attack, +2 Defense, +1 Mining",
+
+  "hat.mushroom-cap.name": "Mushroom Cap",
+  "hat.mushroom-cap.description": "Gain the Fungi Guide Buff:\n+2 Foraging",
+  "hat.mushroom-cap.buff.name": "Fungi Guide",
+  "hat.mushroom-cap.buff.description": "Fungi Guide\n+2 Foraging",
+
+  "hat.mystery-hat.name": "Mystery Hat",
+  "hat.mystery-hat.description": "Gain the Enigmatic Aura Buff:\n+2 Luck, +1 Farming, +1 Fishing, +1 Mining",
+  "hat.mystery-hat.buff.name": "Enigmatic Aura",
+  "hat.mystery-hat.buff.description": "Enigmatic Aura\n+2 Luck, +1 Farming, +1 Fishing, +1 Mining",
+
+  "hat.official-cap.name": "Official Cap",
+  "hat.official-cap.description": "While on the Beach gain the Ol' Mariner Buff:\n+2 Fishing",
+  "hat.official-cap.buff.name": "Ol' Mariner",
+  "hat.official-cap.buff.description": "Ol' Mariner\n+2 Fishing",
+
+  "hat.pageboy-cap.name": "Pageboy Cap",
+  "hat.pageboy-cap.description": "Gain the Refined Elegance Buff:\n+1 Luck, +1 Farming",
+  "hat.pageboy-cap.buff.name": "Refined Elegance",
+  "hat.pageboy-cap.buff.description": "Refined Elegance\n+1 Luck, +1 Farming",
+
+  "hat.panda-hat.name": "Panda Hat",
+  "hat.panda-hat.description": "Gain the Bamboo Muncher Buff:\n+3 Farming",
+  "hat.panda-hat.buff.name": "Bamboo Muncher",
+  "hat.panda-hat.buff.description": "Bamboo Muncher\n+3 Farming",
+
+  "hat.paper-hat.name": "Paper Hat",
+  "hat.paper-hat.description": "Gain the Simple Joy Buff:\n+1 Luck",
+  "hat.paper-hat.buff.name": "Simple Joy",
+  "hat.paper-hat.buff.description": "Simple Joy\n+1 Luck",
+
+  "hat.party-hat.name": "Party Hat",
+  "hat.party-hat.description": "Gain Party Time Buff:\n+3 Luck",
+  "hat.party-hat.buff.name": "Party Time",
+  "hat.party-hat.buff.description": "Party Time\n+3 Luck",
+
+  "hat.pink-bow.name": "Pink Bow",
+  "hat.pink-bow.description": "Gain the Sweet Charm Buff:\n+1 Luck, +1 Foraging",
+  "hat.pink-bow.buff.name": "Sweet Charm",
+  "hat.pink-bow.buff.description": "Sweet Charm\n+1 Luck, +1 Foraging",
+
+  "hat.pirate-hat.name": "Pirate Hat",
+  "hat.pirate-hat.description": "Gain the Treasure Hunter Buff:\n+2 Fishing, +2 Luck",
+  "hat.pirate-hat.buff.name": "Treasure Hunter",
+  "hat.pirate-hat.buff.description": "Treasure Hunter\n+2 Fishing, +2 Luck",
+
+  "hat.plum-chapeau.name": "Plum Chapeau",
+  "hat.plum-chapeau.description": "Gain the Royal Elegance Buff:\n+1 Luck",
+  "hat.plum-chapeau.buff.name": "Royal Elegance",
+  "hat.plum-chapeau.buff.description": "Royal Elegance\n+1 Luck",
+
+  "hat.polka-bow.name": "Polka Bow",
+  "hat.polka-bow.description": "Gain the Polka Dancer Buff:\n+1 Speed",
+  "hat.polka-bow.buff.name": "Polka Dancer",
+  "hat.polka-bow.buff.description": "Polka Dancer\n+1 Speed",
+
+  "hat.propeller-hat.name": "Propeller Hat",
+  "hat.propeller-hat.description": "Gain the Airborne Buff:\n+1 Speed",
+  "hat.propeller-hat.buff.name": "Airborne",
+  "hat.propeller-hat.buff.description": "Airborne\n+1 Speed",
+
+  "hat.pumpkin-mask.name": "Pumpkin Mask",
+  "hat.pumpkin-mask.description": "Gain the Spooky Buff:\n+2 Speed",
+  "hat.pumpkin-mask.buff.name": "Spooky",
+  "hat.pumpkin-mask.buff.description": "Spooky\n+2 Speed",
+
+  "hat.qi-mask.name": "Qi Mask",
+  "hat.qi-mask.description": "Gain the Shadowy Power Buff:\n+3 Mining, +3 Attack, +2 Defense",
+  "hat.qi-mask.buff.name": "Shadowy Power",
+  "hat.qi-mask.buff.description": "Shadowy Power\n+3 Mining, +3 Attack, +2 Defense",
+
+  "hat.raccoon-hat.name": "Raccoon Hat",
+  "hat.raccoon-hat.description": "Gain the Clever Thief Buff:\n+2 Foraging, +1 Speed",
+  "hat.raccoon-hat.buff.name": "Clever Thief",
+  "hat.raccoon-hat.buff.description": "Clever Thief\n+2 Foraging, +1 Speed",
+
+  "hat.radioactive-goggles.name": "Radioactive Goggles",
+  "hat.radioactive-goggles.description": "Gain the Contaminated Vision Buff:\n+2 Mining, +1 Attack, +1 Defense",
+  "hat.radioactive-goggles.buff.name": "Contaminated Vision",
+  "hat.radioactive-goggles.buff.description": "Contaminated Vision\n+2 Mining, +1 Attack, +1 Defense",
+
+  "hat.red-cowboy-hat.name": "Red Cowboy Hat",
+  "hat.red-cowboy-hat.description": "While riding the horse and for 30 seconds after dismounting gain the Buckeroo Buff:\n+2 Speed",
+  "hat.red-cowboy-hat.buff.name": "Buckeroo",
+  "hat.red-cowboy-hat.buff.description": "Buckeroo\n+2 Speed",
+
+  "hat.red-fez.name": "Red Fez",
+  "hat.red-fez.description": "Gain the Exotic Flair Buff:\n+1 Luck, +1 Speed",
+  "hat.red-fez.buff.name": "Exotic Flair",
+  "hat.red-fez.buff.description": "Exotic Flair\n+1 Luck, +1 Speed",
+
+  "hat.sailors-cap.name": "Sailor's Cap",
+  "hat.sailors-cap.description": "When tipsy gain the Drunken Sailor Buff:\n+10 Attack",
+  "hat.sailors-cap.buff.name": "Drunken Sailor",
+  "hat.sailors-cap.buff.description": "Drunken Sailor\n+10 Attack",
+
+  "hat.santa-hat.name": "Santa Hat",
+  "hat.santa-hat.description": "Gain the Holiday Spirit Buff:\n+1 Luck\n+1 Farming",
+  "hat.santa-hat.buff.name": "Holiday Spirit",
+  "hat.santa-hat.buff.description": "Holiday Spirit\n+1 Luck\n+1 Farming",
+
+  "hat.skeleton-mask.name": "Skeleton Mask",
+  "hat.skeleton-mask.description": "Gain the Undead Resilience Buff:\n+3 Defense, +2 Attack, +1 Immunity",
+  "hat.skeleton-mask.buff.name": "Undead Resilience",
+  "hat.skeleton-mask.buff.description": "Undead Resilience\n+3 Defense\n+2 Attack\n+1 Immunity",
+
+  "hat.small-cap.name": "Small Cap",
+  "hat.small-cap.description": "Gain the Quick Reflexes Buff:\n+1 Speed",
+  "hat.small-cap.buff.name": "Quick Reflexes",
+  "hat.small-cap.buff.description": "Quick Reflexes\n+1 Speed",
+
+  "hat.sombrero.name": "Sombrero",
+  "hat.sombrero.description": "Gain the Fiesta Buff:\n+2 Luck",
+  "hat.sombrero.buff.name": "Fiesta",
+  "hat.sombrero.buff.description": "Fiesta\n+2 Luck",
+
+  "hat.souwester.name": "Sou'wester",
+  "hat.souwester.description": "While outside in the rain, gain the Fishing in the Rain Buff:\n+4 Fishing",
+  "hat.souwester.buff.name": "Fishing in the Rain",
+  "hat.souwester.buff.description": "Fishing in the Rain\n+4 Fishing",
+
+  "hat.space-helmet.name": "Space Helmet",
+  "hat.space-helmet.description": "Gain the Cosmic Adventure Buff:\n+3 Mining, +2 Luck",
+  "hat.space-helmet.buff.name": "Cosmic Adventure",
+  "hat.space-helmet.buff.description": "Cosmic Adventure\n+3 Mining, +2 Luck",
+
+  "hat.sports-cap.name": "Sports Cap",
+  "hat.sports-cap.description": "Gain the Athletic Performance Buff:\n+2 Speed, +1 Luck",
+  "hat.sports-cap.buff.name": "Athletic Performance",
+  "hat.sports-cap.buff.description": "Athletic Performance\n+2 Speed, +1 Luck",
+
+  "hat.spotted-headscarf.name": "Spotted Headscarf",
+  "hat.spotted-headscarf.description": "Gain the Spotted Grace Buff:\n+1 Luck",
+  "hat.spotted-headscarf.buff.name": "Spotted Grace",
+  "hat.spotted-headscarf.buff.description": "Spotted Grace\n+1 Luck",
+
+  "hat.squid-hat.name": "Squid Hat",
+  "hat.squid-hat.description": "Gain the Deep Sea Dweller Buff:\n+3 Fishing, +2 Defense",
+  "hat.squid-hat.buff.name": "Deep Sea Dweller",
+  "hat.squid-hat.buff.description": "Deep Sea Dweller\n+3 Fishing, +2 Defense",
+
+  "hat.squires-helmet.name": "Squire's Helmet",
+  "hat.squires-helmet.description": "Gain the Squire's Protection Buff:\n+2 Defense, +2 Attack",
+  "hat.squires-helmet.buff.name": "Squire's Protection",
+  "hat.squires-helmet.buff.description": "Squire's Protection\n+2 Defense, +2 Attack",
+
+  "hat.star-helmet.name": "Star Helmet",
+  "hat.star-helmet.description": "Gain the Starlight Protection Buff:\n+2 Defense, +2 Mining, +1 Luck",
+  "hat.star-helmet.buff.name": "Starlight Protection",
+  "hat.star-helmet.buff.description": "Starlight Protection\n+2 Defense\n+2 Mining\n+1 Luck",
+
+  "hat.steel-pan.name": "Steel Pan (hat)",
+  "hat.steel-pan.description": "Gain the Steel Prospector Buff:\n+2 Mining, +1 Defense",
+  "hat.steel-pan.buff.name": "Steel Prospector",
+  "hat.steel-pan.buff.description": "Steel Prospector\n+2 Mining\n+1 Defense",
+
+  "hat.straw-hat.name": "Straw Hat",
+  "hat.straw-hat.description": "When it's dawn and sunny, gain Dawn Farming Buff:\n+3 Farming",
+  "hat.straw-hat.buff.name": "Dawn Farming",
+  "hat.straw-hat.buff.description": "Dawn Farming\n+3 Farming",
+
+  "hat.sunglasses.name": "Sunglasses",
+  "hat.sunglasses.description": "Gain the Cool and Collected Buff:\n+2 Luck, +1 Speed",
+  "hat.sunglasses.buff.name": "Cool and Collected",
+  "hat.sunglasses.buff.description": "Cool and Collected\n+2 Luck\n+1 Speed",
+
+  "hat.swashbuckler-hat.name": "Swashbuckler Hat",
+  "hat.swashbuckler-hat.description": "Gain the Swashbuckling Buff:\n+3 Attack, +2 Speed",
+  "hat.swashbuckler-hat.buff.name": "Swashbuckling",
+  "hat.swashbuckler-hat.buff.description": "Swashbuckling\n+3 Attack\n+2 Speed",
+
+  "hat.tiara.name": "Tiara",
+  "hat.tiara.description": "Gain Fairy Blessing Buff:\n+2 Luck\n+2 Farming",
+  "hat.tiara.buff.name": "Fairy Blessing",
+  "hat.tiara.buff.description": "Fairy Blessing\n+2 Luck\n+2 Farming",
+
+  "hat.tiger-hat.name": "Tiger Hat",
+  "hat.tiger-hat.description": "Gain the Tiger's Prowess Buff:\n+3 Attack, +2 Speed, +1 Defense",
+  "hat.tiger-hat.buff.name": "Tiger's Prowess",
+  "hat.tiger-hat.buff.description": "Tiger's Prowess\n+3 Attack\n+2 Speed\n+1 Defense",
+
+  "hat.top-hat.name": "Top Hat",
+  "hat.top-hat.description": "Gain the Distinguished Gentleman Buff:\n+2 Luck",
+  "hat.top-hat.buff.name": "Distinguished Gentleman",
+  "hat.top-hat.buff.description": "Distinguished Gentleman\n+2 Luck",
+
+  "hat.totem-mask.name": "Totem Mask",
+  "hat.totem-mask.description": "Chance not to consume totem on use.",
+
+  "hat.tricorn-hat.name": "Tricorn Hat",
+  "hat.tricorn-hat.description": "Gain the Revolutionary Spirit Buff:\n+2 Attack, +2 Defense, +1 Luck",
+  "hat.tricorn-hat.buff.name": "Revolutionary Spirit",
+  "hat.tricorn-hat.buff.description": "Revolutionary Spirit\n+2 Attack\n+2 Defense\n+1 Luck",
+
+  "hat.tropiclip.name": "Tropiclip",
+  "hat.tropiclip.description": "Gain the Tropical Paradise Buff:\n+2 Farming\n+1 Luck",
+  "hat.tropiclip.buff.name": "Tropical Paradise",
+  "hat.tropiclip.buff.description": "Tropical Paradise\n+2 Farming\n+1 Luck",
+
+  "hat.trucker-hat.name": "Trucker Hat",
+  "hat.trucker-hat.description": "When outside in summer get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing",
+  "hat.trucker-hat.buff.name": "Season Protection",
+  "hat.trucker-hat.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
+
+  "hat.warrior-helmet.name": "Warrior Helmet",
+  "hat.warrior-helmet.description": "Gain the Battle Hardened Buff:\n+4 Defense, +3 Attack",
+  "hat.warrior-helmet.buff.name": "Battle Hardened",
+  "hat.warrior-helmet.buff.description": "Battle Hardened\n+4 Defense\n+3 Attack",
+
+  "hat.watermelon-band.name": "Watermelon Band",
+  "hat.watermelon-band.description": "Gain the Summer Refreshment Buff:\n+2 Foraging, +1 Fishing",
+  "hat.watermelon-band.buff.name": "Summer Refreshment",
+  "hat.watermelon-band.buff.description": "Summer Refreshment\n+2 Foraging, +1 Fishing",
+
+  "hat.wearable-dwarf-helm.name": "Wearable Dwarf Helm",
+  "hat.wearable-dwarf-helm.description": "When in the Mines or Skull Cavern gain the Mad Dwarf King buff:\n+4 Mining, +2 Speed, +1 Attack",
+  "hat.wearable-dwarf-helm.buff.name": "Mad Dwarf King",
+  "hat.wearable-dwarf-helm.buff.description": "Mad Dwarf King\n+4 Mining\n+2 Speed\n+1 Attack",
+
+  "hat.white-bow.name": "White Bow",
+  "hat.white-bow.description": "Gain the Pure Elegance Buff:\n+2 Luck, +1 Farming",
+  "hat.white-bow.buff.name": "Pure Elegance",
+  "hat.white-bow.buff.description": "Pure Elegance\n+2 Luck, +1 Farming",
+
+  "hat.white-turban.name": "White Turban",
+  "hat.white-turban.description": "Gain the Sage Buff:\n+2 Foraging",
+  "hat.white-turban.buff.name": "Sage",
+  "hat.white-turban.buff.description": "Sage\n+2 Foraging",
+
+  "hat.witch-hat.name": "Witch Hat",
+  "hat.witch-hat.description": "Gain Witching Hour Buff:\n+2 Luck\n+2 Foraging",
+  "hat.witch-hat.buff.name": "Witching Hour",
+  "hat.witch-hat.buff.description": "Witching Hour\n+2 Luck\n+2 Foraging"
+}

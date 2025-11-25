@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class HardHat
     {
         public const string Name = "Hard Hat";
-        public const string Description = "Gain the Safety First Buff:\n+3 Defense, +1 Immunity";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.Immunity.Set(1);
                     hardHatBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Safety First",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.hard-hat.name"),
+                        displayName: HatService.GetTranslation("hat.hard-hat.buff.name"),
                         effects: effects
                         );
-                    hardHatBuff.description = "Safety First\n+3 Defense, +1 Immunity";
+                    hardHatBuff.description = HatService.GetTranslation("hat.hard-hat.buff.description");
                     hardHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(hardHatBuff);
                 }

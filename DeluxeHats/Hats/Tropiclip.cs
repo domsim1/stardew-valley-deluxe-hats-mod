@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class Tropiclip
     {
         public const string Name = "Tropiclip";
-        public const string Description = "Gain the Tropical Paradise Buff:\n+2 Farming\n+1 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(1);
                     tropiclipBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Tropical Paradise",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.tropiclip.name"),
+                        displayName: HatService.GetTranslation("hat.tropiclip.buff.name"),
                         effects: effects
                         );
-                    tropiclipBuff.description = "Tropical Paradise\n+2 Farming\n+1 Luck";
+                    tropiclipBuff.description = HatService.GetTranslation("hat.tropiclip.buff.description");
                     tropiclipBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(tropiclipBuff);
                 }

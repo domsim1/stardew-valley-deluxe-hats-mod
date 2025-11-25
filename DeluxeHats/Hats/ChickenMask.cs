@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class ChickenMask
     {
         public const string Name = "Chicken Mask";
-        public const string Description = "Gain the Chicken Friend Buff:\n+2 Farming";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.FarmingLevel.Set(2);
                     chickenBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Chicken Friend",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.chicken-mask.name"),
+                        displayName: HatService.GetTranslation("hat.chicken-mask.buff.name"),
                         effects: effects
                         );
-                    chickenBuff.description = "Chicken Friend\n+2 Farming";
+                    chickenBuff.description = HatService.GetTranslation("hat.chicken-mask.buff.description");
                     chickenBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(chickenBuff);
                 }

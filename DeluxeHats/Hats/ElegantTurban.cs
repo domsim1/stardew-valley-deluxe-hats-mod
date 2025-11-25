@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class ElegantTurban
     {
         public const string Name = "Elegant Turban";
-        public const string Description = "Gain the Posh Buff:\n+2 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(2);
                     elegantBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Posh",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.elegant-turban.name"),
+                        displayName: HatService.GetTranslation("hat.elegant-turban.buff.name"),
                         effects: effects
                         );
-                    elegantBuff.description = "Posh\n+2 Luck";
+                    elegantBuff.description = HatService.GetTranslation("hat.elegant-turban.buff.description");
                     elegantBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(elegantBuff);
                 }

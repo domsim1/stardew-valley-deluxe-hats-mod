@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class LuckyBow
     {
         public const string Name = "Lucky Bow";
-        public const string Description = "Gain Lucky charm Buff:\n+1 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(1);
                     luckBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Lucky charm",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.lucky-bow.name"),
+                        displayName: HatService.GetTranslation("hat.lucky-bow.buff.name"),
                         effects: effects
                         );
-                    luckBuff.description = "Lucky charm\n+1 Luck";
+                    luckBuff.description = HatService.GetTranslation("hat.lucky-bow.buff.description");
                     luckBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(luckBuff);
                 }

@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class QiMask
     {
         public const string Name = "Qi Mask";
-        public const string Description = "Gain the Shadowy Power Buff:\n+3 Mining, +3 Attack, +2 Defense";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                     effects.Defense.Set(2);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Shadowy Power",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.qi-mask.name"),
+                        displayName: HatService.GetTranslation("hat.qi-mask.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Shadowy Power\n+3 Mining, +3 Attack, +2 Defense";
+                    buff.description = HatService.GetTranslation("hat.qi-mask.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

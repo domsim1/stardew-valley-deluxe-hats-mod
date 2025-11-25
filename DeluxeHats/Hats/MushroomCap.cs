@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class MushroomCap
     {
         public const string Name = "Mushroom Cap";
-        public const string Description = "Gain the Fungi Guide Buff:\n+2 Foraging";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.ForagingLevel.Set(2);
                     mushroomBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Fungi Guide",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.mushroom-cap.name"),
+                        displayName: HatService.GetTranslation("hat.mushroom-cap.buff.name"),
                         effects: effects
                         );
-                    mushroomBuff.description = "Fungi Guide\n+2 Foraging";
+                    mushroomBuff.description = HatService.GetTranslation("hat.mushroom-cap.buff.description");
                     mushroomBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(mushroomBuff);
                 }

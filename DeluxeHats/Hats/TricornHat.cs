@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class TricornHat
     {
         public const string Name = "Tricorn Hat";
-        public const string Description = "Gain the Revolutionary Spirit Buff:\n+2 Attack, +2 Defense, +1 Luck";
 
         public static void Activate()
         {
@@ -24,12 +23,12 @@ namespace DeluxeHats.Hats
 
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Revolutionary Spirit",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.tricorn-hat.name"),
+                        displayName: HatService.GetTranslation("hat.tricorn-hat.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Revolutionary Spirit\n+2 Attack\n+2 Defense\n+1 Luck";
+                    buff.description = HatService.GetTranslation("hat.tricorn-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

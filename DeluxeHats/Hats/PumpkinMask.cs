@@ -10,7 +10,6 @@ namespace DeluxeHats.Hats
     public static class PumpkinMask
     {
         public const string Name = "Pumpkin Mask";
-        public const string Description = "Gain the Spooky Buff:\n+2 Speed";
 
         public static void Activate()
         {
@@ -23,12 +22,12 @@ namespace DeluxeHats.Hats
                     effects.Speed.Set(2);
                     propellerBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Pumpkin Mask",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.pumpkin-mask.name"),
+                        displayName: HatService.GetTranslation("hat.pumpkin-mask.buff.name"),
                         effects: effects
                         );
-                    propellerBuff.description = "Spooky\n+2 Speed";
+                    propellerBuff.description = HatService.GetTranslation("hat.pumpkin-mask.buff.description");
                     propellerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(propellerBuff);
                 }

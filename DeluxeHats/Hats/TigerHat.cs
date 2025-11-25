@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class TigerHat
     {
         public const string Name = "Tiger Hat";
-        public const string Description = "Gain the Tiger's Prowess Buff:\n+3 Attack, +2 Speed, +1 Defense";
 
         public static void Activate()
         {
@@ -24,12 +23,12 @@ namespace DeluxeHats.Hats
 
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Tiger's Prowess",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.tiger-hat.name"),
+                        displayName: HatService.GetTranslation("hat.tiger-hat.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Tiger's Prowess\n+3 Attack\n+2 Speed\n+1 Defense";
+                    buff.description = HatService.GetTranslation("hat.tiger-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

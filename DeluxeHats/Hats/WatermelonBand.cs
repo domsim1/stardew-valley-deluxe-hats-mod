@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class WatermelonBand
     {
         public const string Name = "Watermelon Band";
-        public const string Description = "Gain the Summer Refreshment Buff:\n+2 Foraging\n+1 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.FishingLevel.Set(1);
                     watermelonBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Summer Refreshment",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.watermelon-band.name"),
+                        displayName: HatService.GetTranslation("hat.watermelon-band.buff.name"),
                         effects: effects
                         );
-                    watermelonBuff.description = "Summer Refreshment\n+2 Foraging\n+1 Fishing";
+                    watermelonBuff.description = HatService.GetTranslation("hat.watermelon-band.buff.description");
                     watermelonBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(watermelonBuff);
                 }

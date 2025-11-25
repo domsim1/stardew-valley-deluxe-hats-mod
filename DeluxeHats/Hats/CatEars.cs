@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class CatEars
     {
         public const string Name = "Cat Ears";
-        public const string Description = "When you are hit, meow and gain Skittish Kitty Buff:\n+3 Speed\n+2 Attack";
         private static Dictionary<long, int> playerOldHP = new Dictionary<long, int>();
 
         public static void Activate()
@@ -32,12 +31,12 @@ namespace DeluxeHats.Hats
                         effects.Attack.Set(2);
                         catBuff = new Buff(
                             id: HatService.BuffId,
-                            source: "Deluxe Hats",
-                            displaySource: Name,
-                            displayName: "Skittish Kitty",
+                            source: HatService.GetTranslation("mod.name"),
+                            displaySource: HatService.GetTranslation("hat.cat-ears.name"),
+                            displayName: HatService.GetTranslation("hat.cat-ears.buff.name"),
                             effects: effects
                             );
-                        catBuff.description = "Skittish Kitty\n+3 Speed\n+2 Attack";
+                        catBuff.description = HatService.GetTranslation("hat.cat-ears.buff.description");
                         catBuff.millisecondsDuration = 1500;
                         HatService.CurrentPlayer.applyBuff(catBuff);
                     }

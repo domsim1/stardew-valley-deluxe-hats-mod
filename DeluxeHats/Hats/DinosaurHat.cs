@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class DinosaurHat
     {
         public const string Name = "Dinosaur Hat";
-        public const string Description = "Gain the Ancient Predator Buff:\n+3 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.Attack.Set(3);
                     dinooBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Ancient Predator",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.dinosaur-hat.name"),
+                        displayName: HatService.GetTranslation("hat.dinosaur-hat.buff.name"),
                         effects: effects
                         );
-                    dinooBuff.description = "Ancient Predator\n+3 Attack";
+                    dinooBuff.description = HatService.GetTranslation("hat.dinosaur-hat.buff.description");
                     dinooBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(dinooBuff);
                 }

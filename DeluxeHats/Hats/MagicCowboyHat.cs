@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class MagicCowboyHat
     {
         public const string Name = "Magic Cowboy Hat";
-        public const string Description = "While riding the horse gain the Spellslinger Buff:\n+2 Speed\n+1 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -23,12 +22,12 @@ namespace DeluxeHats.Hats
                         effects.Attack.Set(1);
                         magicBuff = new Buff(
                             id: HatService.BuffId,
-                            source: "Deluxe Hats",
-                            displaySource: Name,
-                            displayName: "Spellslinger",
+                            source: HatService.GetTranslation("mod.name"),
+                            displaySource: HatService.GetTranslation("hat.magic-cowboy-hat.name"),
+                            displayName: HatService.GetTranslation("hat.magic-cowboy-hat.buff.name"),
                             effects: effects
                             );
-                        magicBuff.description = "Spellslinger\n+2 Speed\n+1 Attack";
+                        magicBuff.description = HatService.GetTranslation("hat.magic-cowboy-hat.buff.description");
                         magicBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                         HatService.CurrentPlayer.applyBuff(magicBuff);
                     }

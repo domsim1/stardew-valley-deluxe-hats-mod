@@ -8,11 +8,12 @@ namespace DeluxeHats.Hats
     public static class Souwester
     {
         public const string Name = "Sou'wester";
-        public const string Description = "While outside in the rain, gain the Fishing in the Rain Buff:\n+4 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
+                if (HatService.CurrentPlayer?.currentLocation == null)
+                    return;
                 Buff fishingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (!Game1.isRaining || !HatService.CurrentPlayer.currentLocation.IsOutdoors)
                 {
@@ -28,12 +29,12 @@ namespace DeluxeHats.Hats
                     effects.FishingLevel.Set(4);
                     fishingBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Fishing in the Rain",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.souwester.name"),
+                        displayName: HatService.GetTranslation("hat.souwester.buff.name"),
                         effects: effects
                         );
-                    fishingBuff.description = "Fishing in the Rain\n+4 Fishing";
+                    fishingBuff.description = HatService.GetTranslation("hat.souwester.buff.description");
                     fishingBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(fishingBuff);
                 }

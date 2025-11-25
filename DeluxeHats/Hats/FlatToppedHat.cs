@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class FlatToppedHat
     {
         public const string Name = "Flat Topped Hat";
-        public const string Description = "Gain the Noble Buff:\n+1 Defense\n+1 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(1);
                     flatBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Noble",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.flat-topped-hat.name"),
+                        displayName: HatService.GetTranslation("hat.flat-topped-hat.buff.name"),
                         effects: effects
                         );
-                    flatBuff.description = "Noble\n+1 Defense\n+1 Luck";
+                    flatBuff.description = HatService.GetTranslation("hat.flat-topped-hat.buff.description");
                     flatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(flatBuff);
                 }

@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class PartyHat
     {
         public const string Name = "Party Hat";
-        public const string Description = "Gain Party Time Buff:\n+3 Luck";
 
         public static void Activate()
         {
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
 
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Party Time",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.party-hat.name"),
+                        displayName: HatService.GetTranslation("hat.party-hat.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Party Time\n+3 Luck";
+                    buff.description = HatService.GetTranslation("hat.party-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

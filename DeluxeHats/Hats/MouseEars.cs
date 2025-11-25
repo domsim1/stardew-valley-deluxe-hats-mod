@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class MouseEars
     {
         public const string Name = "Mouse Ears";
-        public const string Description = "When you are hit gain Skittish Mouse Buff:\n+4 Speed";
         private static Dictionary<long, int> playerOldHP = new Dictionary<long, int>();
 
         public static void Activate()
@@ -30,12 +29,12 @@ namespace DeluxeHats.Hats
                         effects.Speed.Set(4);
                         mouseBuff = new Buff(
                             id: HatService.BuffId,
-                            source: "Deluxe Hats",
-                            displaySource: Name,
-                            displayName: "Skittish Mouse",
+                            source: HatService.GetTranslation("mod.name"),
+                            displaySource: HatService.GetTranslation("hat.mouse-ears.name"),
+                            displayName: HatService.GetTranslation("hat.mouse-ears.buff.name"),
                             effects: effects
                             );
-                        mouseBuff.description = "Skittish Mouse\n+4 Speed";
+                        mouseBuff.description = HatService.GetTranslation("hat.mouse-ears.buff.description");
                         mouseBuff.millisecondsDuration = 1500;
                         HatService.CurrentPlayer.applyBuff(mouseBuff);
                     }

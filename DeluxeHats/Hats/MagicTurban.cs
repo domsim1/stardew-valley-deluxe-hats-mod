@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class MagicTurban
     {
         public const string Name = "Magic Turban";
-        public const string Description = "Gain the Mystic Buff:\n+2 Luck\n+2 Foraging";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.ForagingLevel.Set(2);
                     magicTurbanBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Mystic",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.magic-turban.name"),
+                        displayName: HatService.GetTranslation("hat.magic-turban.buff.name"),
                         effects: effects
                         );
-                    magicTurbanBuff.description = "Mystic\n+2 Luck\n+2 Foraging";
+                    magicTurbanBuff.description = HatService.GetTranslation("hat.magic-turban.buff.description");
                     magicTurbanBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(magicTurbanBuff);
                 }

@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class WarriorHelmet
     {
         public const string Name = "Warrior Helmet";
-        public const string Description = "Gain the Battle Hardened Buff:\n+4 Defense, +3 Attack";
 
         public static void Activate()
         {
@@ -23,12 +22,12 @@ namespace DeluxeHats.Hats
 
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Battle Hardened",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.warrior-helmet.name"),
+                        displayName: HatService.GetTranslation("hat.warrior-helmet.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Battle Hardened\n+4 Defense\n+3 Attack";
+                    buff.description = HatService.GetTranslation("hat.warrior-helmet.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

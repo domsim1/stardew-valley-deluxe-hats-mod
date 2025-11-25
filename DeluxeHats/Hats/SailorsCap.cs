@@ -9,7 +9,6 @@ namespace DeluxeHats.Hats
     public static class SailorsCap
     {
         public const string Name = "Sailor's Cap";
-        public const string Description = "When tipsy gain the Drunken Sailor Buff:\n+10 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -24,12 +23,12 @@ namespace DeluxeHats.Hats
                         effects.Attack.Set(10);
                         powerBuff = new Buff(
                             id: HatService.BuffId,
-                            source: "Deluxe Hats",
-                            displaySource: Name,
-                            displayName: "Drunken Sailor",
+                            source: HatService.GetTranslation("mod.name"),
+                            displaySource: HatService.GetTranslation("hat.sailors-cap.name"),
+                            displayName: HatService.GetTranslation("hat.sailors-cap.buff.name"),
                             effects: effects
                             );
-                        powerBuff.description = "Drunken Sailor\n+10 Attack";
+                        powerBuff.description = HatService.GetTranslation("hat.sailors-cap.buff.description");
                         powerBuff.millisecondsDuration = tipsyBuff.millisecondsDuration;
                         HatService.CurrentPlayer.applyBuff(powerBuff);
                         HatService.CurrentPlayer.startGlowing(Color.OrangeRed * 0.5f, false, 0.08f);

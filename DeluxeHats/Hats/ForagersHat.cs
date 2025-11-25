@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class ForagersHat
     {
         public const string Name = "Forager's Hat";
-        public const string Description = "Gain the Foraging Expertise Buff:\n+3 Foraging, +1 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Foraging Expertise",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.foragers-hat.name"),
+                        displayName: HatService.GetTranslation("hat.foragers-hat.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Foraging Expertise\n+3 Foraging, +1 Luck";
+                    buff.description = HatService.GetTranslation("hat.foragers-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

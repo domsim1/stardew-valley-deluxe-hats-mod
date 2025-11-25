@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class FashionHat
     {
         public const string Name = "Fashion Hat";
-        public const string Description = "Gain the Fashionable Buff:\n+2 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(2);
                     fashionBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Fashionable",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.fashion-hat.name"),
+                        displayName: HatService.GetTranslation("hat.fashion-hat.buff.name"),
                         effects: effects
                         );
-                    fashionBuff.description = "Fashionable\n+2 Luck";
+                    fashionBuff.description = HatService.GetTranslation("hat.fashion-hat.buff.description");
                     fashionBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(fashionBuff);
                 }

@@ -9,11 +9,12 @@ namespace DeluxeHats.Hats
     public static class FishingHat
     {
         public const string Name = "Fishing Hat";
-        public const string Description = "While outside and not on the beach get the Shaded Buff:\n+2 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
+                if (HatService.CurrentPlayer?.currentLocation == null)
+                    return;
                 Buff fishingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
                 if (!HatService.CurrentPlayer.currentLocation.IsOutdoors || HatService.CurrentPlayer.currentLocation.Name.Contains("Beach"))
                 {
@@ -29,12 +30,12 @@ namespace DeluxeHats.Hats
                     effects.FishingLevel.Set(2);
                     fishingBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Shaded",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.fishing-hat.name"),
+                        displayName: HatService.GetTranslation("hat.fishing-hat.buff.name"),
                         effects: effects
                         );
-                    fishingBuff.description = "Shaded\n+2 Fishing";
+                    fishingBuff.description = HatService.GetTranslation("hat.fishing-hat.buff.description");
                     fishingBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(fishingBuff);
                 }

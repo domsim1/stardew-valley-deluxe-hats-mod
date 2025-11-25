@@ -8,13 +8,14 @@ namespace DeluxeHats.Hats
     public static class OfficialCap
     {
         public const string Name = "Official Cap";
-        public const string Description = "While on the Beach gain the Ol' Mariner Buff:\n+2 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
+                if (HatService.CurrentPlayer?.currentLocation?.Name == null)
+                    return;
                 Buff fishingBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (!HatService.CurrentPlayer.currentLocation.name.Value.Contains("Beach"))
+                if (!HatService.CurrentPlayer.currentLocation.Name.Contains("Beach"))
                 {
                     if (fishingBuff != null)
                     {
@@ -28,12 +29,12 @@ namespace DeluxeHats.Hats
                     effects.FishingLevel.Set(2);
                     fishingBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Ol' Mariner",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.official-cap.name"),
+                        displayName: HatService.GetTranslation("hat.official-cap.buff.name"),
                         effects: effects
                         );
-                    fishingBuff.description = "Ol' Mariner\n+2 Fishing";
+                    fishingBuff.description = HatService.GetTranslation("hat.official-cap.buff.description");
                     fishingBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(fishingBuff);
                 }

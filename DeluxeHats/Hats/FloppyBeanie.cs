@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class FloppyBeanie
     {
         public const string Name = "Floppy Beanie";
-        public const string Description = "Gain the Cozy Buff:\n+1 Defense";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.Defense.Set(1);
                     floppyBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Cozy",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.floppy-beanie.name"),
+                        displayName: HatService.GetTranslation("hat.floppy-beanie.buff.name"),
                         effects: effects
                         );
-                    floppyBuff.description = "Cozy\n+1 Defense";
+                    floppyBuff.description = HatService.GetTranslation("hat.floppy-beanie.buff.description");
                     floppyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(floppyBuff);
                 }

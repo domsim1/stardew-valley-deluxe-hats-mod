@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class LaurelWreathCrown
     {
         public const string Name = "Laurel Wreath Crown";
-        public const string Description = "Gain the Champion's Valor Buff:\n+3 Attack, +3 Defense, +2 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(2);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Champion's Valor",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.laurel-wreath-crown.name"),
+                        displayName: HatService.GetTranslation("hat.laurel-wreath-crown.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Champion's Valor\n+3 Attack, +3 Defense, +2 Luck";
+                    buff.description = HatService.GetTranslation("hat.laurel-wreath-crown.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

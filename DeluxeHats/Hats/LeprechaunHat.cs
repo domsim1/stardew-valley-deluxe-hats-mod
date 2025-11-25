@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class LeprechaunHat
     {
         public const string Name = "Leprechaun Hat";
-        public const string Description = "Gain the Lucky Gold Buff:\n+3 Luck, +2 Farming";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.FarmingLevel.Set(2);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Lucky Gold",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.leprechaun-hat.name"),
+                        displayName: HatService.GetTranslation("hat.leprechaun-hat.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Lucky Gold\n+3 Luck, +2 Farming";
+                    buff.description = HatService.GetTranslation("hat.leprechaun-hat.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

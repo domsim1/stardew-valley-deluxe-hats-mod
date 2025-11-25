@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class BlueBow
     {
         public const string Name = "Blue Bow";
-        public const string Description = "Gain the Serene Grace Buff:\n+1 Luck, +1 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.FishingLevel.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Serene Grace",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.blue-bow.name"),
+                        displayName: HatService.GetTranslation("hat.blue-bow.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Serene Grace\n+1 Luck, +1 Fishing";
+                    buff.description = HatService.GetTranslation("hat.blue-bow.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

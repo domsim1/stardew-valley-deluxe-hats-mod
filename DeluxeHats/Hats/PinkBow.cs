@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class PinkBow
     {
         public const string Name = "Pink Bow";
-        public const string Description = "Gain the Sweet Charm Buff:\n+1 Luck, +1 Foraging";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.ForagingLevel.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Sweet Charm",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.pink-bow.name"),
+                        displayName: HatService.GetTranslation("hat.pink-bow.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Sweet Charm\n+1 Luck, +1 Foraging";
+                    buff.description = HatService.GetTranslation("hat.pink-bow.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

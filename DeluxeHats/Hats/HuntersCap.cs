@@ -8,13 +8,14 @@ namespace DeluxeHats.Hats
     public static class HuntersCap
     {
         public const string Name = "Hunter's Cap";
-        public const string Description = "When outside in fall get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
+                if (HatService.CurrentPlayer?.currentLocation == null)
+                    return;
                 Buff huntersCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (HatService.CurrentPlayer.currentLocation.isOutdoors.Value && Game1.currentSeason == "fall")
+                if (HatService.CurrentPlayer.currentLocation.IsOutdoors && Game1.currentSeason == "fall")
                 {
                     if (huntersCapBuff == null)
                     {
@@ -24,12 +25,12 @@ namespace DeluxeHats.Hats
                         effects.ForagingLevel.Set(2);
                         huntersCapBuff = new Buff(
                             id: HatService.BuffId,
-                            source: "Deluxe Hats",
-                            displaySource: Name,
-                            displayName: "Season Protection",
+                            source: HatService.GetTranslation("mod.name"),
+                            displaySource: HatService.GetTranslation("hat.hunters-cap.name"),
+                            displayName: HatService.GetTranslation("hat.hunters-cap.buff.name"),
                             effects: effects
                             );
-                        huntersCapBuff.description = "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing";
+                        huntersCapBuff.description = HatService.GetTranslation("hat.hunters-cap.buff.description");
                         huntersCapBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                         HatService.CurrentPlayer.applyBuff(huntersCapBuff);
                     }

@@ -16,6 +16,11 @@ namespace DeluxeHats
         public static IModHelper Helper;
         public static StardewValley.Farmer CurrentPlayer;
 
+        public static string GetTranslation(string key)
+        {
+            return Helper.Translation.Get(key);
+        }
+
         public delegate void OnUpdateTickedDelegate(UpdateTickedEventArgs e);
         public delegate void OnTimeChangedDelegate(TimeChangedEventArgs e);
         public delegate void OnInventoryChangedDelegate(InventoryChangedEventArgs e);
@@ -218,7 +223,7 @@ namespace DeluxeHats
             if (player.hat.Value != null)
             {
                 string equippedHatName = player.hat.Value.Name;
-                Monitor.Log($"Hat Equipped by {player.Name}: {equippedHatName}", LogLevel.Trace);
+                Monitor.Log(string.Format(GetTranslation("debug.hat-equipped"), player.Name, equippedHatName), LogLevel.Trace);
 
                 Type hatType = typeof(HatService).Assembly.GetTypes()
                     .FirstOrDefault(t =>
@@ -241,7 +246,7 @@ namespace DeluxeHats
                 }
                 else
                 {
-                    Monitor.Log($"Hat not found: {equippedHatName}", LogLevel.Warn);
+                    Monitor.Log(string.Format(GetTranslation("debug.hat-not-found"), equippedHatName), LogLevel.Warn);
                 }
             }
 

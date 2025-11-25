@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class ChefHat
     {
         public const string Name = "Chef Hat";
-        public const string Description = "Gain the Master Chef Buff:\n+2 Farming, +1 Foraging, +1 Fishing";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                     effects.FishingLevel.Set(1);
                     chefBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Master Chef",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.chef-hat.name"),
+                        displayName: HatService.GetTranslation("hat.chef-hat.buff.name"),
                         effects: effects
                         );
-                    chefBuff.description = "Master Chef\n+2 Farming, +1 Foraging, +1 Fishing";
+                    chefBuff.description = HatService.GetTranslation("hat.chef-hat.buff.description");
                     chefBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(chefBuff);
                 }

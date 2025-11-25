@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class GoblinMask
     {
         public const string Name = "Goblin Mask";
-        public const string Description = "Gain the Mischievous Buff:\n+2 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.Attack.Set(2);
                     goblinBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Mischievous",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.goblin-mask.name"),
+                        displayName: HatService.GetTranslation("hat.goblin-mask.buff.name"),
                         effects: effects
                         );
-                    goblinBuff.description = "Mischievous\n+2 Attack";
+                    goblinBuff.description = HatService.GetTranslation("hat.goblin-mask.buff.description");
                     goblinBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(goblinBuff);
                 }

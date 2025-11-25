@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class TopHat
     {
         public const string Name = "Top Hat";
-        public const string Description = "Gain the Distinguished Gentleman Buff:\n+2 Luck";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.LuckLevel.Set(2);
                     topHatBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Distinguished Gentleman",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.top-hat.name"),
+                        displayName: HatService.GetTranslation("hat.top-hat.buff.name"),
                         effects: effects
                         );
-                    topHatBuff.description = "Distinguished Gentleman\n+2 Luck";
+                    topHatBuff.description = HatService.GetTranslation("hat.top-hat.buff.description");
                     topHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(topHatBuff);
                 }

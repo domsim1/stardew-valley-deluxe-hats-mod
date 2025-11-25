@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class WhiteTurban
     {
         public const string Name = "White Turban";
-        public const string Description = "Gain the Sage Buff:\n+2 Foraging";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -20,12 +19,12 @@ namespace DeluxeHats.Hats
                     effects.ForagingLevel.Set(2);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Sage",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.white-turban.name"),
+                        displayName: HatService.GetTranslation("hat.white-turban.buff.name"),
                         effects: effects
                     );
-                    buff.description = "Sage\n+2 Foraging";
+                    buff.description = HatService.GetTranslation("hat.white-turban.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

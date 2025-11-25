@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class SantaHat
     {
         public const string Name = "Santa Hat";
-        public const string Description = "Gain the Holiday Spirit Buff:\n+1 Luck\n+1 Farming";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.FarmingLevel.Set(1);
                     santaBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Holiday Spirit",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.santa-hat.name"),
+                        displayName: HatService.GetTranslation("hat.santa-hat.buff.name"),
                         effects: effects
                         );
-                    santaBuff.description = "Holiday Spirit\n+1 Luck\n+1 Farming";
+                    santaBuff.description = HatService.GetTranslation("hat.santa-hat.buff.description");
                     santaBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(santaBuff);
                 }

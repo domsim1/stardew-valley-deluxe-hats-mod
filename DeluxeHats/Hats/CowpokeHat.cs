@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class CowpokeHat
     {
         public const string Name = "Cowpoke Hat";
-        public const string Description = "While riding the horse gain the Buckeroo Buff:\n+1 Speed";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                         effects.Speed.Set(1);
                         cowpokeBuff = new Buff(
                             id: HatService.BuffId,
-                            source: "Deluxe Hats",
-                            displaySource: Name,
-                            displayName: "Buckeroo",
+                            source: HatService.GetTranslation("mod.name"),
+                            displaySource: HatService.GetTranslation("hat.cowpoke-hat.name"),
+                            displayName: HatService.GetTranslation("hat.cowpoke-hat.buff.name"),
                             effects: effects
                             );
-                        cowpokeBuff.description = "Buckeroo\n+1 Speed";
+                        cowpokeBuff.description = HatService.GetTranslation("hat.cowpoke-hat.buff.description");
                         cowpokeBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                         HatService.CurrentPlayer.applyBuff(cowpokeBuff);
                     }

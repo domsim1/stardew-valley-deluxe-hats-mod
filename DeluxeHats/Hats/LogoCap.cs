@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class LogoCap
     {
         public const string Name = "Logo Cap";
-        public const string Description = "Gain the Brand Ambassador Buff:\n+1 Defense\n+1 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.Attack.Set(1);
                     logoBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Brand Ambassador",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.logo-cap.name"),
+                        displayName: HatService.GetTranslation("hat.logo-cap.buff.name"),
                         effects: effects
                         );
-                    logoBuff.description = "Brand Ambassador\n+1 Defense\n+1 Attack";
+                    logoBuff.description = HatService.GetTranslation("hat.logo-cap.buff.description");
                     logoBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(logoBuff);
                 }

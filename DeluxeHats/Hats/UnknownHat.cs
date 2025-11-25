@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class UnknownHat
     {
         public const string Name = "???";
-        public const string Description = "Gain the Mysterious Power Buff:\n+10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -28,12 +27,12 @@ namespace DeluxeHats.Hats
                     effects.Immunity.Set(5);
                     unknownBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Mysterious Power",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.unknown.name"),
+                        displayName: HatService.GetTranslation("hat.???.buff.name"),
                         effects: effects
                         );
-                    unknownBuff.description = "Mysterious Power\n+10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity";
+                    unknownBuff.description = HatService.GetTranslation("hat.???.buff.description");
                     unknownBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(unknownBuff);
                 }

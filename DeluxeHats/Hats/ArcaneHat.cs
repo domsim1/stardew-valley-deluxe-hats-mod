@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class ArcaneHat
     {
         public const string Name = "Arcane Hat";
-        public const string Description = "Gain the Arcane Mastery Buff:\n+2 Luck, +2 Speed, +1 Attack";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                     effects.Attack.Set(1);
                     arcaneBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Arcane Mastery",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.arcane-hat.name"),
+                        displayName: HatService.GetTranslation("hat.arcane-hat.buff.name"),
                         effects: effects
                         );
-                    arcaneBuff.description = "Arcane Mastery\n+2 Luck, +2 Speed, +1 Attack";
+                    arcaneBuff.description = HatService.GetTranslation("hat.arcane-hat.buff.description");
                     arcaneBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(arcaneBuff);
                 }

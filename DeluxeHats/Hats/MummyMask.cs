@@ -1,4 +1,4 @@
-using StardewValley;
+﻿using StardewValley;
 using System;
 using System.Linq;
 using StardewValley.Buffs;
@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class MummyMask
     {
         public const string Name = "Mummy Mask";
-        public const string Description = "Gain the Ancient Curse Buff:\n+2 Attack, +2 Defense, +1 Mining";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,12 +21,12 @@ namespace DeluxeHats.Hats
                     effects.MiningLevel.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Ancient Curse",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.mummy-mask.name"),
+                        displayName: HatService.GetTranslation("hat.mummy-mask.buff.name"),
                         effects: effects
                         );
-                    buff.description = "Ancient Curse\n+2 Attack, +2 Defense, +1 Mining";
+                    buff.description = HatService.GetTranslation("hat.mummy-mask.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }

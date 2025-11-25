@@ -8,7 +8,6 @@ namespace DeluxeHats.Hats
     public static class DelicateBow
     {
         public const string Name = "Delicate Bow";
-        public const string Description = "Gain the Delicate Grace Buff:\n+2 Luck, +1 Speed";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,12 +20,12 @@ namespace DeluxeHats.Hats
                     effects.Speed.Set(1);
                     delicateBuff = new Buff(
                         id: HatService.BuffId,
-                        source: "Deluxe Hats",
-                        displaySource: Name,
-                        displayName: "Delicate Grace",
+                        source: HatService.GetTranslation("mod.name"),
+                        displaySource: HatService.GetTranslation("hat.delicate-bow.name"),
+                        displayName: HatService.GetTranslation("hat.delicate-bow.buff.name"),
                         effects: effects
                         );
-                    delicateBuff.description = "Delicate Grace\n+2 Luck, +1 Speed";
+                    delicateBuff.description = HatService.GetTranslation("hat.delicate-bow.buff.description");
                     delicateBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(delicateBuff);
                 }

@@ -7,11 +7,13 @@ namespace DeluxeHats.Hats
     public static class GoldenMask
     {
         public const string Name = "Golden Mask";
-        public const string Description = "Damage enemies near you every 3 seconds, the damage can kill mummies.";
+
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
             {
+                if (HatService.CurrentPlayer?.currentLocation == null)
+                    return;
                 if (HatService.CurrentPlayer.hasMenuOpen.Value || !HatService.CurrentPlayer.canMove || !Game1.game1.IsActive)
                 {
                     return;
