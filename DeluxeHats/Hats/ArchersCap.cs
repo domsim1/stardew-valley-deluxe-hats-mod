@@ -16,9 +16,9 @@ namespace DeluxeHats.Hats
                 if (archerBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.Attack.Set(2);
-                    effects.Speed.Set(1);
-                    effects.Defense.Set(1);
+                    effects.Attack.Set(3);
+                    effects.Speed.Set(2);
+                    effects.Defense.Set(2);
                     archerBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

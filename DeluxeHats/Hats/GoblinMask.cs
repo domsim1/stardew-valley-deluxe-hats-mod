@@ -16,7 +16,9 @@ namespace DeluxeHats.Hats
                 if (goblinBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.Attack.Set(2);
+                    effects.Attack.Set(3);
+                    effects.Speed.Set(2);
+                    effects.LuckLevel.Set(2);
                     goblinBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

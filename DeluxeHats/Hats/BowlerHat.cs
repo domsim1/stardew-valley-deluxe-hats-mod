@@ -16,7 +16,9 @@ namespace DeluxeHats.Hats
                 if (bowlerBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.Defense.Set(1);
+                    effects.LuckLevel.Set(3);
+                    effects.Defense.Set(2);
+                    effects.Speed.Set(1);
                     bowlerBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

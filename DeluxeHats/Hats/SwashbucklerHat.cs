@@ -17,8 +17,8 @@ namespace DeluxeHats.Hats
                 if (buff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.Attack.Set(3);
-                    effects.Speed.Set(2);
+                    effects.Attack.Set(2);
+                    effects.Speed.Set(1);
 
                     buff = new Buff(
                         id: HatService.BuffId,

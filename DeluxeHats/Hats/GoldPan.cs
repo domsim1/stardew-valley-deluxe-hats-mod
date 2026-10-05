@@ -1,13 +1,14 @@
 ﻿using StardewValley;
 using System;
 using System.Linq;
+using DeluxeHats.Utils;
 using StardewValley.Buffs;
 
 namespace DeluxeHats.Hats
 {
     public static class GoldPan
     {
-        public const string Name = "Gold Pan (hat)";
+        public const string Name = "Gold Pan";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -21,19 +22,22 @@ namespace DeluxeHats.Hats
                     buff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),
-                        displaySource: HatService.GetTranslation("hat.gold-pan-hat.name"),
-                        displayName: HatService.GetTranslation("hat.gold-pan-(hat).buff.name"),
+                        displaySource: HatService.GetTranslation("hat.gold-pan.name"),
+                        displayName: HatService.GetTranslation("hat.gold-pan.buff.name"),
                         effects: effects
                         );
-                    buff.description = HatService.GetTranslation("hat.gold-pan-(hat).buff.description");
+                    buff.description = HatService.GetTranslation("hat.gold-pan.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }
+
+                Prospector.Update(HatService.CurrentPlayer, showDirection: true);
             };
         }
 
         public static void Disable()
         {
+            Prospector.Reset(HatService.CurrentPlayer);
             Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (buff != null)
             {

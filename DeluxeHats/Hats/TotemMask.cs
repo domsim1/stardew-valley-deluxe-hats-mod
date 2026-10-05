@@ -32,7 +32,7 @@ namespace DeluxeHats.Hats
                     }
                     if (HatService.CurrentPlayer.CurrentItem != null
                         && HatService.CurrentPlayer.ActiveObject != null
-                        && new string[] { "Warp Totem: Farm", "Warp Totem: Beach", "Warp Totem: Desert", "Rain Totem" }.Contains(HatService.CurrentPlayer.CurrentItem.Name))
+                        && new string[] { "Warp Totem: Farm", "Warp Totem: Beach", "Warp Totem: Mountains", "Warp Totem: Desert", "Warp Totem: Island", "Rain Totem" }.Contains(HatService.CurrentPlayer.CurrentItem.Name))
                     {
                         HatService.Helper.Input.Suppress(SButton.MouseRight);
                         if (HatService.CurrentPlayer.ActiveObject.performUseAction(HatService.CurrentPlayer.currentLocation))

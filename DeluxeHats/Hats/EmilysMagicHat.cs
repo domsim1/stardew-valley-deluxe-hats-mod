@@ -17,6 +17,8 @@ namespace DeluxeHats.Hats
                 {
                     var effects = new BuffEffects();
                     effects.LuckLevel.Set(3);
+                    effects.FarmingLevel.Set(3);
+                    effects.ForagingLevel.Set(2);
                     emilyBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

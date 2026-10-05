@@ -16,7 +16,8 @@ namespace DeluxeHats.Hats
                 if (buff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.LuckLevel.Set(1);
+                    effects.LuckLevel.Set(2);
+                    effects.FarmingLevel.Set(1);
                     buff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

@@ -35,12 +35,12 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         mouseBuff.description = HatService.GetTranslation("hat.mouse-ears.buff.description");
-                        mouseBuff.millisecondsDuration = 1500;
+                        mouseBuff.millisecondsDuration = 5000;
                         HatService.CurrentPlayer.applyBuff(mouseBuff);
                     }
                     else
                     {
-                        mouseBuff.millisecondsDuration = 1500;
+                        mouseBuff.millisecondsDuration = 5000;
                     }
                 }
                 playerOldHP[HatService.CurrentPlayer.UniqueMultiplayerID] = HatService.CurrentPlayer.health;

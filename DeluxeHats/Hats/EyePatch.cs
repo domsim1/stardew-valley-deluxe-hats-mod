@@ -16,7 +16,8 @@ namespace DeluxeHats.Hats
                 if (pirateBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.Attack.Set(1);
+                    effects.FishingLevel.Set(4);
+                    effects.LuckLevel.Set(2);
                     pirateBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

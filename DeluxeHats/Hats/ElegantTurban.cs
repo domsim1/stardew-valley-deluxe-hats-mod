@@ -16,7 +16,12 @@ namespace DeluxeHats.Hats
                 if (elegantBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.LuckLevel.Set(2);
+                    effects.LuckLevel.Set(4);
+                    effects.FarmingLevel.Set(3);
+                    effects.FishingLevel.Set(3);
+                    effects.ForagingLevel.Set(3);
+                    effects.MiningLevel.Set(3);
+                    effects.Speed.Set(2);
                     elegantBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

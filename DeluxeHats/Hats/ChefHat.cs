@@ -16,9 +16,9 @@ namespace DeluxeHats.Hats
                 if (chefBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.FarmingLevel.Set(2);
-                    effects.ForagingLevel.Set(1);
-                    effects.FishingLevel.Set(1);
+                    effects.FarmingLevel.Set(3);
+                    effects.ForagingLevel.Set(3);
+                    effects.FishingLevel.Set(3);
                     chefBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

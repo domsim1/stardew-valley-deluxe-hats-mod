@@ -17,6 +17,7 @@ namespace DeluxeHats.Hats
                 {
                     var effects = new BuffEffects();
                     effects.ForagingLevel.Set(3);
+                    effects.LuckLevel.Set(3);
                     garbageBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

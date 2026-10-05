@@ -19,9 +19,9 @@ All contributions would be much appreciated. You can contribute by:
 
 ## How to Implement a Hat or fix a bug
 
-Create a fork of the repository, then create a branch based on `v2` (for Stardew Valley 1.6) called `feature/<hat-name>` if its a hat effect or `bugfix/<issue-number>` if its a bug fix. If the branch you are developing on is behind the base branch, please rebase, do **not** merge into your branch.
+Create a fork of the repository, then create a branch based on `development` (for Stardew Valley 1.6) called `feature/<hat-name>` if its a hat effect or `bugfix/<issue-number>` if its a bug fix. If the branch you are developing on is behind the base branch, please rebase, do **not** merge into your branch.
 
-The project can be opened with Visual Studio and is built using [SMAPI](https://stardewvalleywiki.com/Modding:Modder_Guide/APIs) 4.x for Stardew Valley 1.6. All 120 hats in Stardew Valley have corresponding files in the `DeluxeHats/Hats/` directory.
+The project can be opened with Visual Studio (or built with `dotnet build`) and is built using [SMAPI](https://stardewvalleywiki.com/Modding:Modder_Guide/APIs) 4.x for Stardew Valley 1.6. All 120 hats in Stardew Valley have corresponding files in the `DeluxeHats/Hats/` directory.
 
 To implement a hat effect, find the file with the same name as the hat in the `Hats` directory. The file structure looks like this:
 
@@ -36,7 +36,6 @@ namespace DeluxeHats.Hats
   public static class BowlerHat
   {
     public const string Name = "Bowler Hat";
-    public const string Description = "Gain the Dapper Buff:\n+1 Defense";
 
     public static void Activate()
     {
@@ -55,9 +54,28 @@ The `Activate()` method is called when the player puts on the hat. The `Disable(
 
 **Important**: Hat classes are **automatically discovered** via reflection by matching the `Name` constant to the equipped hat. You do **not** need to register new hats in `HatService.cs` - just create the hat file with the proper `Name` constant and the mod will find it automatically.
 
+### The current player
+
+Because each player's hat is tracked separately (for multiplayer and splitscreen), always use `HatService.CurrentPlayer` instead of `Game1.player` inside hat code. It is set to the player wearing the hat while `Activate()`, `Disable()` and any hat delegates are running, and is `null` at all other times, so do not store it for later use.
+
+### Text and translations
+
+All player-facing text lives in `DeluxeHats/i18n/default.json`. Each hat uses keys of the form `hat.<slug>.<field>`, where the slug is the hat name in lower case with `'` and `.` removed and spaces replaced by `-` (for example `Abigail's Bow` becomes `abigails-bow`, and `???` becomes `unknown`):
+
+```json
+"hat.bowler-hat.name": "Bowler Hat",
+"hat.bowler-hat.description": "Gain the Dapper Buff:\n+1 Defense",
+"hat.bowler-hat.buff.name": "Dapper",
+"hat.bowler-hat.buff.description": "Dapper\n+1 Defense",
+```
+
+The `description` key is automatically added to the hat's in-game tooltip. Read text in code with `HatService.GetTranslation("hat.bowler-hat.buff.name")`. When changing a hat's effect, please also update [Hats and Effects](HATS_AND_EFFECTS.md).
+
+### SMAPI helpers and events
+
 To access SMAPI `Mod.Helper` use `HatService.Helper` and `Mod.Monitor` use `HatService.Monitor`.
 
-Do **not** use events from SMAPI directly from `HatService.Helper`. Instead, bind a lambda function to the corresponding delegate variable. For example, if you wish to use `Helper.Events.GameLoop.UpdateTicked`, assign a lambda function to `HatService.OnUpdateTicked` like so:
+Do **not** subscribe to SMAPI events directly through `HatService.Helper`. Instead, bind a lambda function to the corresponding delegate. For example, if you wish to use `Helper.Events.GameLoop.UpdateTicked`, assign a lambda function to `HatService.OnUpdateTicked` like so:
 
 ```C#
 public static void Activate()
@@ -69,33 +87,44 @@ public static void Activate()
 }
 ```
 
-The `HatService.OnUpdateTicked` delegate will be set to `null` automatically when the hat is taken off. This does **not** need to be done within the `Disable()` method.
+The available delegates are `OnUpdateTicked`, `OnTimeChanged`, `OnInventoryChanged`, `OnButtonPressed`, `OnDayStarted` and `OnDayEnding`. They are cleared automatically when the hat is taken off, so this does **not** need to be done within the `Disable()` method.
 
-If the event you wish to use does not yet have a delegate, you can add it to the `HatService` class like so:
+If the event you wish to use does not yet have a delegate, add one to `HatService`. First, declare the delegate type and add a field for it to the `PlayerHatState` class:
 
 ```C#
 public delegate void OnNewEventDelegate(NewEventArgs e);
-public static OnNewEventDelegate OnNewEvent;
-```
 
-Then set it to `null` in the `CleanUp()` method:
-
-```C#
-public static void CleanUp()
+private class PlayerHatState
 {
-  DisableHat?.Invoke();
-  DisableHat = null;
-  OnUpdateTicked = null;
-  OnNewEvent = null;
+  // ...existing fields
+  public OnNewEventDelegate OnNewEvent;
 }
 ```
 
-Create a method that will be called by the SMAPI event:
+Then add a public property for hats to assign to, like the existing ones:
+
+```C#
+public static OnNewEventDelegate OnNewEvent
+{
+  get => GetCurrentPlayerState()?.OnNewEvent;
+  set => GetOrCreateCurrentPlayerState().OnNewEvent = value;
+}
+```
+
+Create a method that will be called by the SMAPI event. It must set `CurrentPlayer` for each player before invoking their delegate:
 
 ```C#
 public static void NewEvent(object sender, NewEventArgs e)
 {
-  OnNewEvent?.Invoke(e);
+  foreach (var farmer in Game1.getAllFarmers())
+  {
+    if (playerStates.TryGetValue(farmer.UniqueMultiplayerID, out var state))
+    {
+      CurrentPlayer = farmer;
+      state.OnNewEvent?.Invoke(e);
+    }
+  }
+  CurrentPlayer = null;
 }
 ```
 

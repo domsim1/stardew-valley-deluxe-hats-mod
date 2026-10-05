@@ -29,10 +29,10 @@ namespace DeluxeHats.Hats
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),
                         displaySource: HatService.GetTranslation("hat.unknown.name"),
-                        displayName: HatService.GetTranslation("hat.???.buff.name"),
+                        displayName: HatService.GetTranslation("hat.unknown.buff.name"),
                         effects: effects
                         );
-                    unknownBuff.description = HatService.GetTranslation("hat.???.buff.description");
+                    unknownBuff.description = HatService.GetTranslation("hat.unknown.buff.description");
                     unknownBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(unknownBuff);
                 }

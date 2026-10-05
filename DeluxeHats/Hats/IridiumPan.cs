@@ -1,13 +1,14 @@
 ﻿using StardewValley;
 using System;
 using System.Linq;
+using DeluxeHats.Utils;
 using StardewValley.Buffs;
 
 namespace DeluxeHats.Hats
 {
     public static class IridiumPan
     {
-        public const string Name = "Iridium Pan (hat)";
+        public const string Name = "Iridium Pan";
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -22,19 +23,22 @@ namespace DeluxeHats.Hats
                     buff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),
-                        displaySource: HatService.GetTranslation("hat.iridium-pan-hat.name"),
-                        displayName: HatService.GetTranslation("hat.iridium-pan-(hat).buff.name"),
+                        displaySource: HatService.GetTranslation("hat.iridium-pan.name"),
+                        displayName: HatService.GetTranslation("hat.iridium-pan.buff.name"),
                         effects: effects
                         );
-                    buff.description = HatService.GetTranslation("hat.iridium-pan-(hat).buff.description");
+                    buff.description = HatService.GetTranslation("hat.iridium-pan.buff.description");
                     buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }
+
+                Prospector.Update(HatService.CurrentPlayer, showDirection: true);
             };
         }
 
         public static void Disable()
         {
+            Prospector.Reset(HatService.CurrentPlayer);
             Buff buff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (buff != null)
             {

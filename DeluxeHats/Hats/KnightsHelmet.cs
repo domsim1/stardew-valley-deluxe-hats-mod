@@ -17,6 +17,7 @@ namespace DeluxeHats.Hats
                 {
                     var effects = new BuffEffects();
                     effects.Defense.Set(4);
+                    effects.Attack.Set(3);
                     effects.Immunity.Set(2);
                     knightBuff = new Buff(
                         id: HatService.BuffId,

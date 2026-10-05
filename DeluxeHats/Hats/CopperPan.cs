@@ -1,6 +1,7 @@
 ﻿using StardewValley;
 using System;
 using System.Linq;
+using DeluxeHats.Utils;
 using StardewValley.Buffs;
 
 namespace DeluxeHats.Hats
@@ -28,11 +29,14 @@ namespace DeluxeHats.Hats
                     copperBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(copperBuff);
                 }
+
+                Prospector.Update(HatService.CurrentPlayer, showDirection: false);
             };
         }
 
         public static void Disable()
         {
+            Prospector.Reset(HatService.CurrentPlayer);
             Buff copperBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
             if (copperBuff != null)
             {

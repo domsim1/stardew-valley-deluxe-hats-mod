@@ -18,7 +18,7 @@ namespace DeluxeHats.Hats
                     if (horseBuff == null)
                     {
                         var effects = new BuffEffects();
-                        effects.Speed.Set(2);
+                        effects.Speed.Set(3);
                         horseBuff = new Buff(
                             id: HatService.BuffId,
                             source: HatService.GetTranslation("mod.name"),
@@ -30,12 +30,16 @@ namespace DeluxeHats.Hats
                         horseBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                         HatService.CurrentPlayer.applyBuff(horseBuff);
                     }
+                    if (horseBuff.millisecondsDuration < 30001)
+                    {
+                        horseBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    }
                 }
                 else
                 {
-                    if (horseBuff != null)
+                    if (horseBuff != null && horseBuff.millisecondsDuration > 30001)
                     {
-                        horseBuff.millisecondsDuration = 0;
+                        horseBuff.millisecondsDuration = 30000;
                     }
                 }
             };

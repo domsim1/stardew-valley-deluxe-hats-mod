@@ -1,6 +1,7 @@
 ﻿using StardewValley;
 using System;
 using System.Linq;
+using StardewModdingAPI;
 using StardewValley.Buffs;
 
 namespace DeluxeHats.Hats
@@ -8,6 +9,8 @@ namespace DeluxeHats.Hats
     public static class ChickenMask
     {
         public const string Name = "Chicken Mask";
+        private const int friendshipPerDay = 15;
+
         public static void Activate()
         {
             HatService.OnUpdateTicked = (e) =>
@@ -28,6 +31,21 @@ namespace DeluxeHats.Hats
                     chickenBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
                     HatService.CurrentPlayer.applyBuff(chickenBuff);
                 }
+            };
+
+            HatService.OnDayStarted = (e) =>
+            {
+                // Animals are synced from the host, so only the host applies the bonus.
+                if (!Context.IsMainPlayer || !Game1.getOnlineFarmers().Contains(HatService.CurrentPlayer))
+                    return;
+                Utility.ForEachLocation(location =>
+                {
+                    foreach (FarmAnimal animal in location.animals.Values)
+                    {
+                        animal.friendshipTowardFarmer.Value = Math.Min(1000, animal.friendshipTowardFarmer.Value + friendshipPerDay);
+                    }
+                    return true;
+                });
             };
         }
 

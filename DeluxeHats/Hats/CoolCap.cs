@@ -16,7 +16,7 @@ namespace DeluxeHats.Hats
                 if (HatService.CurrentPlayer?.currentLocation == null)
                     return;
                 Buff coolCapBuff = HatService.CurrentPlayer.buffs.AppliedBuffs.Values.FirstOrDefault(x => x.id == HatService.BuffId);
-                if (HatService.CurrentPlayer.currentLocation.IsOutdoors && Game1.currentSeason == "spring")
+                if (HatService.CurrentPlayer.currentLocation.IsOutdoors)
                 {
                     if (coolCapBuff == null)
                     {

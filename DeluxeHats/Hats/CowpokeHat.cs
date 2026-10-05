@@ -18,7 +18,7 @@ namespace DeluxeHats.Hats
                     if (cowpokeBuff == null)
                     {
                         var effects = new BuffEffects();
-                        effects.Speed.Set(1);
+                        effects.Speed.Set(2);
                         cowpokeBuff = new Buff(
                             id: HatService.BuffId,
                             source: HatService.GetTranslation("mod.name"),

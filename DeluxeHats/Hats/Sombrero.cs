@@ -16,7 +16,10 @@ namespace DeluxeHats.Hats
                 if (sombruroBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.LuckLevel.Set(2);
+                    effects.LuckLevel.Set(4);
+                    effects.Speed.Set(2);
+                    effects.FarmingLevel.Set(2);
+                    effects.ForagingLevel.Set(2);
                     sombruroBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

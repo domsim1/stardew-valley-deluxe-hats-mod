@@ -16,8 +16,10 @@ namespace DeluxeHats.Hats
                 if (magicTurbanBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.LuckLevel.Set(2);
-                    effects.ForagingLevel.Set(2);
+                    effects.LuckLevel.Set(4);
+                    effects.ForagingLevel.Set(3);
+                    effects.MiningLevel.Set(2);
+                    effects.Speed.Set(1);
                     magicTurbanBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

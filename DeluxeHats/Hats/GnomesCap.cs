@@ -16,8 +16,9 @@ namespace DeluxeHats.Hats
                 if (gnomeBuff == null)
                 {
                     var effects = new BuffEffects();
-                    effects.LuckLevel.Set(1);
-                    effects.MiningLevel.Set(1);
+                    effects.MiningLevel.Set(3);
+                    effects.ForagingLevel.Set(3);
+                    effects.LuckLevel.Set(2);
                     gnomeBuff = new Buff(
                         id: HatService.BuffId,
                         source: HatService.GetTranslation("mod.name"),

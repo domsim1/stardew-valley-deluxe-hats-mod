@@ -5,6 +5,17 @@
   "debug.hat-equipped": "Hat Equipped by {0}: {1}",
   "debug.hat-not-found": "Hat not found: {0}",
 
+  "prospector.found": "You sense a panning spot nearby!",
+  "prospector.found-direction": "You sense a panning spot to the {0}!",
+  "direction.north": "north",
+  "direction.north-east": "north-east",
+  "direction.east": "east",
+  "direction.south-east": "south-east",
+  "direction.south": "south",
+  "direction.south-west": "south-west",
+  "direction.west": "west",
+  "direction.north-west": "north-west",
+
   "hat.unknown.name": "???",
   "hat.unknown.description": "Gain the Mysterious Power Buff:\n+10 Farming, +10 Fishing, +10 Foraging, +10 Mining, +10 Luck, +5 Speed, +5 Defense, +5 Attack, +5 Immunity",
   "hat.unknown.buff.name": "Mysterious Power",
@@ -21,9 +32,9 @@
   "hat.arcane-hat.buff.description": "Arcane Mastery\n+2 Luck, +2 Speed, +1 Attack",
 
   "hat.archers-cap.name": "Archer's Cap",
-  "hat.archers-cap.description": "Gain the Precision Aim Buff:\n+2 Attack, +1 Speed, +1 Defense",
+  "hat.archers-cap.description": "Gain the Precision Aim Buff:\n+3 Attack, +2 Speed, +2 Defense",
   "hat.archers-cap.buff.name": "Precision Aim",
-  "hat.archers-cap.buff.description": "Precision Aim\n+2 Attack, +1 Speed, +1 Defense",
+  "hat.archers-cap.buff.description": "Precision Aim\n+3 Attack, +2 Speed, +2 Defense",
 
   "hat.beanie.name": "Beanie",
   "hat.beanie.description": "Gain Burglar's Luck Buff:\n+2 Luck\n+2 Attack",
@@ -61,9 +72,9 @@
   "hat.bluebird-mask.buff.description": "Avian Grace\n+2 Foraging, +1 Speed",
 
   "hat.bowler-hat.name": "Bowler Hat",
-  "hat.bowler-hat.description": "Gain the Dapper Buff:\n+1 Defense",
+  "hat.bowler-hat.description": "Gain the Dapper Buff:\n+3 Luck, +2 Defense, +1 Speed",
   "hat.bowler-hat.buff.name": "Dapper",
-  "hat.bowler-hat.buff.description": "Dapper\n+1 Defense",
+  "hat.bowler-hat.buff.description": "Dapper\n+3 Luck, +2 Defense, +1 Speed",
 
   "hat.bridal-veil.name": "Bridal Veil",
   "hat.bridal-veil.description": "Gain the Blissful Buff:\n+2 Luck",
@@ -81,17 +92,17 @@
   "hat.butterfly-bow.buff.description": "Graceful Flight\n+2 Luck, +1 Foraging, +1 Farming",
 
   "hat.cat-ears.name": "Cat Ears",
-  "hat.cat-ears.description": "When you are hit, meow and gain Skittish Kitty Buff:\n+3 Speed\n+2 Attack",
+  "hat.cat-ears.description": "When you are hit, meow and gain Skittish Kitty Buff for 8 seconds:\n+3 Speed\n+3 Attack",
   "hat.cat-ears.buff.name": "Skittish Kitty",
-  "hat.cat-ears.buff.description": "Skittish Kitty\n+3 Speed\n+2 Attack",
+  "hat.cat-ears.buff.description": "Skittish Kitty\n+3 Speed\n+3 Attack",
 
   "hat.chef-hat.name": "Chef Hat",
-  "hat.chef-hat.description": "Gain the Master Chef Buff:\n+2 Farming, +1 Foraging, +1 Fishing",
+  "hat.chef-hat.description": "Gain the Master Chef Buff:\n+3 Farming, +3 Foraging, +3 Fishing",
   "hat.chef-hat.buff.name": "Master Chef",
-  "hat.chef-hat.buff.description": "Master Chef\n+2 Farming, +1 Foraging, +1 Fishing",
+  "hat.chef-hat.buff.description": "Master Chef\n+3 Farming, +3 Foraging, +3 Fishing",
 
   "hat.chicken-mask.name": "Chicken Mask",
-  "hat.chicken-mask.description": "Gain the Chicken Friend Buff:\n+2 Farming",
+  "hat.chicken-mask.description": "Your farm animals gain extra friendship each morning.\nGain the Chicken Friend Buff:\n+2 Farming",
   "hat.chicken-mask.buff.name": "Chicken Friend",
   "hat.chicken-mask.buff.description": "Chicken Friend\n+2 Farming",
 
@@ -101,19 +112,19 @@
   "hat.cone-hat.buff.description": "Celebratory\n+1 Luck",
 
   "hat.cool-cap.name": "Cool Cap",
-  "hat.cool-cap.description": "When outside in spring get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing",
+  "hat.cool-cap.description": "When outside in any season get the Season Protection Buff:\n+2 Foraging\n+1 Farming\n+1 Fishing",
   "hat.cool-cap.buff.name": "Season Protection",
   "hat.cool-cap.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
 
   "hat.copper-pan.name": "Copper Pan",
-  "hat.copper-pan.description": "Gain the Prospector Buff:\n+2 Mining",
+  "hat.copper-pan.description": "Alerts you when a panning spot appears nearby.\nGain the Prospector Buff:\n+2 Mining",
   "hat.copper-pan.buff.name": "Prospector",
   "hat.copper-pan.buff.description": "Prospector\n+2 Mining",
 
   "hat.cowboy-hat.name": "Cowboy Hat",
-  "hat.cowboy-hat.description": "While riding the horse gain the Buckeroo Buff:\n+2 Speed",
+  "hat.cowboy-hat.description": "While riding the horse and for 30 seconds after dismounting gain the Buckeroo Buff:\n+3 Speed",
   "hat.cowboy-hat.buff.name": "Buckeroo",
-  "hat.cowboy-hat.buff.description": "Buckeroo\n+2 Speed",
+  "hat.cowboy-hat.buff.description": "Buckeroo\n+3 Speed",
 
   "hat.cowgal-hat.name": "Cowgal Hat",
   "hat.cowgal-hat.description": "While riding the horse gain the Buckeroo Buff:\n+2 Speed",
@@ -121,9 +132,9 @@
   "hat.cowgal-hat.buff.description": "Buckeroo\n+2 Speed",
 
   "hat.cowpoke-hat.name": "Cowpoke Hat",
-  "hat.cowpoke-hat.description": "While riding the horse gain the Buckeroo Buff:\n+1 Speed",
+  "hat.cowpoke-hat.description": "While riding the horse gain the Buckeroo Buff:\n+2 Speed",
   "hat.cowpoke-hat.buff.name": "Buckeroo",
-  "hat.cowpoke-hat.buff.description": "Buckeroo\n+1 Speed",
+  "hat.cowpoke-hat.buff.description": "Buckeroo\n+2 Speed",
 
   "hat.daisy.name": "Daisy",
   "hat.daisy.description": "Gain the Flower Child Buff:\n+2 Farming",
@@ -151,9 +162,9 @@
   "hat.delicate-bow.buff.description": "Delicate Grace\n+2 Luck, +1 Speed",
 
   "hat.deluxe-cowboy-hat.name": "Deluxe Cowboy Hat",
-  "hat.deluxe-cowboy-hat.description": "Gain the Premium Rider Buff:\n+3 Speed, +2 Attack",
+  "hat.deluxe-cowboy-hat.description": "Gain the Premium Rider Buff:\n+2 Speed, +1 Attack",
   "hat.deluxe-cowboy-hat.buff.name": "Premium Rider",
-  "hat.deluxe-cowboy-hat.buff.description": "Premium Rider\n+3 Speed, +2 Attack",
+  "hat.deluxe-cowboy-hat.buff.description": "Premium Rider\n+2 Speed, +1 Attack",
 
   "hat.deluxe-pirate-hat.name": "Deluxe Pirate Hat",
   "hat.deluxe-pirate-hat.description": "Gain the Elite Buccaneer Buff:\n+3 Attack, +2 Defense, +2 Luck",
@@ -171,19 +182,19 @@
   "hat.earmuffs.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
 
   "hat.elegant-turban.name": "Elegant Turban",
-  "hat.elegant-turban.description": "Gain the Posh Buff:\n+2 Luck",
+  "hat.elegant-turban.description": "Gain the Posh Buff:\n+4 Luck, +3 Farming, +3 Fishing, +3 Foraging, +3 Mining, +2 Speed",
   "hat.elegant-turban.buff.name": "Posh",
-  "hat.elegant-turban.buff.description": "Posh\n+2 Luck",
+  "hat.elegant-turban.buff.description": "Posh\n+4 Luck, +3 Farming, +3 Fishing, +3 Foraging, +3 Mining, +2 Speed",
 
   "hat.emilys-magic-hat.name": "Emily's Magic Hat",
-  "hat.emilys-magic-hat.description": "Gain the Magical Aura Buff:\n+3 Luck",
+  "hat.emilys-magic-hat.description": "Gain the Magical Aura Buff:\n+3 Luck, +3 Farming, +2 Foraging",
   "hat.emilys-magic-hat.buff.name": "Magical Aura",
-  "hat.emilys-magic-hat.buff.description": "Magical Aura\n+3 Luck",
+  "hat.emilys-magic-hat.buff.description": "Magical Aura\n+3 Luck, +3 Farming, +2 Foraging",
 
   "hat.eye-patch.name": "Eye Patch",
-  "hat.eye-patch.description": "Gain the Pirate Vision Buff:\n+1 Attack",
+  "hat.eye-patch.description": "Gain the Pirate Vision Buff:\n+4 Fishing, +2 Luck",
   "hat.eye-patch.buff.name": "Pirate Vision",
-  "hat.eye-patch.buff.description": "Pirate Vision\n+1 Attack",
+  "hat.eye-patch.buff.description": "Pirate Vision\n+4 Fishing, +2 Luck",
 
   "hat.fashion-hat.name": "Fashion Hat",
   "hat.fashion-hat.description": "Gain the Fashionable Buff:\n+2 Luck",
@@ -221,9 +232,9 @@
   "hat.frog-hat.buff.description": "Amphibian Adaptation\n+2 Fishing, +1 Immunity",
 
   "hat.garbage-hat.name": "Garbage Hat",
-  "hat.garbage-hat.description": "Gain the Trash Panda Buff:\n+3 Foraging",
+  "hat.garbage-hat.description": "Gain the Trash Panda Buff:\n+3 Foraging, +3 Luck",
   "hat.garbage-hat.buff.name": "Trash Panda",
-  "hat.garbage-hat.buff.description": "Trash Panda\n+3 Foraging",
+  "hat.garbage-hat.buff.description": "Trash Panda\n+3 Foraging, +3 Luck",
 
   "hat.gils-hat.name": "Gil's Hat",
   "hat.gils-hat.description": "Gain the Carpenter's Pride Buff:\n+2 Farming, +1 Defense",
@@ -231,22 +242,22 @@
   "hat.gils-hat.buff.description": "Carpenter's Pride\n+2 Farming, +1 Defense",
 
   "hat.gnomes-cap.name": "Gnome's Cap",
-  "hat.gnomes-cap.description": "Gain the Gnome Protection Buff:\n+1 Luck\n+1 Mining",
+  "hat.gnomes-cap.description": "Gain the Gnome Protection Buff:\n+3 Mining\n+3 Foraging\n+2 Luck",
   "hat.gnomes-cap.buff.name": "Gnome Protection",
-  "hat.gnomes-cap.buff.description": "Gnome Protection\n+1 Luck\n+1 Mining",
+  "hat.gnomes-cap.buff.description": "Gnome Protection\n+3 Mining\n+3 Foraging\n+2 Luck",
 
   "hat.goblin-mask.name": "Goblin Mask",
-  "hat.goblin-mask.description": "Gain the Mischievous Buff:\n+2 Attack",
+  "hat.goblin-mask.description": "Gain the Mischievous Buff:\n+3 Attack, +2 Speed, +2 Luck",
   "hat.goblin-mask.buff.name": "Mischievous",
-  "hat.goblin-mask.buff.description": "Mischievous\n+2 Attack",
+  "hat.goblin-mask.buff.description": "Mischievous\n+3 Attack, +2 Speed, +2 Luck",
 
   "hat.goggles.name": "Goggles",
   "hat.goggles.description": "Gain the Focused Vision Buff:\n+1 Mining, +1 Fishing",
   "hat.goggles.buff.name": "Focused Vision",
   "hat.goggles.buff.description": "Focused Vision\n+1 Mining, +1 Fishing",
 
-  "hat.gold-pan.name": "Gold Pan (hat)",
-  "hat.gold-pan.description": "Gain the Golden Prosperity Buff:\n+2 Mining, +2 Luck",
+  "hat.gold-pan.name": "Gold Pan",
+  "hat.gold-pan.description": "Alerts you when a panning spot appears nearby and which direction it is.\nGain the Golden Prosperity Buff:\n+2 Mining, +2 Luck",
   "hat.gold-pan.buff.name": "Golden Prosperity",
   "hat.gold-pan.buff.description": "Golden Prosperity\n+2 Mining, +2 Luck",
 
@@ -279,7 +290,7 @@
   "hat.hair-bone.buff.description": "Primal Hunter\n+2 Attack",
 
   "hat.hard-hat.name": "Hard Hat",
-  "hat.hard-hat.description": "Gain the Safety First Buff:\n+3 Defense, +1 Immunity",
+  "hat.hard-hat.description": "Lights the way like a headlamp.\nGain the Safety First Buff:\n+3 Defense, +1 Immunity",
   "hat.hard-hat.buff.name": "Safety First",
   "hat.hard-hat.buff.description": "Safety First\n+3 Defense, +1 Immunity",
 
@@ -289,12 +300,12 @@
   "hat.hunters-cap.buff.description": "Season Protection\n+2 Foraging\n+1 Farming\n+1 Fishing",
 
   "hat.infinity-crown.name": "Infinity Crown",
-  "hat.infinity-crown.description": "Gain the Infinite Power Buff:\n+4 Farming, +4 Mining, +4 Fishing, +3 Luck",
+  "hat.infinity-crown.description": "Gain the Infinite Power Buff:\n+6 Attack, +4 Defense, +3 Luck, +2 Speed",
   "hat.infinity-crown.buff.name": "Infinite Power",
-  "hat.infinity-crown.buff.description": "Infinite Power\n+4 Farming, +4 Mining, +4 Fishing, +3 Luck",
+  "hat.infinity-crown.buff.description": "Infinite Power\n+6 Attack, +4 Defense, +3 Luck, +2 Speed",
 
-  "hat.iridium-pan.name": "Iridium Pan (hat)",
-  "hat.iridium-pan.description": "Gain the Iridium Mastery Buff:\n+3 Mining, +3 Luck, +2 Attack",
+  "hat.iridium-pan.name": "Iridium Pan",
+  "hat.iridium-pan.description": "Alerts you when a panning spot appears nearby and which direction it is.\nGain the Iridium Mastery Buff:\n+3 Mining, +3 Luck, +2 Attack",
   "hat.iridium-pan.buff.name": "Iridium Mastery",
   "hat.iridium-pan.buff.description": "Iridium Mastery\n+3 Mining, +3 Luck, +2 Attack",
 
@@ -309,19 +320,19 @@
   "hat.joja-cap.buff.description": "Profit Seeker\n+1 Luck",
 
   "hat.junimo-hat.name": "Junimo Hat",
-  "hat.junimo-hat.description": "Gain the Junimo Spirit Buff:\n+3 Farming, +2 Foraging, +1 Luck",
+  "hat.junimo-hat.description": "Gain the Junimo Spirit Buff:\n+5 Farming, +5 Foraging, +3 Luck, +2 Speed",
   "hat.junimo-hat.buff.name": "Junimo Spirit",
-  "hat.junimo-hat.buff.description": "Junimo Spirit\n+3 Farming, +2 Foraging, +1 Luck",
+  "hat.junimo-hat.buff.description": "Junimo Spirit\n+5 Farming, +5 Foraging, +3 Luck, +2 Speed",
 
   "hat.knights-helmet.name": "Knight's Helmet",
-  "hat.knights-helmet.description": "Gain the Knight's Valor Buff:\n+4 Defense, +2 Immunity",
+  "hat.knights-helmet.description": "Gain the Knight's Valor Buff:\n+4 Defense, +3 Attack, +2 Immunity",
   "hat.knights-helmet.buff.name": "Knight's Valor",
-  "hat.knights-helmet.buff.description": "Knight's Valor\n+4 Defense, +2 Immunity",
+  "hat.knights-helmet.buff.description": "Knight's Valor\n+4 Defense, +3 Attack, +2 Immunity",
 
   "hat.laurel-wreath-crown.name": "Laurel Wreath Crown",
-  "hat.laurel-wreath-crown.description": "Gain the Champion's Valor Buff:\n+3 Attack, +3 Defense, +2 Luck",
+  "hat.laurel-wreath-crown.description": "Gain the Champion's Valor Buff:\n+2 Attack, +2 Defense, +1 Luck",
   "hat.laurel-wreath-crown.buff.name": "Champion's Valor",
-  "hat.laurel-wreath-crown.buff.description": "Champion's Valor\n+3 Attack, +3 Defense, +2 Luck",
+  "hat.laurel-wreath-crown.buff.description": "Champion's Valor\n+2 Attack, +2 Defense, +1 Luck",
 
   "hat.leprechaun-hat.name": "Leprechaun Hat",
   "hat.leprechaun-hat.description": "Gain the Lucky Gold Buff:\n+3 Luck, +2 Farming",
@@ -329,9 +340,9 @@
   "hat.leprechaun-hat.buff.description": "Lucky Gold\n+3 Luck, +2 Farming",
 
   "hat.living-hat.name": "Living Hat",
-  "hat.living-hat.description": "Gain the Living Bond Buff:\n+2 Farming",
+  "hat.living-hat.description": "Waters the soil around you as you walk, and gain the Living Bond Buff:\n+3 Farming",
   "hat.living-hat.buff.name": "Living Bond",
-  "hat.living-hat.buff.description": "Living Bond\n+2 Farming",
+  "hat.living-hat.buff.description": "Living Bond\n+3 Farming",
 
   "hat.logo-cap.name": "Logo Cap",
   "hat.logo-cap.description": "Gain the Brand Ambassador Buff:\n+1 Defense\n+1 Attack",
@@ -339,22 +350,22 @@
   "hat.logo-cap.buff.description": "Brand Ambassador\n+1 Defense\n+1 Attack",
 
   "hat.lucky-bow.name": "Lucky Bow",
-  "hat.lucky-bow.description": "Gain Lucky charm Buff:\n+1 Luck",
+  "hat.lucky-bow.description": "Gain Lucky charm Buff:\n+3 Luck",
   "hat.lucky-bow.buff.name": "Lucky charm",
-  "hat.lucky-bow.buff.description": "Lucky charm\n+1 Luck",
+  "hat.lucky-bow.buff.description": "Lucky charm\n+3 Luck",
 
   "hat.magic-cowboy-hat.name": "Magic Cowboy Hat",
-  "hat.magic-cowboy-hat.description": "While riding the horse gain the Spellslinger Buff:\n+2 Speed\n+1 Attack",
+  "hat.magic-cowboy-hat.description": "Gain the Spellslinger Buff:\n+3 Speed\n+2 Attack\n+2 Luck",
   "hat.magic-cowboy-hat.buff.name": "Spellslinger",
-  "hat.magic-cowboy-hat.buff.description": "Spellslinger\n+2 Speed\n+1 Attack",
+  "hat.magic-cowboy-hat.buff.description": "Spellslinger\n+3 Speed\n+2 Attack\n+2 Luck",
 
   "hat.magic-turban.name": "Magic Turban",
-  "hat.magic-turban.description": "Gain the Mystic Buff:\n+2 Luck\n+2 Foraging",
+  "hat.magic-turban.description": "Gain the Mystic Buff:\n+4 Luck\n+3 Foraging\n+2 Mining\n+1 Speed",
   "hat.magic-turban.buff.name": "Mystic",
-  "hat.magic-turban.buff.description": "Mystic\n+2 Luck\n+2 Foraging",
+  "hat.magic-turban.buff.description": "Mystic\n+4 Luck\n+3 Foraging\n+2 Mining\n+1 Speed",
 
   "hat.mouse-ears.name": "Mouse Ears",
-  "hat.mouse-ears.description": "When you are hit gain Skittish Mouse Buff:\n+4 Speed",
+  "hat.mouse-ears.description": "When you are hit gain Skittish Mouse Buff for 5 seconds:\n+4 Speed",
   "hat.mouse-ears.buff.name": "Skittish Mouse",
   "hat.mouse-ears.buff.description": "Skittish Mouse\n+4 Speed",
 
@@ -369,9 +380,10 @@
   "hat.mummy-mask.buff.description": "Ancient Curse\n+2 Attack, +2 Defense, +1 Mining",
 
   "hat.mushroom-cap.name": "Mushroom Cap",
-  "hat.mushroom-cap.description": "Gain the Fungi Guide Buff:\n+2 Foraging",
+  "hat.mushroom-cap.description": "A mushroom sprouts near the farmhouse each morning.\nGain the Fungi Guide Buff:\n+3 Foraging, +2 Luck",
   "hat.mushroom-cap.buff.name": "Fungi Guide",
-  "hat.mushroom-cap.buff.description": "Fungi Guide\n+2 Foraging",
+  "hat.mushroom-cap.sprouted": "A mushroom sprouted near the farmhouse!",
+  "hat.mushroom-cap.buff.description": "Fungi Guide\n+3 Foraging, +2 Luck",
 
   "hat.mystery-hat.name": "Mystery Hat",
   "hat.mystery-hat.description": "Gain the Enigmatic Aura Buff:\n+2 Luck, +1 Farming, +1 Fishing, +1 Mining",
@@ -384,9 +396,9 @@
   "hat.official-cap.buff.description": "Ol' Mariner\n+2 Fishing",
 
   "hat.pageboy-cap.name": "Pageboy Cap",
-  "hat.pageboy-cap.description": "Gain the Refined Elegance Buff:\n+1 Luck, +1 Farming",
+  "hat.pageboy-cap.description": "Gain the Refined Elegance Buff:\n+3 Luck, +2 Farming, +2 Foraging, +1 Speed",
   "hat.pageboy-cap.buff.name": "Refined Elegance",
-  "hat.pageboy-cap.buff.description": "Refined Elegance\n+1 Luck, +1 Farming",
+  "hat.pageboy-cap.buff.description": "Refined Elegance\n+3 Luck, +2 Farming, +2 Foraging, +1 Speed",
 
   "hat.panda-hat.name": "Panda Hat",
   "hat.panda-hat.description": "Gain the Bamboo Muncher Buff:\n+3 Farming",
@@ -399,9 +411,9 @@
   "hat.paper-hat.buff.description": "Simple Joy\n+1 Luck",
 
   "hat.party-hat.name": "Party Hat",
-  "hat.party-hat.description": "Gain Party Time Buff:\n+3 Luck",
+  "hat.party-hat.description": "Gain Party Time Buff:\n+2 Luck",
   "hat.party-hat.buff.name": "Party Time",
-  "hat.party-hat.buff.description": "Party Time\n+3 Luck",
+  "hat.party-hat.buff.description": "Party Time\n+2 Luck",
 
   "hat.pink-bow.name": "Pink Bow",
   "hat.pink-bow.description": "Gain the Sweet Charm Buff:\n+1 Luck, +1 Foraging",
@@ -414,9 +426,9 @@
   "hat.pirate-hat.buff.description": "Treasure Hunter\n+2 Fishing, +2 Luck",
 
   "hat.plum-chapeau.name": "Plum Chapeau",
-  "hat.plum-chapeau.description": "Gain the Royal Elegance Buff:\n+1 Luck",
+  "hat.plum-chapeau.description": "Gain the Royal Elegance Buff:\n+2 Luck, +1 Farming",
   "hat.plum-chapeau.buff.name": "Royal Elegance",
-  "hat.plum-chapeau.buff.description": "Royal Elegance\n+1 Luck",
+  "hat.plum-chapeau.buff.description": "Royal Elegance\n+2 Luck, +1 Farming",
 
   "hat.polka-bow.name": "Polka Bow",
   "hat.polka-bow.description": "Gain the Polka Dancer Buff:\n+1 Speed",
@@ -479,9 +491,9 @@
   "hat.small-cap.buff.description": "Quick Reflexes\n+1 Speed",
 
   "hat.sombrero.name": "Sombrero",
-  "hat.sombrero.description": "Gain the Fiesta Buff:\n+2 Luck",
+  "hat.sombrero.description": "Gain the Fiesta Buff:\n+4 Luck, +2 Speed, +2 Farming, +2 Foraging",
   "hat.sombrero.buff.name": "Fiesta",
-  "hat.sombrero.buff.description": "Fiesta\n+2 Luck",
+  "hat.sombrero.buff.description": "Fiesta\n+4 Luck, +2 Speed, +2 Farming, +2 Foraging",
 
   "hat.souwester.name": "Sou'wester",
   "hat.souwester.description": "While outside in the rain, gain the Fishing in the Rain Buff:\n+4 Fishing",
@@ -489,14 +501,14 @@
   "hat.souwester.buff.description": "Fishing in the Rain\n+4 Fishing",
 
   "hat.space-helmet.name": "Space Helmet",
-  "hat.space-helmet.description": "Gain the Cosmic Adventure Buff:\n+3 Mining, +2 Luck",
+  "hat.space-helmet.description": "Gain the Cosmic Adventure Buff:\n+4 Mining, +3 Luck, +2 Defense",
   "hat.space-helmet.buff.name": "Cosmic Adventure",
-  "hat.space-helmet.buff.description": "Cosmic Adventure\n+3 Mining, +2 Luck",
+  "hat.space-helmet.buff.description": "Cosmic Adventure\n+4 Mining, +3 Luck, +2 Defense",
 
   "hat.sports-cap.name": "Sports Cap",
-  "hat.sports-cap.description": "Gain the Athletic Performance Buff:\n+2 Speed, +1 Luck",
+  "hat.sports-cap.description": "Gain the Athletic Performance Buff:\n+1 Speed, +1 Luck",
   "hat.sports-cap.buff.name": "Athletic Performance",
-  "hat.sports-cap.buff.description": "Athletic Performance\n+2 Speed, +1 Luck",
+  "hat.sports-cap.buff.description": "Athletic Performance\n+1 Speed, +1 Luck",
 
   "hat.spotted-headscarf.name": "Spotted Headscarf",
   "hat.spotted-headscarf.description": "Gain the Spotted Grace Buff:\n+1 Luck",
@@ -518,8 +530,8 @@
   "hat.star-helmet.buff.name": "Starlight Protection",
   "hat.star-helmet.buff.description": "Starlight Protection\n+2 Defense\n+2 Mining\n+1 Luck",
 
-  "hat.steel-pan.name": "Steel Pan (hat)",
-  "hat.steel-pan.description": "Gain the Steel Prospector Buff:\n+2 Mining, +1 Defense",
+  "hat.steel-pan.name": "Steel Pan",
+  "hat.steel-pan.description": "Alerts you when a panning spot appears nearby.\nGain the Steel Prospector Buff:\n+2 Mining, +1 Defense",
   "hat.steel-pan.buff.name": "Steel Prospector",
   "hat.steel-pan.buff.description": "Steel Prospector\n+2 Mining\n+1 Defense",
 
@@ -534,9 +546,9 @@
   "hat.sunglasses.buff.description": "Cool and Collected\n+2 Luck\n+1 Speed",
 
   "hat.swashbuckler-hat.name": "Swashbuckler Hat",
-  "hat.swashbuckler-hat.description": "Gain the Swashbuckling Buff:\n+3 Attack, +2 Speed",
+  "hat.swashbuckler-hat.description": "Gain the Swashbuckling Buff:\n+2 Attack, +1 Speed",
   "hat.swashbuckler-hat.buff.name": "Swashbuckling",
-  "hat.swashbuckler-hat.buff.description": "Swashbuckling\n+3 Attack\n+2 Speed",
+  "hat.swashbuckler-hat.buff.description": "Swashbuckling\n+2 Attack\n+1 Speed",
 
   "hat.tiara.name": "Tiara",
   "hat.tiara.description": "Gain Fairy Blessing Buff:\n+2 Luck\n+2 Farming",
@@ -554,7 +566,7 @@
   "hat.top-hat.buff.description": "Distinguished Gentleman\n+2 Luck",
 
   "hat.totem-mask.name": "Totem Mask",
-  "hat.totem-mask.description": "Chance not to consume totem on use.",
+  "hat.totem-mask.description": "40% chance not to consume a Warp Totem or Rain Totem on use.",
 
   "hat.tricorn-hat.name": "Tricorn Hat",
   "hat.tricorn-hat.description": "Gain the Revolutionary Spirit Buff:\n+2 Attack, +2 Defense, +1 Luck",
@@ -587,9 +599,9 @@
   "hat.wearable-dwarf-helm.buff.description": "Mad Dwarf King\n+4 Mining\n+2 Speed\n+1 Attack",
 
   "hat.white-bow.name": "White Bow",
-  "hat.white-bow.description": "Gain the Pure Elegance Buff:\n+2 Luck, +1 Farming",
+  "hat.white-bow.description": "Gain the Pure Elegance Buff:\n+3 Luck, +2 Foraging, +1 Farming",
   "hat.white-bow.buff.name": "Pure Elegance",
-  "hat.white-bow.buff.description": "Pure Elegance\n+2 Luck, +1 Farming",
+  "hat.white-bow.buff.description": "Pure Elegance\n+3 Luck, +2 Foraging, +1 Farming",
 
   "hat.white-turban.name": "White Turban",
   "hat.white-turban.description": "Gain the Sage Buff:\n+2 Foraging",
