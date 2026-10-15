@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         blobfishBuff.description = HatService.GetTranslation("hat.blobfish-mask.buff.description");
-                        blobfishBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        blobfishBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                         HatService.CurrentPlayer.applyBuff(blobfishBuff);
                     }
                 }

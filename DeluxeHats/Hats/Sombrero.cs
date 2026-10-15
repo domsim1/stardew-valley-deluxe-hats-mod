@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     sombruroBuff.description = HatService.GetTranslation("hat.sombrero.buff.description");
-                    sombruroBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    sombruroBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(sombruroBuff);
                 }
             };

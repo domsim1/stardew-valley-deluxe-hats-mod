@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     gnomeBuff.description = HatService.GetTranslation("hat.gnomes-cap.buff.description");
-                    gnomeBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    gnomeBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(gnomeBuff);
                 }
             };

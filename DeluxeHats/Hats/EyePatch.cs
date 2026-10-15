@@ -26,7 +26,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     pirateBuff.description = HatService.GetTranslation("hat.eye-patch.buff.description");
-                    pirateBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    pirateBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(pirateBuff);
                 }
             };

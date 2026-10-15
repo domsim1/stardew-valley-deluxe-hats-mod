@@ -26,7 +26,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     santaBuff.description = HatService.GetTranslation("hat.santa-hat.buff.description");
-                    santaBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    santaBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(santaBuff);
                 }
             };

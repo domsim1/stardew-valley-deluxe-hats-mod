@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     knightBuff.description = HatService.GetTranslation("hat.knights-helmet.buff.description");
-                    knightBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    knightBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(knightBuff);
                 }
             };

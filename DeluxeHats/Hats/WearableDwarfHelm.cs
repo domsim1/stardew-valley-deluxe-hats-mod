@@ -39,7 +39,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                     );
                     dwarfBuff.description = HatService.GetTranslation("hat.wearable-dwarf-helm.buff.description");
-                    dwarfBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    dwarfBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(dwarfBuff);
                 }
             };

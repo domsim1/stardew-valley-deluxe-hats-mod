@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     goblinBuff.description = HatService.GetTranslation("hat.goblin-mask.buff.description");
-                    goblinBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    goblinBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(goblinBuff);
                 }
             };

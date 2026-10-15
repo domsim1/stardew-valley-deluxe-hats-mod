@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     magicTurbanBuff.description = HatService.GetTranslation("hat.magic-turban.buff.description");
-                    magicTurbanBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    magicTurbanBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(magicTurbanBuff);
                 }
             };

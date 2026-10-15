@@ -25,7 +25,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     coneBuff.description = HatService.GetTranslation("hat.cone-hat.buff.description");
-                    coneBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    coneBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(coneBuff);
                 }
             };

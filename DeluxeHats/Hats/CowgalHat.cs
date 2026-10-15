@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         horseBuff.description = HatService.GetTranslation("hat.cowgal-hat.buff.description");
-                        horseBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        horseBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                         HatService.CurrentPlayer.applyBuff(horseBuff);
                     }
                 }

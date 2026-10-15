@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     butterflyBuff.description = HatService.GetTranslation("hat.butterfly-bow.buff.description");
-                    butterflyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    butterflyBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(butterflyBuff);
                 }
             };

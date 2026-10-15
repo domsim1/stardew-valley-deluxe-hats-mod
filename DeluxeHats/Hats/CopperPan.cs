@@ -26,7 +26,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     copperBuff.description = HatService.GetTranslation("hat.copper-pan.buff.description");
-                    copperBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    copperBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(copperBuff);
                 }
 

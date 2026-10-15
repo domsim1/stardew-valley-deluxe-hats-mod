@@ -43,7 +43,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     mushroomBuff.description = HatService.GetTranslation("hat.mushroom-cap.buff.description");
-                    mushroomBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    mushroomBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(mushroomBuff);
                 }
             };

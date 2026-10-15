@@ -26,7 +26,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     buff.description = HatService.GetTranslation("hat.raccoon-hat.buff.description");
-                    buff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    buff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(buff);
                 }
             };

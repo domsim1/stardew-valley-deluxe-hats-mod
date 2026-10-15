@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     archerBuff.description = HatService.GetTranslation("hat.archers-cap.buff.description");
-                    archerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    archerBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(archerBuff);
                 }
             };

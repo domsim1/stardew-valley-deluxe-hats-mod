@@ -25,7 +25,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     bridalBuff.description = HatService.GetTranslation("hat.bridal-veil.buff.description");
-                    bridalBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    bridalBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(bridalBuff);
                 }
             };

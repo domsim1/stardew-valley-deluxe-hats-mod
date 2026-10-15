@@ -26,7 +26,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     garbageBuff.description = HatService.GetTranslation("hat.garbage-hat.buff.description");
-                    garbageBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    garbageBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(garbageBuff);
                 }
             };

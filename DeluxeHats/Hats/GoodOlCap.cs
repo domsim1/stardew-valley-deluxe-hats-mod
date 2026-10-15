@@ -29,7 +29,7 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         goodOlCapBuff.description = HatService.GetTranslation("hat.good-ol-cap.buff.description");
-                        goodOlCapBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        goodOlCapBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                         HatService.CurrentPlayer.applyBuff(goodOlCapBuff);
                     }
                 }

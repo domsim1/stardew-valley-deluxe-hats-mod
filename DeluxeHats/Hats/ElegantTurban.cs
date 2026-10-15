@@ -30,7 +30,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     elegantBuff.description = HatService.GetTranslation("hat.elegant-turban.buff.description");
-                    elegantBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    elegantBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(elegantBuff);
                 }
             };

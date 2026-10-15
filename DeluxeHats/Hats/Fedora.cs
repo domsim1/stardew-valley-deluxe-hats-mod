@@ -35,7 +35,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     luckBuff.description = HatService.GetTranslation("hat.fedora.buff.description");
-                    luckBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    luckBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(luckBuff);
                 }
             };

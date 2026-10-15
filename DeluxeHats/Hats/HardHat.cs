@@ -32,7 +32,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     hardHatBuff.description = HatService.GetTranslation("hat.hard-hat.buff.description");
-                    hardHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    hardHatBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(hardHatBuff);
                 }
 

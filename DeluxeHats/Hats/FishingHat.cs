@@ -36,7 +36,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     fishingBuff.description = HatService.GetTranslation("hat.fishing-hat.buff.description");
-                    fishingBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    fishingBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(fishingBuff);
                 }
             };

@@ -34,7 +34,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     farmingBuff.description = HatService.GetTranslation("hat.straw-hat.buff.description");
-                    farmingBuff.millisecondsDuration = Convert.ToInt32((3.3f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    farmingBuff.millisecondsDuration = HatService.GetBuffDuration(3.3f);
                     HatService.CurrentPlayer.applyBuff(farmingBuff);
                 }
             };

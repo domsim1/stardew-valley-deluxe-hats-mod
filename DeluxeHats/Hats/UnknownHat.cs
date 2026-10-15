@@ -33,7 +33,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     unknownBuff.description = HatService.GetTranslation("hat.unknown.buff.description");
-                    unknownBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    unknownBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(unknownBuff);
                 }
             };

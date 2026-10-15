@@ -27,7 +27,7 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         cowpokeBuff.description = HatService.GetTranslation("hat.cowpoke-hat.buff.description");
-                        cowpokeBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        cowpokeBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                         HatService.CurrentPlayer.applyBuff(cowpokeBuff);
                     }
                 }

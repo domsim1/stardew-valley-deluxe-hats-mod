@@ -25,7 +25,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     spottedBuff.description = HatService.GetTranslation("hat.spotted-headscarf.buff.description");
-                    spottedBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    spottedBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(spottedBuff);
                 }
             };

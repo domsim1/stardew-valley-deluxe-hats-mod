@@ -16,6 +16,16 @@ namespace DeluxeHats
         public static IModHelper Helper;
         public static StardewValley.Farmer CurrentPlayer;
 
+        /// <summary>
+        /// Buff duration in ms lasting until the given in-game hour offset from 6am (20f = end of day).
+        /// Never returns less than 1s: the game rejects buffs with no duration and logs on every attempt.
+        /// </summary>
+        public static int GetBuffDuration(float hoursFromSixAm)
+        {
+            int duration = Convert.ToInt32((hoursFromSixAm - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+            return Math.Max(duration, 1000);
+        }
+
         public static string GetTranslation(string key)
         {
             return Helper.Translation.Get(key);

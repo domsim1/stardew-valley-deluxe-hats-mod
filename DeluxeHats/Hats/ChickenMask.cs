@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     chickenBuff.description = HatService.GetTranslation("hat.chicken-mask.buff.description");
-                    chickenBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    chickenBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(chickenBuff);
                 }
             };

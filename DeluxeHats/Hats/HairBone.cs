@@ -25,7 +25,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     boneBuff.description = HatService.GetTranslation("hat.hair-bone.buff.description");
-                    boneBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    boneBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(boneBuff);
                 }
             };

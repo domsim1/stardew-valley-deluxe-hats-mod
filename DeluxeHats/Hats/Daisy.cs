@@ -25,7 +25,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     daisyBuff.description = HatService.GetTranslation("hat.daisy.buff.description");
-                    daisyBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    daisyBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(daisyBuff);
                 }
             };

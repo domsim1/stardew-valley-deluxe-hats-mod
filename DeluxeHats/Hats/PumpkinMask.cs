@@ -28,7 +28,7 @@ namespace DeluxeHats.Hats
                         effects: effects
                         );
                     propellerBuff.description = HatService.GetTranslation("hat.pumpkin-mask.buff.description");
-                    propellerBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                    propellerBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                     HatService.CurrentPlayer.applyBuff(propellerBuff);
                 }
             };

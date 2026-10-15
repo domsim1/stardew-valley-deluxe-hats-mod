@@ -32,7 +32,7 @@ namespace DeluxeHats.Hats
                             effects: effects
                             );
                         truckerHatBuff.description = HatService.GetTranslation("hat.trucker-hat.buff.description");
-                        truckerHatBuff.millisecondsDuration = Convert.ToInt32((20f - ((Game1.timeOfDay - 600f) / 100f)) * 43000);
+                        truckerHatBuff.millisecondsDuration = HatService.GetBuffDuration(20f);
                         HatService.CurrentPlayer.applyBuff(truckerHatBuff);
                     }
                 }
